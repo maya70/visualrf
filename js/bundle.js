@@ -40,7 +40,32 @@ return s})
 				                    .text('')
 				                    .style("background-color", "#eee")
 				                    .style("color", "#444");
-				                
+				self.classNames = [{name: "Russia", value: "R"}, 
+								{name:"Finland", value: "F"},
+								{name:"Estonia", value: "E"}];				
+				
+				
+				$.each(self.classNames, function(){
+				   	 $("<option />")
+				        .attr("value", this.value )
+				        .html(this.name)
+				        .appendTo("#cls-select-1");
+					});
+				$.each(self.classNames, function(){
+				   	 $("<option />")
+				        .attr("value", this.value )
+				        .html(this.name)
+				        .appendTo("#cls-select-2");
+					});
+				var cl1 = document.getElementById("cls-select-1");
+				cl1.addEventListener("change", function(){
+					if(self.svg){ 
+						self.svg.selectAll("*").remove();
+						//self.svg.remove();
+
+					}
+					self.drawHierarchy((self.width-100), (self.height-100), self.root);	
+				});
 				d3.csv('./data/variables.csv', function(data){
 					self.data = data;
 					self.readImportance();					
@@ -80,6 +105,7 @@ return s})
 					var fs = require('fs'),
     				RandomForestClassifier = require('random-forest-classifier').RandomForestClassifier;
     				var utils = require('../utilities');
+    				var response = "country";
 					    
 
 					// send the current values in self.selectedNodes to RF 
@@ -107,15 +133,30 @@ return s})
 						    for(var i = 80; i < 120; i++)
 						    {
 						    	var d = {};
-					    	    d["country"] = parseInt(data[i]["country"]);
+					    	    d[response] = parseInt(data[i][response]);
 							   for(var key in data[i]) {
-		    						if(key !== "country")
+		    						if(key !== response)
 			    						d[key] = data[i][key];
 		    					}
 							    training.push(d);
 						    }
 						    console.log(training);
 						    var test = training; 
+
+						    // store class info
+						    var y_values = _.pluck(training, response);
+						    function onlyUnique(value, index, self) { 
+								    return self.indexOf(value) === index;
+								}
+							var uniqueClasses = y_values.filter(onlyUnique);
+							var cl1count =0, cl2count = 0;
+							for(var i=0; i < y_values.length; i++){
+								if(y_values[i] === uniqueClasses[0]) cl1count++;
+								else if(y_values[i] === uniqueClasses[1]) cl2count++;
+							}
+							self.classes = {};
+							self.classes[uniqueClasses[0]] = cl1count;
+							self.classes[uniqueClasses[1]] = cl2count;
 						   
 							rf.fit(training, features, "country", function(err, trees){
 							  //console.log(JSON.stringify(trees, null, 4));
@@ -130,8 +171,24 @@ return s})
 							  group.name = prompt("Enter a group name:");
 							  group.prediction = pred;
 							  group.nodes = features;
-							  group.trees = self.d3ifyModel(trees);
-							  console.log(group.trees);
+							  //group.trees = self.d3ifyModel(trees);
+							  group.classes = self.classes;
+							  group.data = [];
+							  for(var i = 0; i < training.length; i++){
+							  	  var temp = {};
+								  for(var f =0; f < features.length; f++){
+								  	temp[features[f]] = training[i][features[f]];
+								  	temp['outcome'] = y_values[i];
+								  	temp['sampleID'] = i;
+								  }
+								  group.data.push(temp);
+								}
+							  var samples = [];
+							  for(var i=0; i< group.data.length; i++){
+							  	samples.push(i);
+							  }
+							  group.trees = self.d3ifyModel(trees, samples);
+							  console.log(group.data);
 							  self.groups.push(group);
 							  self.createNewGroup(group);
 							  self.thumbnails = new $P.ThumbView(group);
@@ -140,7 +197,7 @@ return s})
 							});
 						});
 				},
-				d3ifyModel: function(trees){
+				d3ifyModel: function(trees, data){
 				var self = this;
 			    var models = [];
 			    
@@ -155,7 +212,8 @@ return s})
 			            tp: trees[i].tp,
 			            fp: trees[i].fp,
 			            tn: trees[i].tn,
-			            fn: trees[i].fn
+			            fn: trees[i].fn,
+			            samples: data
 			        }
 			        models[i] = self.d3Model( models[i]);
 			    }
@@ -174,6 +232,7 @@ return s})
 							new_model.cl2 = model.children[0].child.cl2;
 							new_model.cut = model.children[0].child.cut;
 							new_model.size = model.children[0].child.numRecs;
+							new_model.samples = model.children[0].child.samples;
 							model.children[0] = self.d3Model(new_model);
 						//}
 							new_model = {};
@@ -183,6 +242,7 @@ return s})
 							new_model.cl2 = model.children[1].child.cl2;
 							new_model.cut = model.children[1].child.cut;
 							new_model.size = model.children[1].child.numRecs;
+							new_model.samples = model.children[1].child.samples;
 							model.children[1] = self.d3Model(new_model);
 
 					}
@@ -297,18 +357,21 @@ return s})
 						//if(pnode) pnode.children.push({id: i, name: genes[g], children:[] });
 					}
 					console.log(tree[0]);
-					var root = tree[0];
+					self.root = tree[0];
 					self.width = width;
 					self.height = height;
-					self.drawHierarchy((width-100), (height-100), root);	
+					self.drawHierarchy((width-100), (height-100), self.root);	
 				},
 				drawHierarchy: function (width, height, root) {
 					var self = this;
-					self.svg = d3.select(".attrhierarchy").append("svg")
-										.attr("width", width)
-										.attr("height", height)
-										.append("g")
-										.attr("transform", "translate("+ (width/2)+","+ (height/2) +")");
+					if(!self.svg)
+					{
+						self.svg = d3.select(".attrhierarchy").append("svg")
+											.attr("width", width)
+											.attr("height", height)
+											.append("g")
+											.attr("transform", "translate("+ (width/2)+","+ (height/2) +")");
+					}
 					
 					self.levels = [ {name:'Genus', value: '#f7f7f7',  r: 6.5*(width/14)},
 									{name:'Family', value:'#d9d9d9',  r: 5*(width/14)},
@@ -363,7 +426,7 @@ return s})
 					}
 										
 					self.drawRadialCluster((width-100), (height-100), root);
-					//self.selectNodes();
+									//self.selectNodes();
 					//self.drawCluster(width, height, root);					
 				},
 				getImportanceRange: function(){
@@ -513,6 +576,11 @@ return s})
 					var cluster = d3.layout.cluster()
 										.size([width, height])
 										.separation(function(a,b) { return (a.parent === b.parent? 3:4)/a.depth; });
+					var c = document.getElementById("cls-select-1");
+					self.cls1 = c.options[c.selectedIndex].value;
+					c = document.getElementById("cls-select-2");
+					self.cls2 = c.options[c.selectedIndex].value;
+					
 					
 					var nodes = cluster.nodes(root);
 					var links = cluster.links(nodes);
@@ -600,9 +668,20 @@ return s})
 								return 0;
 						})
 						.style("stroke-width", 5)
-						.style("stroke", "red")
+						.style("stroke", function(d){
+							if (self.cls1 !== self.cls2){
+								return "black";
+							}	
+							else{
+								return "red";
+							}
+						})
 						.style("opacity", function(d){
-							if(d.name.includes("g__"))
+							var selcls = self.cls1+self.cls2;
+							var show = (selcls === "RF" || selcls === "FR");
+
+
+							if(d.name.includes("g__")&& (show || (self.cls1 === self.cls2)))
 								{
 									var index = self.importance.findIndex(x => x.name==d.name);
 									var scale = self.importance[index]['MDA_RF'];
@@ -665,7 +744,12 @@ return s})
 						.style("stroke-width", 5)
 						.style("stroke", "green")
 						.style("opacity", function(d){
-							if(d.name.includes("g__"))
+							var selcls = self.cls1+self.cls2;
+							var show = (selcls === "RE" || selcls === "ER");
+
+
+							if(d.name.includes("g__")&& (show || (self.cls1 === self.cls2)))
+							
 								{
 									var index = self.importance.findIndex(x => x.name==d.name);
 									var scale = self.importance[index]['MDA_RE'];
@@ -726,7 +810,12 @@ return s})
 						.style("stroke-width", 5)
 						.style("stroke", "blue")
 						.style("opacity", function(d){
-							if(d.name.includes("g__"))
+							var selcls = self.cls1+self.cls2;
+							var show = (selcls === "EF" || selcls === "FE");
+
+
+							if(d.name.includes("g__")&& (show || (self.cls1 === self.cls2)))
+							
 								{
 									var index = self.importance.findIndex(x => x.name==d.name);
 									var scale = self.importance[index]['MDA_EF'];
@@ -2130,7 +2219,7 @@ RandomForestClassifier.prototype = {
         for (var i=0; i < data.length ;i++) {
             var dec = [];
             for (var j=0; j < this.n_estimators; j++){
-            	var treeDec = trees[j].predict(data[i]); 
+            	var treeDec = trees[j].predict(data[i], i); 
             	//TODO: Record performance measures for TP, FP, TN, and FN here for this tree
             	var res = data[i][response];
             	if(res === Cl1 && treeDec=== Cl1 )   // True Positive
@@ -2226,7 +2315,7 @@ DecisionTreeClassifier.prototype = {
       var major_label = utils.GetDominate(_.pluck(data, y));
       return utils.C45(data, features, y, major_label, this.num_tries);
     },
-    predict: function(sample) {
+    predict: function(sample, sampleID) {
         var root = this.model;
 
         if (typeof root === 'undefined') {
@@ -2235,6 +2324,8 @@ DecisionTreeClassifier.prototype = {
 
         while (root.type !== "result") {
             var attr = root.name;
+            if(!root.samples) root.samples = [];
+            root.samples.push(sampleID);
             if (root.type === 'feature_real') {
                 var sample_value = parseFloat(sample[attr]);
                 if (sample_value <= root.cut){
@@ -2249,6 +2340,11 @@ DecisionTreeClassifier.prototype = {
                 });
             }
             root = child_node.child;
+        }
+        if(root.type === "result")
+        {
+        	if(!root.samples) root.samples = [];
+        	root.samples.push(sampleID);
         }
 
         return root.val;

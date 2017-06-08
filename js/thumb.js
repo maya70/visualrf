@@ -5,13 +5,15 @@
 			function ThumbView(config){
 				var self = this; 
 				//console.log("hello"+config);
-				self.trees = [];
 				self.fTrees = {}; 
 				self.treeQs = [];   // array of per-tree quality metric (ROC values: TPR, FPR, Ratio = TPR/FPR)
 				self.numTrees = 100; 
 				self.selectedTreeID = 1;
 				self.selectedPwayID = config.id;
 				self.group = config;
+				self.trees = self.group.trees;
+				self.classes = config.classes;
+				var data = config.data;
 				
 				self.geneRelations = {};
 				self.colorBrewer = ["#a6cee3","#1f78b4","#b2df8a","#33a02c","#fb9a99","#e31a1c","#fdbf6f","#ff7f00","#cab2d6","#6a3d9a","#ffff99","#b15928",
@@ -22,7 +24,25 @@
 				
 	           //self.drawThumbs(config);
 	           self.createColorMap();
-	           self.drawIcicles(50,50);
+	           
+	           var p = data[0];
+	           var mins = {}, maxs = {};
+	           var axes = Object.keys(p);
+	           axes.forEach(function(axis){
+							mins[axis] = p[axis];
+							maxs[axis] = p[axis];
+						});
+	           data.forEach(function(record){
+	           	axes.forEach(function(axis){
+								if(mins[axis] > record[axis]) mins[axis] = record[axis];
+								else if(maxs[axis] < record[axis]) maxs[axis] = record[axis];
+							});
+							
+	           });
+	           if(!self.dataView)
+				self.dataView = new $P.ParallelView({'data':data, 'mins': mins, 'maxs': maxs,
+													 'colors': self.colorBrewer, 'classes': self.classes});
+			   self.drawIcicles(50,50);
 				
 			},
 			{
@@ -170,7 +190,6 @@
 				    self.displayTree = new $P.DetailView({'tree': self.selectedTree, 
 				    									   'colorMap': self.colorMap, 
 				    									   'classes':self.classes,
-														   'pway': self.selectedPwayID,
 														   'dataView': self.dataView });
 				   
 				},
@@ -286,6 +305,13 @@
 			            .style("fill", function(d) { 
 			            	return self.colorMap[d.name]; })
 			            .style("stroke", "black");
+
+			        self.selectedTree = self.trees[self.selectedTreeID];
+			        self.displayTree = new $P.DetailView({'tree': self.selectedTree, 
+				    									   'colorMap': self.colorMap, 
+				    									   'classes':self.classes,
+														   'pway': self.selectedPwayID,
+														   'dataView': self.dataView });
 			        
 					function setHighlight(d){
 					 	if(!d) d = self.trees[1];
@@ -315,7 +341,7 @@
 						if(self.displayTree) self.displayTree.updateView(self.selectedTree);
 
 					 }
-
+ 
 
 				},
 				drawIcicle: function(w, h){

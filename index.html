@@ -47,7 +47,7 @@ nav ul a {
 div.pathway {
   float: left;
   max-width: 200px;
-  height: 400px;
+  height: 300px;
   background-color: lightgrey;
   margin: 0;
   padding: 1em;
@@ -56,8 +56,8 @@ div.pathway {
 div.attrhierarchy {
   float: left;
   max-width: 600px;
-  width: 35%;
-  height: 600px;
+  height: 500px;
+  width: 100%;
   background: lightgrey; /* For browsers that do not support gradients */
   background: -webkit-linear-gradient(white, lightgrey); /* For Safari 5.1 to 6.0 */
   background: -o-linear-gradient(white, lightgrey); /* For Opera 11.1 to 12.0 */
@@ -69,17 +69,21 @@ div.attrhierarchy {
   margin-left: 10px;
 }
 
+div.left-pane{
+  width: 35%;
+}
 
 article {
     margin-left: 80px;
     border-left: 1px solid gray;
     padding: 1em;
     overflow: scroll;
-    width: 33%;
-    height: 400px;
+    width: 23%;
+    height: 300px;
     max-width: 60%;
     position: absolute;
-    left: 400px;
+    left: 43%;
+    display: inline-block;
 }
 svg {
   font: 10px sans-serif;
@@ -126,6 +130,30 @@ div.tooltip {
     border-radius: 8px;     
     pointer-events: none;     
 }
+div.left-controls {
+    background-color: lighgrey;
+    min-height: 40px;
+    width: 95%; 
+    padding-left: 50px;
+    
+}
+.required-entry {
+  display: inline-block;
+  margin-left: 20px;
+}
+.required-entry-label {
+  display: inline-block;
+  margin-left: 20px;
+}
+#para{
+  max-width:600px;
+  min-width: 20%;
+  min-height: 200px;
+  max-height: 150px;
+  position: absolute;
+  margin-left: 520px;
+  margin-top: 330px;
+}
 
 div.tooltip2 { 
     position: absolute;     
@@ -157,13 +185,29 @@ g.node.selected{
 <header>
    <div class="thumbview"> </div>
 </header>
-<div class="attrhierarchy">
-<input onClick="change()" type="button" id="selection-butt" value="New Selection" style="background-color: #66ffc2"> </input>
+<div class="left-pane">
+  
+   <div class="left-controls">
+   <p class="required-entry"> Class 1: </p>
+   <select name="category" class="required-entry" id="cls-select-1">
+    </select>  
+    <p class="required-entry"> Class 2: </p>
+    <select name="category" class="required-entry" id="cls-select-2">
+    </select>
+   </div>
+  <div class="attrhierarchy">
+  <input onClick="change()" type="button" id="selection-butt" value="New Selection" style="background-color: #66ffc2"> </input>
+  </div>
+ 
 </div>
+<div>
 <div class= "pathway" id="pdv">
 
+</div id="model">
+  <article></article>
+  <div id = "para">
+  </div>
 </div>
-
 <footer>
 Copyright &copy; Mai Elshehaly
 </footer>
@@ -193,6 +237,8 @@ Copyright &copy; Mai Elshehaly
 
 <script src="./vendor/underscore.js"></script>
 <script src="js/util.js" type="text/javascript"></script>
+<script src="js/parallel.js"></script>
+<script src="js/tree.js"></script>
 <script src="js/thumb.js" type="text/javascript"></script>
 <script src="js/bundle.js" type="text/javascript"></script>
 
