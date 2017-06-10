@@ -28,10 +28,10 @@ div.thumbview {
     overflow: scroll;
     margin: 0;
      background: lightgrey; /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(lightyellow, lightgrey); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(lightyellow, lightgrey); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(lightyellow, lightgrey); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(lightyellow, lightgrey); /* Standard syntax */
+  background: -webkit-linear-gradient(white, lightgrey); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(white, lightgrey); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(white, lightgrey); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(white, lightgrey); /* Standard syntax */
  
 }
 
@@ -47,6 +47,7 @@ nav ul a {
 div.pathway {
   float: left;
   max-width: 200px;
+  min-width: 200px;
   height: 300px;
   background-color: lightgrey;
   margin: 0;
@@ -82,7 +83,7 @@ article {
     height: 300px;
     max-width: 60%;
     position: absolute;
-    left: 43%;
+    left: 690px;
     display: inline-block;
 }
 svg {
@@ -130,12 +131,30 @@ div.tooltip {
     border-radius: 8px;     
     pointer-events: none;     
 }
+div.controls{
+  background-color: white;
+  width: 100%;
+  max-height: 50px;
+  padding-top: 0px;
+  margin-top: 0px;
+}
 div.left-controls {
-    background-color: lighgrey;
-    min-height: 40px;
-    width: 95%; 
-    padding-left: 50px;
-    
+    background-color: white;
+    max-height: 40px;
+    width: 35%; 
+    padding-left: 20px;
+    padding-top: 0px;
+    margin-top: 0px;
+    display: inline-block;
+}
+div.legend{
+   float: right;
+  min-width: 100px;
+  height: 340px;
+  background: lightgrey; /* For browsers that do not support gradients */
+  margin: 0;
+  padding: 1em;
+  overflow: scroll;
 }
 .required-entry {
   display: inline-block;
@@ -185,8 +204,8 @@ g.node.selected{
 <header>
    <div class="thumbview"> </div>
 </header>
-<div class="left-pane">
-  
+<div class="legend"></div>
+<div class="controls">
    <div class="left-controls">
    <p class="required-entry"> Class 1: </p>
    <select name="category" class="required-entry" id="cls-select-1">
@@ -195,15 +214,22 @@ g.node.selected{
     <select name="category" class="required-entry" id="cls-select-2">
     </select>
    </div>
+
+</div>
+<div class="left-pane">
+  
+   
   <div class="attrhierarchy">
   <input onClick="change()" type="button" id="selection-butt" value="New Selection" style="background-color: #66ffc2"> </input>
   </div>
  
 </div>
+
 <div>
-<div class= "pathway" id="pdv">
+<div class= "pathway" id="pdv"></div>
 
 </div id="model">
+
   <article></article>
   <div id = "para">
   </div>

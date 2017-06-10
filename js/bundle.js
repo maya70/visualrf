@@ -31,6 +31,7 @@ return s})
 				self.groups = [];
 				self.selectionON = false;
 				self.but_div = d3.select(".pathway");
+				self.modelROC = [];
 				self.but_div.append("button")
 				                    .attr("class", "accordion")
 				                    .attr("id", "btn")
@@ -58,13 +59,33 @@ return s})
 				        .appendTo("#cls-select-2");
 					});
 				var cl1 = document.getElementById("cls-select-1");
+
 				cl1.addEventListener("change", function(){
 					if(self.svg){ 
 						self.svg.selectAll("*").remove();
 						//self.svg.remove();
-
-					}
+						}
+					if(self.svgLegend)
+						{
+							self.svgLegend.selectAll("*").remove();
+							//d3.select(".legend").remove();
+						}
 					self.drawHierarchy((self.width-100), (self.height-100), self.root);	
+					self.drawModelROC();
+				});
+				var cl2 = document.getElementById("cls-select-2");
+				cl2.addEventListener("change", function(){
+					if(self.svg){ 
+						self.svg.selectAll("*").remove();
+						//self.svg.remove();
+						}
+					if(self.svgLegend)
+						{
+							self.svgLegend.selectAll("*").remove();
+							//d3.select(".legend").remove();
+						}
+					self.drawHierarchy((self.width-100), (self.height-100), self.root);	
+					self.drawModelROC();
 				});
 				d3.csv('./data/variables.csv', function(data){
 					self.data = data;
@@ -72,6 +93,105 @@ return s})
 				});
 			},
 			{
+				drawModelROC: function(){
+					var self=this;
+					var x = 20;
+					var width = document.body.clientWidth - 1160;
+					var height = 200;
+					//d3.select("body").append("div").attr("class", "legend");
+					var color = 'grey';
+					
+					if(!self.svgLegend){
+						self.svgLegend = d3.select(".legend").append("svg")
+										.attr("width", width)
+										.attr("height", height);
+						
+					}
+					console.log(self.cls1);
+					console.log(self.cls2);
+					if((self.cls1 === "R" && self.cls2 === "F")||(self.cls1==="F"&&self.cls2==="R"))
+						{
+							d3.json('./data/roc_rf.json',function(rocdata){
+								for(var i=0; i<rocdata.length; i++){
+									var d = {};
+									d.x = rocdata[i].x;
+									d.y = rocdata[i].y;
+									self.modelROC.push(d);
+								}
+								doDraw(self.modelROC, self.svgLegend);
+							});
+						}
+					else if((self.cls1 ==="R" && self.cls2==="E")||(self.cls1==="E" && self.cls2==="R"))
+						{
+
+						}
+					else if((self.cls1 ==="F"&& self.cls2==="E")||(self.cls1==="E" && self.cls2==="F"))
+						{
+
+						}
+					else
+						{
+
+						}
+
+					/*self.svgLegend.append("rect")
+										.attr("fill", function(d){ return color;})
+										.attr("x", 50 )
+										.attr("y", 20)
+										.attr("width", 50)
+										.attr("height", 30);*/
+					function doDraw(dataset, svg){
+						
+						var margin = {top: 10, right: 20, bottom: 20, left: 10},
+						    w = width- margin.left - margin.right - 10,
+						    h = height - margin.top - margin.bottom -10;
+
+
+						var x = d3.scale.linear().range([0, w]);
+						var y = d3.scale.linear().range([h, 0]);
+
+						x.domain([0, 1]);
+						y.domain([0, 1]);
+
+						var xAxis = d3.svg.axis().scale(x)
+						    .orient("bottom").ticks(5);
+
+						var yAxis = d3.svg.axis().scale(y)
+						    .orient("left").ticks(5);
+
+						svg.append("g")
+						        .attr("class", "x axis")
+						        .attr("transform", "translate("+ (width/2+10) + "," + (height-20) + ")")
+						        .call(xAxis)
+						       .append("text")            
+						        .attr("x", width/2+20)
+						        .attr("y", height-10 )
+						        .style("text-anchor", "middle")
+						        .text("1 - False Negative Rate");
+
+						    svg.append("g")
+						        .attr("class", "y axis")
+						        .attr("transform", "translate("+ (width/2+10) + ",10)")
+						        .call(yAxis);
+
+						    // Define the line
+						    var valueline = d3.svg.line()
+						                        .x(function(d) { return x(d.x); })
+						                        .y(function(d) { return y(d.y); });
+						                          
+						    // Add the valueline path.
+						    svg.append("path")
+						        .attr("class", "line")
+						        .attr("d", valueline(dataset))
+						        .style("fill", "none")
+						        .style("stroke-width", 3)
+						        .style("stroke", "black")
+						        .attr("transform", "translate("+ (width/2+10) + ",10)");
+
+
+					}
+
+				},
 				readImportance: function(){
 					var self=this;
 					d3.json('./data/vatanen_imp.json', function(imp){
@@ -110,16 +230,17 @@ return s})
 
 					// send the current values in self.selectedNodes to RF 
 					var rf = new RandomForestClassifier({
-									    n_estimators: 50
+									    n_estimators: 100
 									});
 
 					console.log("RF HERE");
 					console.log(self.selectedNodes);
 
+
 					d3.json("./data/vatanen_dfrf.json", function(data){
 							console.log(self.selectedNodes);
 					
-						    var training = [];
+						    var training = [], test = [];
 						    var features = [];
 							 // restore full feature names
 							 for(var i=0; i < self.selectedNodes.length; i++){
@@ -140,9 +261,12 @@ return s})
 		    					}
 							    training.push(d);
 						    }
-						    console.log(training);
-						    var test = training; 
+						    var trainSet = shuffle(training);
+						    test = trainSet.slice(0, trainSet.length/2);
+						    trainSet = trainSet.slice(trainSet.length/2, trainSet.length);
 
+						    console.log(test);
+						    
 						    // store class info
 						    var y_values = _.pluck(training, response);
 						    function onlyUnique(value, index, self) { 
@@ -158,14 +282,15 @@ return s})
 							self.classes[uniqueClasses[0]] = cl1count;
 							self.classes[uniqueClasses[1]] = cl2count;
 						   
-							rf.fit(training, features, "country", function(err, trees){
+							rf.fit(trainSet, features, "country", function(err, trees){
 							  //console.log(JSON.stringify(trees, null, 4));
 							 
-							  test = training; 
 							  var pred = rf.predict(test, trees, "country");
 
+
 							  console.log(pred);
-							  console.log(trees);
+							  
+							  //console.log(trees);
 							  var group = {};
 							  group.id = self.groups.length+1;
 							  group.name = prompt("Enter a group name:");
@@ -187,8 +312,11 @@ return s})
 							  for(var i=0; i< group.data.length; i++){
 							  	samples.push(i);
 							  }
+
 							  group.trees = self.d3ifyModel(trees, samples);
-							  console.log(group.data);
+							  //console.log(group.data);
+							  group.roc = self.ROCcurve(pred, test, group.classes, response);
+							  
 							  self.groups.push(group);
 							  self.createNewGroup(group);
 							  self.thumbnails = new $P.ThumbView(group);
@@ -196,6 +324,79 @@ return s})
 							  self.updateNodes(); 
 							});
 						});
+					function shuffle(array) {  // Fisher Yates shuffle
+						  var currentIndex = array.length, temporaryValue, randomIndex;
+
+						  // While there remain elements to shuffle...
+						  while (0 !== currentIndex) {
+
+						    // Pick a remaining element...
+						    randomIndex = Math.floor(Math.random() * currentIndex);
+						    currentIndex -= 1;
+
+						    // And swap it with the current element.
+						    temporaryValue = array[currentIndex];
+						    array[currentIndex] = array[randomIndex];
+						    array[randomIndex] = temporaryValue;
+						  }
+
+						  return array;
+						}
+				},
+				ROCcurve: function(pred, test, classes, response){
+					var self = this;
+					var curve = [];
+					var max = getMaxOfArray(pred);
+					var min = getMinOfArray(pred);
+					var step = (max - min)/10;
+					self.cutoff = {fpr: 1000000, tpr: 0, tp:0, fp:0, tn:0, fn:0};
+
+					for(var t=max; t >= (min-1); t-=step){
+						var d = {};
+						var temp = self.getPRates(t, pred, test, classes, response);
+						d.x = temp.fpr;
+						d.y = temp.tpr;
+						curve.push(d);
+					}
+					//console.log(curve);
+					function getMaxOfArray(numArray) {
+						  return Math.max.apply(null, numArray);
+						}
+					function getMinOfArray(numArray) {
+						  return Math.min.apply(null, numArray);
+						}
+				 	return curve;
+				},
+				getPRates: function(t, pred, test, classes, response){
+					var self = this; 
+					var rates={}, tpr, fpr;
+					var predicted, actual;
+					var classes = Object.keys(classes);
+					var tp = 0, fp = 0, tn = 0, fn = 0;
+
+					for(var d = 0; d < pred.length; d++ ){
+						predicted = (pred[d] > t)? classes[1] : classes[0];
+						actual = test[d][response]+"";
+						if(predicted === classes[1] && actual === classes[1]) // true positive
+							tp++;
+						else if(predicted === classes[1] && actual === classes[0]) // false positive
+							fp++;
+						else if(predicted === classes[0] && actual === classes[0]) // true negative
+							tn++;
+						else if(predicted === classes[0] && actual === classes[1]) // false negative
+							fn++;
+					}
+					rates.tpr = tp / (tp+fn);
+					rates.fpr = fp / (fp+tn);
+					if(rates.tpr > self.cutoff.tpr && rates.fpr < self.cutoff.fpr) {
+						self.cutoff.tp = tp;
+						self.cutoff.fp = fp;
+						self.cutoff.tn = tn;
+						self.cutoff.fn = fn;
+						self.cutoff.tpr = rates.tpr;
+						self.cutoff.fpr = rates.fpr;
+					}
+					return rates; 
 				},
 				d3ifyModel: function(trees, data){
 				var self = this;
@@ -249,13 +450,13 @@ return s})
 
 					return model;
 				},
-				createNewGroup: function(group){
+				createNewGroup: function(fgroup){
 					var self = this; 
 					var xpos = 10; 
 					var width = 200;
 				    var height = 100; 
 					
-					var bid = 'btn1'; 
+					var bid = 'btn'+fgroup.id; 
 				    var but = self.but_div.append("button")
 				                    .attr("class", "accordion")
 				                    .attr("id", "btn")
@@ -264,7 +465,7 @@ return s})
 				                    .style("height", "60px")
 				                    .text(function(d){ 
 				                        //this.pid = fNodes[p].id;
-				                        return group.name;})
+				                        return fgroup.name;})
 				                    .style("background-color", "#eee")
 				                    .style("color", "#444")
 				                    .on("mouseover", function(d){
@@ -295,7 +496,133 @@ return s})
 				                        //thumbnails.destroy(); 
 				                        //thumbnails= drawThumbs({'pwayID': b});
 				                    });
+
+				    // draw the confusion donut and ROC curve of this group
+				    var panel = self.but_div.append("div")
+                        .attr("class", "panel")
+                        .attr("id",bid)
+                        .style("display", "none")
+                        .style("padding", "0 18 px")
+                        .style("height", "100px")
+                        .style("background-color", "white");
+
+			        var svg = panel.append("svg")
+			                        .attr("width", "100%")
+			                        .attr("height","100%");
+			        var group = svg.append("g").attr("transform", "translate(" + width / 4 + "," + height / 2 + ")");
+
+			        var color = d3.scale.ordinal()
+			                            .range(["red", "blue", "orange"]);
+
+			        var pop1 = self.cutoff.tp + self.cutoff.fn; 
+			        var pop2 = self.cutoff.fp + self.cutoff.tn ;
+			       // var data = [pop1, pop2];
+			        var classes = Object.keys(self.classes);
+			        var data = [{ class: classes[0], population: pop1},
+			        			{ class: classes[1], population: pop2}];
+
+			        var population = self.cutoff.tp + self.cutoff.fn + self.cutoff.fp + self.cutoff.tn ;
+			        
+	        var pie = d3.layout.pie()
+	            .value(function(d){ return d.population; });
+	        var arc = d3.svg.arc()
+	                    .innerRadius(0)
+	                    .outerRadius(height/3);
+	        
+	        var arcs = group.selectAll(".arc")
+	                    .data(pie(data))
+	                    .enter()
+	                    .append("g")
+	                    .attr("class", "arc");
+	        arcs.append("path")
+	            .attr("d", arc) // here the arc function works on every record d of data 
+	            .attr("fill", function(d){
+	             return color(parseInt(d.data.class)); })
+	            .style("opacity", 0.7);
+
+
+	            var fpDeg = (self.cutoff.fp / population) * 360;
+	            var tpDeg = (self.cutoff.tp / population) * 360;
+	            
+	            var neg = ((self.cutoff.tn + self.cutoff.fn)/ population) * 360;
+
+	            var newarc1 = d3.svg.arc()
+	                            .innerRadius(10)
+	                            .outerRadius(20)
+	                            .startAngle(fpDeg * (Math.PI/180)) //convert from degs to radians
+	                            .endAngle(-tpDeg* Math.PI/180); //just radians
+
+	           var overlay1 = group.append("path")
+	                            .attr("d", newarc1)
+	                            .style("fill", "white")
+	                            .style("stroke-width",5)
+	                            .style("stroke", "maroon");
+
+	            var newarc2 = d3.svg.arc()
+	                            .innerRadius(10)
+	                            .outerRadius(20)
+	                            .startAngle(fpDeg * (Math.PI/180)) //convert from degs to radians
+	                            .endAngle((fpDeg+neg)* Math.PI/180); //just radians
+
+	           var overlay2 = group.append("path")
+	                            .attr("d", newarc2)
+	                            .style("fill", "white")
+	                            .style("stroke-width",5)
+	                            .style("stroke", "darkblue");
+
+
+				self.drawGroupROC(svg,width, height, fgroup);
+
+				},
+				drawGroupROC: function(svg, width, height, fgroup)
+				{
+			    var margin = {top: 10, right: 20, bottom: 10, left: (width/2+10)},
+				 w = width- margin.left - margin.right - 10,
+				 h = height - margin.top - margin.bottom -10;
+
+				var x = d3.scale.linear().range([0, w]);
+				var y = d3.scale.linear().range([h, 0]);
+
+				x.domain([0, 1]);
+				y.domain([0, 1]);
+
+				var xAxis = d3.svg.axis().scale(x)
+				    .orient("bottom").ticks(5);
+
+				var yAxis = d3.svg.axis().scale(y)
+				    .orient("left").ticks(5);
+
+				svg.append("g")
+				        .attr("class", "x axis")
+				        .attr("transform", "translate("+ (width/2+10) + "," + (height-20) + ")")
+				        .call(xAxis)
+				       .append("text")            
+				        .attr("x", width/2+20)
+				        .attr("y", height-10 )
+				        .style("text-anchor", "middle")
+				        .text("1 - False Negative Rate");
+
+				    svg.append("g")
+				        .attr("class", "y axis")
+				        .attr("transform", "translate("+ (width/2+10) + ",10)")
+				        .call(yAxis);
+
+				    // Define the line
+				    var valueline = d3.svg.line()
+				                        .x(function(d) { return x(d.x); })
+				                        .y(function(d) { return y(d.y); });
+				                          
+				    var data=fgroup.roc; 
 				   
+				    // Add the valueline path.
+				    svg.append("path")
+				        .attr("class", "line")
+				        .attr("d", valueline(data))
+				        .style("fill", "none")
+				        .style("stroke-width", 3)
+				        .style("stroke", "black")
+				        .attr("transform", "translate("+ (width/2+10) + ",10)");
+
 
 				},
 				getFeatureFullName: function(node){
@@ -2341,7 +2668,7 @@ DecisionTreeClassifier.prototype = {
             }
             root = child_node.child;
         }
-        if(root.type === "result")
+        if(root.type === "result" )
         {
         	if(!root.samples) root.samples = [];
         	root.samples.push(sampleID);

@@ -208,6 +208,10 @@
 						}
 						
 					}
+					//self.drawLegend();
+				},
+				drawLegend: function(){
+					
 				},
 				destroy: function(){
 					//console.log("Hola");
