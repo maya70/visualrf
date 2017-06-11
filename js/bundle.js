@@ -241,9 +241,21 @@ return s})
 								self.updateNodes(); 
 							}
 							else {
+								  var div = d3.select("body").append("div")
+									.attr("class", "tooltip3")
+									.style("opacity", 0);
+
+								div.transition()		
+					                .duration(0.01)		
+					                .style("opacity", .9);		
+					            div	.html("<strong> Running RandomForest </strong> <br/> ")	
+					                .style("left", document.body.clientWidth/2-180 + "px")		
+					                .style("top", document.body.clientHeight/2-114 + "px");								
+
 								self.selectionON = false;
+					
 								// send selected nodes to RF
-								self.callRF();
+								self.callRF(div);
 								//self.selectedNodes = [];
 								
 							}
@@ -252,14 +264,14 @@ return s})
 
 					});
 				},
-				callRF: function(){
+				callRF: function(div){
 					var self = this;
 					var fs = require('fs'),
     				RandomForestClassifier = require('random-forest-classifier').RandomForestClassifier;
     				var utils = require('../utilities');
     				var response = "country";
-					    
 
+    				
 					// send the current values in self.selectedNodes to RF 
 					var rf = new RandomForestClassifier({
 									    n_estimators: 50
@@ -281,8 +293,7 @@ return s})
 						dataFile = "./data/vatanen_dfef.json";
 
 					d3.json(dataFile, function(data){
-							console.log(self.selectedNodes);
-					
+							
 						    var training = [], test = [];
 						    var features = [];
 							 // restore full feature names
@@ -363,6 +374,12 @@ return s})
 							  group.roc = self.ROCcurve(pred, test, group.classes, response);
 							  
 							  self.groups.push(group);
+
+							  div.transition()		
+					                .duration(1)		
+					                .style("opacity", 0);
+					          div.remove();
+
 							  self.createNewGroup(group);
 							  self.thumbnails = new $P.ThumbView(group);
 							  self.selectedNodes = [];
