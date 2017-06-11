@@ -100,6 +100,15 @@ plot(perf_ROC2, add=TRUE, colorize=TRUE)
 perf_auc2 = performance(pred2, measure="auc")
 perf_auc2@y.values
 # prints ~0.9402632
+p_repeat <- rep(2, length(perf_ROC2@x.values))
+newperf.df <- data.frame(x=perf_ROC2@x.values, y=perf_ROC2@y.values, pid=p_repeat)
+names(newperf.df)<- c("x","y","pid")
+perf.df = rbind(perf.df, newperf.df)
+
+#print(perf.df)
+js <- toJSON(unname(split(newperf.df, 1:nrow(newperf.df))))
+fname = paste('rdata/roc_re.json',sep='')
+write(js, fname)
 
 #Repeat for Estonians versus Finns
 #Create a response column
@@ -126,6 +135,19 @@ plot(perf_ROC3, add=TRUE, colorize=TRUE)
 perf_auc3 = performance(pred3, measure="auc")
 perf_auc3@y.values
 # prints  ~0.5355263
+p_repeat <- rep(3, length(perf_ROC3@x.values))
+newperf.df <- data.frame(x=perf_ROC3@x.values, y=perf_ROC3@y.values, pid=p_repeat)
+names(newperf.df)<- c("x","y","pid")
+perf.df = rbind(perf.df, newperf.df)
+
+#print(perf.df)
+js <- toJSON(unname(split(newperf.df, 1:nrow(newperf.df))))
+fname = paste('rdata/roc_ef.json',sep='')
+write(js, fname)
+
+js <- toJSON(unname(split(perf.df, 1:nrow(perf.df))))
+fname = paste('rdata/roc_all.json',sep='')
+write(js, fname)
 
 #Create data frames for importance
 imp_rf <- data.frame(test.rf$importance)
@@ -143,3 +165,20 @@ colnames(final) <- c("name", "MDA_RF", "MDG_RF", "MDA_RE", "MDG_RE", "MDA_EF", "
 js <- toJSON(unname(split(final, 1:nrow(final))))
 fname = paste('rdata/vatanen_imp.json',sep='')
 write(js, fname)
+
+# Confusion matrices
+conf_rf <- data.frame(test.rf$confusion)
+conf_re <- data.frame(test.re$confusion)
+conf_ef <- data.frame(test.ef$confusion)
+
+js <- toJSON(unname(split(conf_rf, 1:nrow(conf_rf))))
+fname = paste('rdata/conf_rf.json', sep='')
+write(js,fname)
+
+js <- toJSON(unname(split(conf_ef, 1:nrow(conf_ef))))
+fname = paste('rdata/conf_ef.json', sep='')
+write(js,fname)
+
+js <- toJSON(unname(split(conf_re, 1:nrow(conf_re))))
+fname = paste('rdata/conf_re.json', sep='')
+write(js,fname)

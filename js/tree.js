@@ -121,6 +121,10 @@
 			        var svgNodes = self.svg.selectAll(".dnode")
 						        	.data(nodes)
 						        	.enter().append("g");
+					var div = d3.select("body").append("div")
+									.attr("class", "tooltip2")
+									.style("opacity", 0);
+
 
 					var rect = svgNodes.append("rect")
 						        	.attr("class", "dnode")
@@ -141,7 +145,23 @@
 						            .style("stroke", function(d) { 
 						            	var border = (d.isLeaf<0)? 'white': 'white';
 						            	return border; })
-						            .on("click",selectLines);
+						            .on("click",selectLines)
+						            .on('mouseover', function(d){
+											div.transition()		
+								                .duration(200)		
+								                .style("opacity", .9);		
+							            	div	.html(function(){
+							            		var str = d.name.split("|");
+							            		return "<strong> Feature: </strong> <br/>" +str[str.length-1];})	
+								                .style("left", (d3.event.pageX) -50 + "px")		
+								                .style("top", (d3.event.pageY + 28) + "px");	
+										})
+										.on('mouseout', function(d){
+											div.transition()		
+							                .duration(500)		
+							                .style("opacity", 0);	
+										});
+							
 						        
 						        svgNodes.each(function(n,i){
 						        	var start = 5;

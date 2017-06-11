@@ -97,21 +97,33 @@ return s})
 					var self=this;
 					var x = 20;
 					var width = document.body.clientWidth - 1160;
-					var height = 200;
-					//d3.select("body").append("div").attr("class", "legend");
-					var color = 'grey';
+					var height = 400;
 					
 					if(!self.svgLegend){
 						self.svgLegend = d3.select(".legend").append("svg")
 										.attr("width", width)
-										.attr("height", height);
+										.attr("height", height)
+										.attr("transform", "translate(-60,0)");
 						
 					}
-					console.log(self.cls1);
-					console.log(self.cls2);
 					if((self.cls1 === "R" && self.cls2 === "F")||(self.cls1==="F"&&self.cls2==="R"))
 						{
 							d3.json('./data/roc_rf.json',function(rocdata){
+								self.modelROC = [];
+								for(var i=0; i<rocdata.length; i++){
+									var d = {};
+									d.x = rocdata[i].x;
+									d.y = rocdata[i].y;
+									self.modelROC.push(d);
+								}
+
+								doDraw(self.modelROC, self.svgLegend);
+							});
+						}
+					else if((self.cls1 ==="R" && self.cls2==="E")||(self.cls1==="E" && self.cls2==="R"))
+						{
+							d3.json('./data/roc_re.json',function(rocdata){
+								self.modelROC = [];
 								for(var i=0; i<rocdata.length; i++){
 									var d = {};
 									d.x = rocdata[i].x;
@@ -120,17 +132,34 @@ return s})
 								}
 								doDraw(self.modelROC, self.svgLegend);
 							});
-						}
-					else if((self.cls1 ==="R" && self.cls2==="E")||(self.cls1==="E" && self.cls2==="R"))
-						{
 
 						}
 					else if((self.cls1 ==="F"&& self.cls2==="E")||(self.cls1==="E" && self.cls2==="F"))
 						{
+							d3.json('./data/roc_ef.json',function(rocdata){
+								self.modelROC = [];
+								for(var i=0; i<rocdata.length; i++){
+									var d = {};
+									d.x = rocdata[i].x;
+									d.y = rocdata[i].y;
+									self.modelROC.push(d);
+								}
+								doDraw(self.modelROC, self.svgLegend);
+							});
 
 						}
 					else
 						{
+							d3.json('./data/roc_all.json',function(rocdata){
+								self.modelROC = [];
+								for(var i=0; i<rocdata.length; i++){
+									var d = {};
+									d.x = rocdata[i].x;
+									d.y = rocdata[i].y;
+									self.modelROC.push(d);
+								}
+								doDraw(self.modelROC, self.svgLegend);
+							});
 
 						}
 
@@ -143,8 +172,8 @@ return s})
 					function doDraw(dataset, svg){
 						
 						var margin = {top: 10, right: 20, bottom: 20, left: 10},
-						    w = width- margin.left - margin.right - 10,
-						    h = height - margin.top - margin.bottom -10;
+						    w = width*2/3- margin.left - margin.right - 10,
+						    h = width*2/3 - margin.top - margin.bottom -10;
 
 
 						var x = d3.scale.linear().range([0, w]);
@@ -159,25 +188,28 @@ return s})
 						var yAxis = d3.svg.axis().scale(y)
 						    .orient("left").ticks(5);
 
+						svg.selectAll("*").remove();
+
 						svg.append("g")
 						        .attr("class", "x axis")
-						        .attr("transform", "translate("+ (width/2+10) + "," + (height-20) + ")")
+						        .attr("transform", "translate("+ (width/2) + "," + (h+10) + ")")
 						        .call(xAxis)
 						       .append("text")            
-						        .attr("x", width/2+20)
-						        .attr("y", height-10 )
+						        .attr("x", 50)
+						        .attr("y", 30 )
 						        .style("text-anchor", "middle")
 						        .text("1 - False Negative Rate");
 
 						    svg.append("g")
 						        .attr("class", "y axis")
-						        .attr("transform", "translate("+ (width/2+10) + ",10)")
+						        .attr("transform", "translate("+ (width/2) + ",10)")
 						        .call(yAxis);
 
 						    // Define the line
 						    var valueline = d3.svg.line()
 						                        .x(function(d) { return x(d.x); })
 						                        .y(function(d) { return y(d.y); });
+						                       
 						                          
 						    // Add the valueline path.
 						    svg.append("path")
@@ -186,7 +218,7 @@ return s})
 						        .style("fill", "none")
 						        .style("stroke-width", 3)
 						        .style("stroke", "black")
-						        .attr("transform", "translate("+ (width/2+10) + ",10)");
+						        .attr("transform", "translate("+ (width/2) + ",10)");
 
 
 					}
@@ -230,14 +262,25 @@ return s})
 
 					// send the current values in self.selectedNodes to RF 
 					var rf = new RandomForestClassifier({
-									    n_estimators: 100
+									    n_estimators: 50
 									});
 
 					console.log("RF HERE");
 					console.log(self.selectedNodes);
+				if(self.selectedNodes.length <=1){
+						prompt("Please select features for RandomForest");
+						return;
+					}
+				else{
+					var dataFile = '';
+					if((self.cls1 === "R" && self.cls2 === "F")||(self.cls1==="F"&&self.cls2==="R"))
+						dataFile = "./data/vatanen_dfrf.json";
+					else if((self.cls1 === "R" && self.cls2 === "E")||(self.cls1==="E"&&self.cls2==="R"))
+						dataFile = "./data/vatanen_dfre.json";
+					else if((self.cls1 === "F" && self.cls2 === "E")||(self.cls1==="E"&&self.cls2==="F"))
+						dataFile = "./data/vatanen_dfef.json";
 
-
-					d3.json("./data/vatanen_dfrf.json", function(data){
+					d3.json(dataFile, function(data){
 							console.log(self.selectedNodes);
 					
 						    var training = [], test = [];
@@ -250,8 +293,10 @@ return s})
 							 	 features.push(fname);
 							 	}
 							 }
+
+							 //d3.json("./data/");
 							    
-						    for(var i = 80; i < 120; i++)
+						    for(var i = 0; i < data.length; i++)
 						    {
 						    	var d = {};
 					    	    d[response] = parseInt(data[i][response]);
@@ -324,6 +369,7 @@ return s})
 							  self.updateNodes(); 
 							});
 						});
+			    	} // end else
 					function shuffle(array) {  // Fisher Yates shuffle
 						  var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -908,7 +954,19 @@ return s})
 					c = document.getElementById("cls-select-2");
 					self.cls2 = c.options[c.selectedIndex].value;
 					
-					
+					var elem = document.getElementById("selection-butt");
+					if(self.cls1 !== self.cls2)
+					{
+						elem.disabled = false;
+						elem.value = "New Selection";
+			            elem.style.backgroundColor ="#66ffc2";
+			             
+					}
+					else{
+						elem.disabled = true;
+						elem.style.backgroundColor ="grey";
+						elem.value = "start";
+					}
 					var nodes = cluster.nodes(root);
 					var links = cluster.links(nodes);
 					self.getImportanceRange();
