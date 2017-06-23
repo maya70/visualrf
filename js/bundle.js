@@ -29,6 +29,7 @@ return s})
 				self.selectedLevel = '';
 				self.selectedNodes = [];
 				self.groups = [];
+				self.groupCount = 0;
 				self.selectionON = false;
 				self.but_div = d3.select(".pathway");
 				self.modelROC = [];
@@ -96,14 +97,14 @@ return s})
 				drawModelROC: function(){
 					var self=this;
 					var x = 20;
-					var width = document.body.clientWidth - 1160;
-					var height = 400;
+					var width =  300;//document.body.clientWidth * 0.1 ;
+					var height = 300;
 					
 					if(!self.svgLegend){
 						self.svgLegend = d3.select(".legend").append("svg")
 										.attr("width", width)
 										.attr("height", height)
-										.attr("transform", "translate(-60,0)");
+										.attr("transform", "translate(0,0)");
 						
 					}
 					if((self.cls1 === "R" && self.cls2 === "F")||(self.cls1==="F"&&self.cls2==="R"))
@@ -171,7 +172,7 @@ return s})
 										.attr("height", 30);*/
 					function doDraw(dataset, svg){
 						
-						var margin = {top: 10, right: 20, bottom: 20, left: 10},
+						var margin = {top: 10, right: 20, bottom: 20, left: 30},
 						    w = width*2/3- margin.left - margin.right - 10,
 						    h = width*2/3 - margin.top - margin.bottom -10;
 
@@ -192,7 +193,7 @@ return s})
 
 						svg.append("g")
 						        .attr("class", "x axis")
-						        .attr("transform", "translate("+ (width/2) + "," + (h+10) + ")")
+						        .attr("transform", "translate("+ margin.left + "," + (h+10) + ")")
 						        .call(xAxis)
 						       .append("text")            
 						        .attr("x", 50)
@@ -202,7 +203,7 @@ return s})
 
 						    svg.append("g")
 						        .attr("class", "y axis")
-						        .attr("transform", "translate("+ (width/2) + ",10)")
+						        .attr("transform", "translate("+ margin.left + ",10)")
 						        .call(yAxis);
 
 						    // Define the line
@@ -218,7 +219,7 @@ return s})
 						        .style("fill", "none")
 						        .style("stroke-width", 3)
 						        .style("stroke", "black")
-						        .attr("transform", "translate("+ (width/2) + ",10)");
+						        .attr("transform", "translate("+ margin.left + ",10)");
 
 
 					}
@@ -352,6 +353,7 @@ return s})
 							  group.name = prompt("Enter a group name:");
 							  group.prediction = pred;
 							  group.nodes = features;
+							  group.nodeSelection = self.selectedNodes;
 							  //group.trees = self.d3ifyModel(trees);
 							  group.classes = self.classes;
 							  group.data = [];
@@ -360,7 +362,7 @@ return s})
 								  for(var f =0; f < features.length; f++){
 								  	temp[features[f]] = training[i][features[f]];
 								  	temp['outcome'] = y_values[i];
-								  	temp['sampleID'] = i;
+								  	temp['sampleID'] = i+1;  // sample IDs start at 1 to leave zero for class prototypes
 								  }
 								  group.data.push(temp);
 								}
@@ -374,6 +376,7 @@ return s})
 							  group.roc = self.ROCcurve(pred, test, group.classes, response);
 							  
 							  self.groups.push(group);
+							  //self.groupCount++;
 
 							  div.transition()		
 					                .duration(1)		
@@ -523,7 +526,7 @@ return s})
 				    var but = self.but_div.append("button")
 				                    .attr("class", "accordion")
 				                    .attr("id", "btn")
-				                    .attr("value", 1)
+				                    .attr("value", fgroup.id)
 				                    .style("width", "100%")
 				                    .style("height", "60px")
 				                    .text(function(d){ 
@@ -554,10 +557,17 @@ return s})
 				                            	pan.style.display = "none"; 
 				                            }
 				                    	})
-				                    .on("click", function(o){
+				                    .on("click", function(o){				                    	
 				                        var b = parseInt(this.value);
-				                        //thumbnails.destroy(); 
-				                        //thumbnails= drawThumbs({'pwayID': b});
+				                        self.thumbnails.destroy(); 
+				                        var group;
+				                        for(var gi = 0; gi < self.groups.length; gi++){
+				                        	if(self.groups[gi].id ===b)
+				                        		{group = self.groups[gi]; break;}
+				                        }
+				                        //var group = self.groups[b-1];
+				                        self.thumbnails= new $P.ThumbView(group);
+				                        self.highlightNodes(group.nodeSelection);
 				                    });
 
 				    // draw the confusion donut and ROC curve of this group
@@ -961,6 +971,28 @@ return s})
 					    }
 					});
 				},
+				highlightNodes: function(nodes){
+					var self = this;
+					var cr = self.svg.selectAll("circle");
+					console.log(nodes);
+					console.log(cr);
+					console.log(cr[0]);
+					cr[0].forEach(function(c){
+						//console.log(c.__data__.name);
+						d3.select(c).style("fill", "black").style("stroke", "black");
+						for(var n =0; n < nodes.length; n++){
+							if(c.__data__.id === nodes[n].id)
+								d3.select(c).style("fill", "yellow").style("stroke", "cyan");
+						}
+
+						
+						
+					});
+					nodes.forEach(function(node){
+
+					});
+				},
+				
 				drawRadialCluster: function(width, height, root){
 					var self = this;
 					var cluster = d3.layout.cluster()

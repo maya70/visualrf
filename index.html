@@ -47,7 +47,6 @@ nav ul a {
 div.pathway {
   float: left;
   max-width: 200px;
-  min-width: 200px;
   height: 300px;
   background-color: lightgrey;
   margin: 0;
@@ -75,15 +74,13 @@ div.left-pane{
 }
 
 article {
-    margin-left: 80px;
+    margin-left: 10px;
     border-left: 1px solid gray;
     padding: 1em;
     overflow: scroll;
-    width: 23%;
+    max-width: 22%;
     height: 300px;
-    max-width: 60%;
-    position: absolute;
-    left: 690px;
+    float:left;
     display: inline-block;
 }
 svg {
@@ -148,13 +145,25 @@ div.left-controls {
     display: inline-block;
 }
 div.legend{
-   float: right;
-  min-width: 100px;
+  float: right;
+  width: 15%;
   height: 340px;
   background: lightgrey; /* For browsers that do not support gradients */
   margin: 0;
   padding: 1em;
   overflow: scroll;
+}
+#control-panel{
+  position: fixed;
+  right: 20px;
+  bottom: 10px;
+  width: 15%;
+  height: 140px;
+  display: grid;
+  grid-template-columns: 100px 100px 100px;
+  grid-gap: 10px;
+  background: lightgrey; /* For browsers that do not support gradients */
+  
 }
 .required-entry {
   display: inline-block;
@@ -170,8 +179,9 @@ div.legend{
   min-height: 200px;
   max-height: 150px;
   position: absolute;
-  margin-left: 520px;
+  margin-left: 220px;
   margin-top: 330px;
+  overflow: scroll;
 }
 
 div.tooltip2 { 
@@ -199,7 +209,10 @@ div.tooltip3 {
     border-radius: 8px;     
     pointer-events: none;     
 }
-
+#remove-butt, #rerun-butt{
+  height: 20%;
+  margin: 20px;
+}
 rect.selection {
     stroke          : black;
     stroke-dasharray: 4px;
@@ -219,6 +232,10 @@ g.node.selected{
    <div class="thumbview"> </div>
 </header>
 <div class="legend"></div>
+<div id= "control-panel">
+   <input onClick="" type="button" id="remove-butt" value="Clean" style="background-color: grey" > </input>
+   <input onClick="" type="button" id="rerun-butt" value="Rerun" style="background-color: grey" > </input>
+</div>
 <div class="controls">
    <div class="left-controls">
    <p class="required-entry"> Class 1: </p>
@@ -247,6 +264,7 @@ g.node.selected{
   <article></article>
   <div id = "para">
   </div>
+ 
 </div>
 <footer>
 Copyright &copy; Mai Elshehaly

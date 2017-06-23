@@ -52,6 +52,19 @@ perf.df <- data.frame(x=double(), y=double(), pid=integer())
 
 #Call RF: (1) 
 test.rf <- randomForest(df.rf, country, ntree= 25000, keep.forest = TRUE, importance = TRUE, proximity = TRUE)
+rf.p <- classCenter(df.rf, country, test.rf$proximity)
+
+# write prototypes to file
+rf.pdf <- data.frame(rf.p)
+colnames(rf.pdf) <- colnames(df.rf)
+rf.pdf$country <- rownames(rf.pdf)
+js <- toJSON(unname(split(rf.pdf, 1:nrow(rf.pdf))))
+fname = paste('rdata/vatanen_prf.json',sep='')
+write(js, fname)
+
+
+
+
 rf_predict = predict(test.rf, newdata = df.rf , predict.all = TRUE, type="prob" )
 #Take a look at confusion matrix
 print(test.rf$confusion)

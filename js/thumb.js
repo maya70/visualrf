@@ -297,7 +297,7 @@
 			        		.enter().append("g");
 
 			        g.append("rect")
-			            .attr("class", "node")
+			            .attr("class", "tnode")
 			            .attr("x", function(d) { 
 			            	return d.x; })
 			            .attr("y", function(d) {
@@ -432,7 +432,7 @@
 			        		.enter().append("g");
 
 			        g.append("rect")
-			            .attr("class", "node")
+			            .attr("class", "tnode")
 			            .attr("x", function(d) { 
 			            	return d.x; })
 			            .attr("y", function(d) {

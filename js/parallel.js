@@ -25,7 +25,25 @@
         					}, function(output){
           					console.log(output);
         					});*/
-				self.drawAxes();
+        		d3.json('./data/vatanen_prf.json', function(proto){
+        			self.proto = [];
+        			for(var p=0; p < proto.length; p++){
+        				var temp = {};
+        				for(var key in proto[p]){
+        					//console.log(self.data[0]);
+        					for(var kd in self.data[0]){
+        						//var key1 = key.split(".").join("|");
+        						if(key === kd)
+        							temp[key] = proto[p][key];
+        					}
+        				}
+        				temp['sampleID'] = 0;
+        				temp['outcome'] = proto[p]['country'];
+        				self.proto.push(temp);
+        			}
+        			self.drawAxes();
+        		});
+				
 
 			},
 			{
@@ -35,11 +53,14 @@
 				self.foreground.style("display", function(d){
 					return self.selected.indexOf(d.sampleID)>=0? null : 'none';
 					});
+				self.prototypes.style("display", function(d){
+					return self.selected.indexOf(d.sampleID)>=0? null : 'none';
+					});
 			},
 			destroy: function(){
 				var self=this;
 				if(self.svg){ 
-					d3.select("#chart").selectAll("svg").remove(); 
+					d3.select("#para").selectAll("svg").remove(); 
 					self.svg.remove(); 
 				}
 			},
@@ -59,7 +80,9 @@
 				var line = d3.svg.line(),
 				    axis = d3.svg.axis().orient("left"),
 				    background,
-				    foreground;
+				    foreground, 
+				    prototype;
+
 
 				self.svg = d3.select("#para").append("svg")
 				    .attr("width", width + margin.left + margin.right)
@@ -70,7 +93,7 @@
 				// Extract the list of dimensions and create a scale for each.
 					var dims = Object.keys(data[0]);
 					xscale.domain(dimensions = dims.filter(function(k){
-						return (_.isNumber(data[0][k])) && (k !== "outcome")   && (yscale[k] = // (k === "outcome") ?  d3.scale.ordinal().domain([self.mins[k], self.maxs[k]]).rangePoints([height, 0])  : 
+						return (_.isNumber(data[0][k])) && (k !== "outcome") && (k !== "sampleID")  && (yscale[k] = // (k === "outcome") ?  d3.scale.ordinal().domain([self.mins[k], self.maxs[k]]).rangePoints([height, 0])  : 
 					              d3.scale.linear().domain([self.mins[k], self.maxs[k]]).range([height, 0])); 	     
 					}));
 
@@ -100,7 +123,19 @@
 				      .attr("d", path)
 				      .style("stroke", function(d){
 				      	 return colorMap[d.outcome];})
-				      .style("opacity", 0.5);
+				      .style("opacity", 0.3);
+
+				   // Add foreground lines for prototypes.
+				  prototype = self.svg.append("g")
+				      .attr("class", "foreground")
+				    .selectAll("path")
+				      .data(self.proto)
+				    .enter().append("path")
+				      .attr("d", path)
+				      .style("stroke", function(d){
+				      	 return  colorMap[d.outcome];})
+				      .style("stroke-width", 3)
+				      .style("opacity", 1);
 
 				  // Add a group element for each dimension.
 				  var g = self.svg.selectAll(".dimension")
@@ -117,6 +152,7 @@
 				        .on("drag", function(d) {
 				          dragging[d] = Math.min(width, Math.max(0, d3.event.x));
 				          foreground.attr("d", path);
+				          prototype.attr("d", path);
 				          dimensions.sort(function(a, b) { return position(a) - position(b); });
 				          xscale.domain(dimensions);
 				          g.attr("transform", function(d) { return "translate(" + position(d) + ")"; })
@@ -125,6 +161,7 @@
 				          delete dragging[d];
 				          transition(d3.select(this)).attr("transform", "translate(" + xscale(d) + ")");
 				          transition(foreground).attr("d", path);
+				          transition(prototype).attr("d", path);
 				          background
 				              .attr("d", path)
 				            .transition()
@@ -180,6 +217,7 @@
 					  return g.transition().duration(500);
 					}
 					self.foreground = foreground;
+					self.prototypes = prototype;
 					
 				}
 

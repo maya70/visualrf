@@ -113,7 +113,7 @@
 					self.levels = [ {name:'Genus', value: '#f7f7f7',  r: 6.5*(width/14)},
 									{name:'Family', value:'#d9d9d9',  r: 5*(width/14)},
 									{name:'Order', value: '#bdbdbd',  r: 4*(width/14)},
-									{name:'Class', value:'#969696',  r: 3*(width/14) },
+									{name:'Class', value: '#969696',  r: 3*(width/14) },
 									{name:'Phylum', value: '#636363', r: 2*(width/14)}];
 					
 					var div = d3.select("body").append("div")
@@ -551,6 +551,7 @@
 
 						//self.nodes.call(self.drag);
 					self.nodeCircles = self.nodes.append("circle")
+						.attr("class", "ncircle")
 						.attr("r", 2.5)
 						.on("click", function(d){
 							if(self.selectionON){
@@ -565,6 +566,13 @@
 						return [radius*Math.cos(angle), radius*Math.sin(angle)];
 						}
 				}, 
+				highlight: function(nodes){
+					var self = this;
+					self.svg.selectAll(".node").attr("fill", "red");
+					nodes.forEach(function(node){
+
+					});
+				},
 				addSelectedNode: function(node, d3node){
 					var self=this;
 					// chech to see if node was already selected
