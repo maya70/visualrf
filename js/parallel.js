@@ -17,6 +17,9 @@
 								"#80cdc1"];
 				console.log(self.mins);
 				console.log(self.maxs);
+				d3.select("#clean-butt").on("click", function(){
+					self.clean();
+				});
 				//connect to OpenCPU
 				//ocpu.seturl("http://192.168.1.11/ocpu/library/randomForest/R");
 				
@@ -64,6 +67,31 @@
 					self.svg.remove(); 
 				}
 			},
+			setMinMax: function(){
+			   var self = this;
+			   var p = self.data[0];
+	           self.mins = {};
+	           self.maxs = {};
+	           var axes = Object.keys(p);
+	           axes.forEach(function(axis){
+							self.mins[axis] = p[axis];
+							self.maxs[axis] = p[axis];
+						});
+	           self.data.forEach(function(record){
+		           	axes.forEach(function(axis){
+									if(self.mins[axis] > record[axis]) self.mins[axis] = record[axis];
+									else if(self.maxs[axis] < record[axis]) self.maxs[axis] = record[axis];
+								});
+				});
+			},
+			clean: function(){
+				var self = this;
+				console.log("Clean button pressed");
+				self.data = self.selected;
+				self.setMinMax();
+				self.destroy();
+			    self.drawAxes();
+			},
 			drawAxes: function(){
 
 				var self = this;
@@ -83,7 +111,7 @@
 				    foreground, 
 				    prototype;
 
-
+				selection_stats(self.selected.length, self.data.length);
 				self.svg = d3.select("#para").append("svg")
 				    .attr("width", width + margin.left + margin.right)
 				    .attr("height", height + margin.top + margin.bottom)
@@ -135,7 +163,7 @@
 				      .style("stroke", function(d){
 				      	 return  colorMap[d.outcome];})
 				      .style("stroke-width", 3)
-				      .style("opacity", 1);
+				      .style("opacity", 0.5);
 
 				  // Add a group element for each dimension.
 				  var g = self.svg.selectAll(".dimension")
@@ -202,19 +230,32 @@
 						  return v == null ? xscale(d) : v;
 					}
 					function brushstart() {
+						  self.selected = [];
 						  d3.event.sourceEvent.stopPropagation();
 					}
 					function brush() {
 					  var actives = dimensions.filter(function(p) { return !yscale[p].brush.empty(); }),
 					      extents = actives.map(function(p) { return yscale[p].brush.extent(); });
+					      var selection = [];
 					  foreground.style("display", function(d) {
 					    return actives.every(function(p, i) {
-					      return extents[i][0] <= d[p] && d[p] <= extents[i][1];
+					    	var inc = extents[i][0] <= d[p] && d[p] <= extents[i][1];
+					    	if(inc) {
+					    		selection.push(d);
+					    		selection_stats(selection.length, self.data.length);
+					    	}
+					      return inc;
 					    }) ? null : "none";
-					  });
+					  });					  
 					}
 					function transition(g) {
 					  return g.transition().duration(500);
+					}
+					// Feedback on selection
+					function selection_stats(n, total) {
+					  d3.select("#data-count").text(total);
+					  d3.select("#selected-count").text(n);
+					  d3.select("#selected-bar").style("width", (100*n/total) + "%");
 					}
 					self.foreground = foreground;
 					self.prototypes = prototype;

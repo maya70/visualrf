@@ -2,9 +2,158 @@
 <html>
 <head>
 <style>
-div.container {
-    width: 100%;
-    border: 1px solid gray;
+div.container{
+        width: 100%;
+        border: 1px solid gray;
+
+        display: grid;
+        grid-template-columns: 30% 20% 30% 20%;
+        grid-template-rows: fit-content(40%);
+        grid-template-areas: "thumbnails thumbnails thumbnails thumbnails"
+                              "controls controls controls legend"
+                              "sidebar pathway tree legend"
+                              "sidebar  para  para panel";
+        grid-gap:10px;
+        background-color: #fff;
+        color: "black";
+        height: 800px;
+      }
+div.thumbview {
+    grid-area: thumbnails;
+    float: left;
+    overflow: scroll;
+    margin: 0;
+    background: lightgrey; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(white, lightgrey); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(white, lightgrey); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(white, lightgrey); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(white, lightgrey); /* Standard syntax */
+}
+
+div.left-controls {
+    grid-area: controls;
+    background-color: white;
+    max-height: 30px;
+    padding-top: 5px;
+    padding-left: 10px;
+    margin-top: 0px;
+    display: grid;
+    grid-template-columns: 5% 10% 5% 10% 10%;
+    grid-gap: 5px;
+}
+.required-entry {
+  margin-left: 0;
+  max-height: 30px;
+  margin-top: 20px;
+}
+.required-entry-label-1 {
+  padding-left: 10px;
+  max-width: 50px;
+  background-color:  rgba(0, 0, 255, .5);
+  font-weight: bold;
+}
+.required-entry-label-2 {
+  padding-left: 10px;
+  max-width: 50px;
+  background-color:  rgba(255, 0, 0, .5);
+  font-weight: bold;
+}
+
+div.attrhierarchy {
+  grid-area: sidebar;
+  float: left;
+  max-width: 500px;
+  background: lightgrey; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(white, lightgrey); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(white, lightgrey); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(white, lightgrey); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(white, lightgrey); /* Standard syntax */
+  margin: 0;
+  padding: 1em;
+  overflow: scroll;
+  margin-left: 10px;
+}
+div.pathway {
+  grid-area: pathway;
+  float: left;
+  max-width: 200px;
+  height: 300px;
+  background-color: lightgrey;
+  margin: 0;
+  padding: 1em;
+  overflow: scroll;
+}
+article {
+    grid-area:tree;
+    margin-left: 10px;
+    border-left: 1px solid gray;
+    padding: 1em;
+    overflow: scroll;
+    height: 300px;
+    float:left;
+    display: inline-block;
+}
+div.legend{
+  grid-area: legend;
+  float: right;
+  background: lightgrey; /* For browsers that do not support gradients */
+  margin: 0;
+  padding: 1em;
+  overflow: scroll;
+}
+#control-panel{
+  grid-area: panel;
+  display: grid;
+  grid-template-areas: " count progress progress"
+                        " clean rerun ticks";
+  grid-gap: 5px;
+  background: lightgrey; /* For browsers that do not support gradients */
+}
+.fillbar {
+  grid-area:progress;
+  height: 12px;
+  line-height: 12px;
+  border:1px solid rgba(120,120,120,0.5);
+  width: 120px;
+  display: inline-block;
+}
+#ticks-butt {
+  grid-area: ticks;
+}
+#clean-butt, #rerun-butt, #ticks-butt{
+  height: 20%;
+  margin-left: 10px;
+}
+#rendered-count{
+  grid-area: count;
+}
+#clean-butt{
+  grid-area: clean;
+}
+#rerun-butt{
+  grid-area: rerun;
+}
+#rendered-bar,
+#selected-bar {
+  width:0%;
+  font-weight: bold;
+}
+#rendered-bar {
+  background: #888;
+  border-right: 1px solid #666;
+}
+#selected-bar {
+  background: rgba(160,160,160,0.5);
+  border-right: 1px solid #999;
+}
+div.rec-controls{
+  grid-area: progress;
+}
+#para{
+  grid-area: para;
+  min-height: 200px;
+  max-height: 150px;
+  overflow: scroll;
 }
 
 header, footer {
@@ -20,20 +169,6 @@ header{
   background-color: lightgrey;
 }
 
-div.thumbview {
-    float: left;
-    height: 100px;
-    min-width: 100%;
-    min-height: 100%;
-    overflow: scroll;
-    margin: 0;
-     background: lightgrey; /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(white, lightgrey); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(white, lightgrey); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(white, lightgrey); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(white, lightgrey); /* Standard syntax */
- 
-}
 
 nav ul {
     list-style-type: none;
@@ -44,45 +179,6 @@ nav ul a {
     text-decoration: none;
 }
 
-div.pathway {
-  float: left;
-  max-width: 200px;
-  height: 300px;
-  background-color: lightgrey;
-  margin: 0;
-  padding: 1em;
-  overflow: scroll;
-}
-div.attrhierarchy {
-  float: left;
-  max-width: 600px;
-  height: 500px;
-  width: 100%;
-  background: lightgrey; /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(white, lightgrey); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(white, lightgrey); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(white, lightgrey); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(white, lightgrey); /* Standard syntax */
-  margin: 0;
-  padding: 1em;
-  overflow: scroll;
-  margin-left: 10px;
-}
-
-div.left-pane{
-  width: 35%;
-}
-
-article {
-    margin-left: 10px;
-    border-left: 1px solid gray;
-    padding: 1em;
-    overflow: scroll;
-    max-width: 22%;
-    height: 300px;
-    float:left;
-    display: inline-block;
-}
 svg {
   font: 10px sans-serif;
 }
@@ -128,61 +224,6 @@ div.tooltip {
     border-radius: 8px;     
     pointer-events: none;     
 }
-div.controls{
-  background-color: white;
-  width: 100%;
-  max-height: 50px;
-  padding-top: 0px;
-  margin-top: 0px;
-}
-div.left-controls {
-    background-color: white;
-    max-height: 40px;
-    width: 35%; 
-    padding-left: 20px;
-    padding-top: 0px;
-    margin-top: 0px;
-    display: inline-block;
-}
-div.legend{
-  float: right;
-  width: 15%;
-  height: 340px;
-  background: lightgrey; /* For browsers that do not support gradients */
-  margin: 0;
-  padding: 1em;
-  overflow: scroll;
-}
-#control-panel{
-  position: fixed;
-  right: 20px;
-  bottom: 10px;
-  width: 15%;
-  height: 140px;
-  display: grid;
-  grid-template-columns: 100px 100px 100px;
-  grid-gap: 10px;
-  background: lightgrey; /* For browsers that do not support gradients */
-  
-}
-.required-entry {
-  display: inline-block;
-  margin-left: 20px;
-}
-.required-entry-label {
-  display: inline-block;
-  margin-left: 20px;
-}
-#para{
-  max-width:600px;
-  min-width: 20%;
-  min-height: 200px;
-  max-height: 150px;
-  position: absolute;
-  margin-left: 220px;
-  margin-top: 330px;
-  overflow: scroll;
-}
 
 div.tooltip2 { 
     position: absolute;     
@@ -209,10 +250,6 @@ div.tooltip3 {
     border-radius: 8px;     
     pointer-events: none;     
 }
-#remove-butt, #rerun-butt{
-  height: 20%;
-  margin: 20px;
-}
 rect.selection {
     stroke          : black;
     stroke-dasharray: 4px;
@@ -228,47 +265,47 @@ g.node.selected{
 
 <div class="container">
 
-<header>
-   <div class="thumbview"> </div>
-</header>
-<div class="legend"></div>
-<div id= "control-panel">
-   <input onClick="" type="button" id="remove-butt" value="Clean" style="background-color: grey" > </input>
-   <input onClick="" type="button" id="rerun-butt" value="Rerun" style="background-color: grey" > </input>
-</div>
-<div class="controls">
-   <div class="left-controls">
-   <p class="required-entry"> Class 1: </p>
-   <select name="category" class="required-entry" id="cls-select-1">
-    </select>  
-    <p class="required-entry"> Class 2: </p>
-    <select name="category" class="required-entry" id="cls-select-2">
-    </select>
-   </div>
+    <div class="thumbview"> </div>
+    
+    <div class="legend"></div>
+    
+    <div class="left-controls">
+       <p class="required-entry-label-1"> Class 1: </p>
+       <select name="category" class="required-entry" id="cls-select-1">
+        </select>  
+        <p class="required-entry-label-2"> Class 2: </p>
+        <select name="category" class="required-entry" id="cls-select-2">
+        </select>
+    </div>
 
-</div>
-<div class="left-pane">
-  
-   
-  <div class="attrhierarchy">
-  <input onClick="change()" type="button" id="selection-butt" value="Start" style="background-color: grey" disabled> </input>
-  </div>
+    
+    <div id= "control-panel">
+       <div class="rec-controls">
+      <strong id="selected-count"></strong>/<strong id="data-count"></strong>
+      <div class="fillbar"><div id="selected-bar"><div id="rendered-bar">&nbsp;</div></div></div>
+      Records <!--strong id="opacity"></strong-->
+     
+    </div>
+       <input onClick="" type="button" id="clean-butt" value="Clean" style="background-color: lightgrey" > </input>
+       <input onClick="" type="button" id="rerun-butt" value="Rerun" style="background-color: lightgrey" > </input>
+       <input onClick="changeTick()" type="button" id="ticks-butt" value="Hide Ticks" style="background-color: lightgrey"></input>
+    </div>
+      
+       
+    <div class="attrhierarchy">
+      <input onClick="change()" type="button" id="selection-butt" value="Start" style="background-color: grey" disabled> </input>
+    </div>
  
-</div>
 
-<div>
-<div class= "pathway" id="pdv"></div>
 
-</div id="model">
+    <div class= "pathway" id="pdv"></div>
 
-  <article></article>
-  <div id = "para">
-  </div>
+    <article></article>
+    <div id = "para"></div>
  
-</div>
-<footer>
+<!--footer>
 Copyright &copy; Mai Elshehaly
-</footer>
+</footer-->
 
 </div>
 <script>
@@ -282,6 +319,18 @@ Copyright &copy; Mai Elshehaly
               else {
                 elem.value = "New Selection";
                 elem.style.backgroundColor ="#66ffc2";
+              }
+  
+   }
+
+    function changeTick() {
+    
+    var elem = document.getElementById("ticks-butt");
+              if(elem.value==="Show Ticks"){ 
+                elem.value = "Hide Ticks";
+              }
+              else {
+                elem.value = "Show Ticks";
               }
   
    }
