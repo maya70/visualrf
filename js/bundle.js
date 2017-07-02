@@ -46,7 +46,8 @@ return s})
 								{name:"Finland", value: "F"},
 								{name:"Estonia", value: "E"}];				
 				
-				
+				var undef; 
+				self.exportedData = undef; 
 				$.each(self.classNames, function(){
 				   	 $("<option />")
 				        .attr("value", this.value )
@@ -71,6 +72,7 @@ return s})
 							self.svgLegend.selectAll("*").remove();
 							//d3.select(".legend").remove();
 						}
+					self.exportedData = undef; 
 					self.drawHierarchy((self.width-100), (self.height-100), self.root);	
 					self.drawModelROC();
 				});
@@ -85,6 +87,7 @@ return s})
 							self.svgLegend.selectAll("*").remove();
 							//d3.select(".legend").remove();
 						}
+					self.exportedData = undef; 
 					self.drawHierarchy((self.width-100), (self.height-100), self.root);	
 					self.drawModelROC();
 				});
@@ -270,6 +273,10 @@ return s})
 
 					});
 				},
+				setExported: function(data){
+					var self = this;
+					self.exportedData = data; 
+				},
 				callRF: function(div){
 					var self = this;
 					var fs = require('fs'),
@@ -299,8 +306,7 @@ return s})
 						dataFile = "./data/vatanen_dfef.json";
 
 					d3.json(dataFile, function(data){
-							
-						    var training = [], test = [];
+							var training = [], test = [];
 						    var features = [];
 							 // restore full feature names
 							 for(var i=0; i < self.selectedNodes.length; i++){
@@ -312,6 +318,9 @@ return s})
 							 }
 
 							 //d3.json("./data/");
+
+							if(self.exportedData)
+							 	data = self.exportedData; 
 							    
 						    for(var i = 0; i < data.length; i++)
 						    {
@@ -382,7 +391,8 @@ return s})
 							  
 							  self.groups.push(group);
 							  //self.groupCount++;
-
+							  group.pdata = self.pdata; 
+							  group.rfengine = self; 
 							  div.transition()		
 					                .duration(1)		
 					                .style("opacity", 0);

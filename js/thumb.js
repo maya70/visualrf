@@ -13,6 +13,8 @@
 				self.group = config;
 				self.trees = self.group.trees;
 				self.classes = config.classes;
+				self.pdata = config.pdata; 
+				self.rfengine = config.rfengine; 
 				var data = config.data;
 				self.dispatch = d3.dispatch("filterlines");
 				self.geneRelations = {};
@@ -41,7 +43,7 @@
 	           });
 	           if(!self.dataView)
 				self.dataView = new $P.ParallelView({'data':data, 'mins': mins, 'maxs': maxs, 'dispatch': self.dispatch,
-													 'colors': self.colorMap, 'classes': self.classes});
+													 'colors': self.colorMap, 'classes': self.classes, 'pdata': self.pdata, 'rf': self.rfengine});
 			   self.drawIcicles(50,50);
 				
 			},
@@ -224,7 +226,7 @@
 					d3.select(".thumbview").selectAll("svg").remove(); 
 					if(self.svg) self.svg.remove(); 
 					self.displayTree.destroy(); 
-					//self.dataView.destroy(); 
+					self.dataView.destroy(); 
 				},
 				drawIcicles: function(w, h){
 					var self = this;
@@ -599,7 +601,7 @@
 						});
 						if(!self.dataView)
 							self.dataView = new $P.ParallelView({'data':treeData, 'mins': mins, 'maxs': maxs, 'dispatch': self.dispatch,
-																 'colors': self.colorMap, 'classes': self.classes});
+																 'colors': self.colorMap, 'classes': self.classes, 'pdata': self.pdata, 'rf': self.rfengine});
 					}, {
 						type: 'GET',
 						data: {id: pID}

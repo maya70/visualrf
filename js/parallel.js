@@ -6,9 +6,11 @@
 				//console.log(config);
 				var self = this; 
 				self.data = config.data;
+				self.permanentData = config.data; 
 				self.mins = config.mins;
 				self.maxs = config.maxs; 
 				self.selected = self.data; 
+				self.rf = config.rf; 
 				//self.colors = config.colors;
 				self.classes = config.classes; 
 				self.colors = ["red",
@@ -18,7 +20,16 @@
 				console.log(self.mins);
 				console.log(self.maxs);
 				d3.select("#clean-butt").on("click", function(){
-					self.clean();
+					self.keep();
+				});
+				d3.select("#remove-butt").on("click", function(){
+					self.remove();
+				});
+				d3.select("#export-butt").on("click", function(){
+					self.export();
+				});
+				d3.select("#revert-butt").on("click", function(){
+					self.revert(); 
 				});
 				self.dispatch = config.dispatch; 
 				self.filtered = false; 
@@ -74,12 +85,12 @@
 			},
 			destroy: function(){
 				var self=this;
-				d3.selectAll("rect").remove();
-				/*if(self.svg){ 
-					d3.select("#para").selectAll("svg").selectAll(".dimension").remove();
-					d3.select("#para").selectAll("svg").remove(); 
-					self.svg.remove(); 
-				}*/
+				//d3.selectAll("rect").remove();
+				d3.select("#para").selectAll("svg").selectAll("*").remove();
+				//if(self.svg){ 
+					//d3.select("#para").selectAll("svg").selectAll(".dimension").remove();
+				//	self.svg.remove(); 
+				//}
 			},
 			setMinMax: function(){
 			   var self = this;
@@ -98,13 +109,33 @@
 								});
 				});
 			},
-			clean: function(){
+			keep: function(){
 				var self = this;
 				console.log("Clean button pressed");
 				self.data = self.selected;
 				self.setMinMax();
 				self.destroy();
 			    self.drawAxes();
+			},
+			remove: function(){
+				var self = this;
+				self.data = self.data.filter( function( el ) {
+				  return self.selected.indexOf( el ) < 0;
+				  });
+				self.setMinMax();
+				self.destroy();
+			    self.drawAxes();	
+			},
+			revert: function(){
+				var self = this;
+				self.data = self.permanentData; 
+				self.setMinMax();
+				self.destroy();
+			    self.drawAxes();	
+			},
+			export: function(){
+				var self = this;
+				self.rf.setExported(self.data);
 			},
 			drawAxes: function(filtered){
 				var self = this;
@@ -243,11 +274,7 @@
 						            var extent = yscale[d].brush.extent();
 						          }
 
-						          // remove axis if dragged all the way left
-						          if (dragging[d] < 12 || dragging[d] > w-12) {
-						            remove_axis(d,g);
-						          }
-
+						         
 				         //transition(d3.select(this)).attr("transform", "translate(" + xscale(d) + ")");
 				          //transition(foreground).attr("d", path);
 				          //transition(prototype).attr("d", path);
@@ -371,8 +398,15 @@
 					  d3.select("#render-speed").text(render_speed);
 					}
 
-					function path(d, ctx, color) {
-					  if (color) ctx.strokeStyle = color;
+					function path(d, ctx, color, proto) {
+
+					  if (color) {
+					  	var op = proto? 0.1 : 1;
+					  	color = (color === "red"? "rgba(255, 0, 0,"+ op+ ")": "rgba(0, 0, 255,"+ op+ ")" );
+					  	ctx.strokeStyle = color;
+					  }
+					  ctx.lineWidth = proto? 14: 1.7;
+					  
 					  ctx.beginPath();
 					  var x0 = xscale(0)-3,
 					      y0 = yscale[dimensions[0]](d[dimensions[0]]);   // left edge
@@ -521,6 +555,10 @@
 					    var col = colorMap[d.outcome];
 					     //(d['outcome'] === self.classes[0])? color2(d.Therapy,opacity) : color(d.Therapy,opacity);
 					    path(d, foreground,col);
+					  });
+					  self.proto.forEach(function(p){
+					  	var col =colorMap[p.outcome];
+					  	path(p, foreground, col, true);
 					  });
 					};
 
