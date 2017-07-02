@@ -11,6 +11,8 @@
 				self.classNames = [];
 				self.classes = config.classes;
 				//self.selectedPwayID = config.pway;
+				self.dispatch = config.dispatch; 
+				    
 				self.dataView = config.dataView; 
 				for(var key in self.classes){
 					self.classNames.push(key);
@@ -125,7 +127,7 @@
 									.attr("class", "tooltip2")
 									.style("opacity", 0);
 
-
+				    	
 					var rect = svgNodes.append("rect")
 						        	.attr("class", "dnode")
 						            .attr("x", function(d) { 
@@ -151,8 +153,14 @@
 								                .duration(200)		
 								                .style("opacity", .9);		
 							            	div	.html(function(){
-							            		var str = d.name.split("|");
-							            		return "<strong> Feature: </strong> <br/>" +str[str.length-1];})	
+							            		var str;
+							            		if(typeof d.name === "string"){
+							            			str = d.name.split("|");
+							            			str = str[str.length-1];
+							            		}
+							            		else
+							            			str = "leaf"; 
+							            		return "<strong> Feature: </strong> <br/>" +str;})	
 								                .style("left", (d3.event.pageX) -50 + "px")		
 								                .style("top", (d3.event.pageY + 28) + "px");	
 										})
@@ -219,7 +227,9 @@
 						        });
 				    var but = d3.select("button").on("click", showConnections);
 				    function selectLines(d){
-				    	self.dataView.updateLines(d.samples);
+				    	//self.dataView.updateLines(d.samples);
+				    	console.log("Firing filter event!!");
+				    	self.dispatch.filterlines(d.samples);
 				    }
 					function showConnections(d){
 						console.log("CLICK");

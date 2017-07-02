@@ -14,7 +14,7 @@
 				self.trees = self.group.trees;
 				self.classes = config.classes;
 				var data = config.data;
-				
+				self.dispatch = d3.dispatch("filterlines");
 				self.geneRelations = {};
 				self.colorBrewer = ["#a6cee3","#1f78b4","#b2df8a","#33a02c","#fb9a99","#e31a1c","#fdbf6f","#ff7f00","#cab2d6","#6a3d9a","#ffff99","#b15928",
 									"#8dd3c7","#ffffb3","#bebada","#fb8072","#80b1d3","#fdb462","#b3de69","#fccde5","#d9d9d9","#bc80bd","#ccebc5","#ffed6f",
@@ -40,8 +40,8 @@
 							
 	           });
 	           if(!self.dataView)
-				self.dataView = new $P.ParallelView({'data':data, 'mins': mins, 'maxs': maxs,
-													 'colors': self.colorBrewer, 'classes': self.classes});
+				self.dataView = new $P.ParallelView({'data':data, 'mins': mins, 'maxs': maxs, 'dispatch': self.dispatch,
+													 'colors': self.colorMap, 'classes': self.classes});
 			   self.drawIcicles(50,50);
 				
 			},
@@ -190,7 +190,8 @@
 				    self.displayTree = new $P.DetailView({'tree': self.selectedTree, 
 				    									   'colorMap': self.colorMap, 
 				    									   'classes':self.classes,
-														   'dataView': self.dataView });
+														   'dataView': self.dataView,
+														   'dispatch': self.dispatch });
 				   
 				},
 				updateControls: function(t){
@@ -210,6 +211,10 @@
 					}
 					//self.drawLegend();
 				},
+				getColorMap: function(){
+					var self = this;
+					return self.colorMap; 
+				},
 				drawLegend: function(){
 					
 				},
@@ -219,7 +224,7 @@
 					d3.select(".thumbview").selectAll("svg").remove(); 
 					if(self.svg) self.svg.remove(); 
 					self.displayTree.destroy(); 
-					self.dataView.destroy(); 
+					//self.dataView.destroy(); 
 				},
 				drawIcicles: function(w, h){
 					var self = this;
@@ -315,7 +320,8 @@
 				    									   'colorMap': self.colorMap, 
 				    									   'classes':self.classes,
 														   'pway': self.selectedPwayID,
-														   'dataView': self.dataView });
+														   'dataView': self.dataView,
+														   'dispatch': self.dispatch });
 			        
 					function setHighlight(d){
 					 	if(!d) d = self.trees[1];
@@ -592,8 +598,8 @@
 							self.updateTreeCounts(tree, patient, patientID);
 						});
 						if(!self.dataView)
-							self.dataView = new $P.ParallelView({'data':treeData, 'mins': mins, 'maxs': maxs,
-																 'colors': self.colorBrewer, 'classes': self.classes});
+							self.dataView = new $P.ParallelView({'data':treeData, 'mins': mins, 'maxs': maxs, 'dispatch': self.dispatch,
+																 'colors': self.colorMap, 'classes': self.classes});
 					}, {
 						type: 'GET',
 						data: {id: pID}

@@ -49,13 +49,13 @@ div.left-controls {
 .required-entry-label-1 {
   padding-left: 10px;
   max-width: 50px;
-  background-color:  rgba(0, 0, 255, .5);
+  background-color:  rgba(0, 0, 255, .7);
   font-weight: bold;
 }
 .required-entry-label-2 {
   padding-left: 10px;
   max-width: 50px;
-  background-color:  rgba(255, 0, 0, .5);
+  background-color:  rgba(255, 0, 0, .7);
   font-weight: bold;
 }
 
@@ -63,6 +63,7 @@ div.attrhierarchy {
   grid-area: sidebar;
   float: left;
   max-width: 500px;
+  max-height: 550px;
   background: lightgrey; /* For browsers that do not support gradients */
   background: -webkit-linear-gradient(white, lightgrey); /* For Safari 5.1 to 6.0 */
   background: -o-linear-gradient(white, lightgrey); /* For Opera 11.1 to 12.0 */
@@ -104,8 +105,10 @@ div.legend{
 #control-panel{
   grid-area: panel;
   display: grid;
+  max-height: 150px;
   grid-template-areas: " count progress progress"
-                        " clean rerun ticks";
+                        " clean rerun ticks "
+                        " export revert ticks ";
   grid-gap: 5px;
   background: lightgrey; /* For browsers that do not support gradients */
 }
@@ -114,14 +117,15 @@ div.legend{
   height: 12px;
   line-height: 12px;
   border:1px solid rgba(120,120,120,0.5);
-  width: 120px;
+  width: 100px;
   display: inline-block;
 }
 #ticks-butt {
   grid-area: ticks;
 }
-#clean-butt, #rerun-butt, #ticks-butt{
-  height: 20%;
+#clean-butt, #remove-butt, 
+#ticks-butt, #export-butt, #revert-butt{
+  height: 25px;
   margin-left: 10px;
 }
 #rendered-count{
@@ -130,8 +134,14 @@ div.legend{
 #clean-butt{
   grid-area: clean;
 }
-#rerun-butt{
+#remove-butt{
   grid-area: rerun;
+}
+#export-butt{
+  grid-area: export;
+}
+#revert-butt{
+  grid-area: revert;
 }
 #rendered-bar,
 #selected-bar {
@@ -151,9 +161,10 @@ div.rec-controls{
 }
 #para{
   grid-area: para;
+  position: relative;
   min-height: 200px;
-  max-height: 150px;
-  overflow: scroll;
+  max-height: 200px;
+ overflow: scroll;
 }
 
 header, footer {
@@ -193,6 +204,37 @@ svg {
   fill: none;
   stroke: steelblue;
 }
+
+#background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 0;
+  width: 0;
+}
+#foreround {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 0;
+  width: 0;
+}
+#highlight {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 0;
+  width: 0;
+}
+#svg1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 600px;
+  min-height: 200px;
+  overflow: scroll;
+}
+
 
 .brush .extent {
   fill-opacity: .3;
@@ -251,13 +293,40 @@ div.tooltip3 {
     pointer-events: none;     
 }
 rect.selection {
-    stroke          : black;
+    stroke          : none;
     stroke-dasharray: 4px;
     stroke-opacity  : 0.5;
     fill            : transparent;
 }
 g.node.selected{
   fill: yellow;
+}
+
+#loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 </style>
 </head>
@@ -286,9 +355,12 @@ g.node.selected{
       Records <!--strong id="opacity"></strong-->
      
     </div>
-       <input onClick="" type="button" id="clean-butt" value="Clean" style="background-color: lightgrey" > </input>
-       <input onClick="" type="button" id="rerun-butt" value="Rerun" style="background-color: lightgrey" > </input>
-       <input onClick="changeTick()" type="button" id="ticks-butt" value="Hide Ticks" style="background-color: lightgrey"></input>
+       <input onClick="" type="button" id="clean-butt" value="Keep" style="background-color: lightgrey" > </input>
+       <input onClick="" type="button" id="remove-butt" value="Remove" style="background-color: lightgrey" > </input>
+       <input onclick="" type="button" id="export-butt" value="Export" style="background-color: lightgrey"> </input>
+       <input onclick="" type="button" id="revert-butt" value="Revert" style="background-color: lightgrey"> </input>
+       
+       <!--input onClick="changeTick()" type="button" id="ticks-butt" value="Hide Ticks" style="background-color: lightgrey"></input-->
     </div>
       
        
@@ -301,8 +373,13 @@ g.node.selected{
     <div class= "pathway" id="pdv"></div>
 
     <article></article>
-    <div id = "para"></div>
- 
+    <div id = "para">
+        <canvas id="background"></canvas>
+        <canvas id="foreground"></canvas>
+        <canvas id="highlight"></canvas>
+        <svg id="svg1"></svg>
+    </div>
+        
 <!--footer>
 Copyright &copy; Mai Elshehaly
 </footer-->
@@ -314,11 +391,11 @@ Copyright &copy; Mai Elshehaly
     var elem = document.getElementById("selection-butt");
               if(elem.value==="New Selection"){ 
                 elem.value = "Apply Selection";
-                elem.style.backgroundColor = "#ff4d4d";
+                elem.style.backgroundColor = "grey";
               }
               else {
                 elem.value = "New Selection";
-                elem.style.backgroundColor ="#66ffc2";
+                elem.style.backgroundColor ="lightgrey";
               }
   
    }

@@ -249,9 +249,14 @@ return s})
 								div.transition()		
 					                .duration(0.01)		
 					                .style("opacity", .9);		
-					            div	.html("<strong> Running RandomForest </strong> <br/> ")	
-					                .style("left", document.body.clientWidth/2-180 + "px")		
-					                .style("top", document.body.clientHeight/2-114 + "px");								
+					            div	.html("<strong> Running RandomForest </strong> <br/> <p> This may take up to a few minutes </p> <br/> <p> Please do not navigate to another tab. </p> ")	
+					                .style("left", "0px")		
+					                .style("top",  "0px")
+					                .style("width", document.body.clientWidth + "px")
+					                .style("height", document.body.clientHeight + "px");
+
+					            div.append("div")
+					            	.attr("id", "loader");								
 
 								self.selectionON = false;
 					
@@ -416,6 +421,14 @@ return s})
 					var min = getMinOfArray(pred);
 					var step = (max - min)/10;
 					self.cutoff = {fpr: 1000000, tpr: 0, tp:0, fp:0, tn:0, fn:0};
+					// handle the case where prediction all fall within the same class
+					// to avoid an infinite loop:
+					if(!max){ 
+						max = self.classes[1];
+						min = self.classes[0];
+						step = 0.01;
+					}
+					if(step === 0) step = 0.01; 
 
 					for(var t=max; t >= (min-1); t-=step){
 						var d = {};
@@ -427,6 +440,9 @@ return s})
 					//console.log(curve);
 					function getMaxOfArray(numArray) {
 						  return Math.max.apply(null, numArray);
+						  //var max = numArray.reduce(function(a,b){
+						  //	return Math.max(a, b);
+						  //});
 						}
 					function getMinOfArray(numArray) {
 						  return Math.min.apply(null, numArray);
@@ -567,7 +583,8 @@ return s})
 				                        }
 				                        //var group = self.groups[b-1];
 				                        self.thumbnails= new $P.ThumbView(group);
-				                        self.highlightNodes(group.nodeSelection);
+				                        var colorMap = self.thumbnails.getColorMap();
+				                        self.highlightNodes(group.nodeSelection, colorMap);
 				                    });
 
 				    // draw the confusion donut and ROC curve of this group
@@ -971,7 +988,7 @@ return s})
 					    }
 					});
 				},
-				highlightNodes: function(nodes){
+				highlightNodes: function(nodes, colorMap){
 					var self = this;
 					var cr = self.svg.selectAll("circle");
 					console.log(nodes);
@@ -982,7 +999,23 @@ return s})
 						d3.select(c).style("fill", "black").style("stroke", "black");
 						for(var n =0; n < nodes.length; n++){
 							if(c.__data__.id === nodes[n].id)
-								d3.select(c).style("fill", "yellow").style("stroke", "cyan");
+								d3.select(c)
+									.style("fill", function(d){
+										if(colorMap){
+											var name = self.getFeatureFullName(d);
+											return colorMap[name];
+										}
+										else 
+											return "yellow";
+									})
+									.style("stroke", function(d){
+										if(colorMap){
+											var name = self.getFeatureFullName(d);
+											return colorMap[name];
+										}
+										else
+											return"cyan";
+									});
 						}
 
 						
@@ -1008,7 +1041,7 @@ return s})
 					{
 						elem.disabled = false;
 						elem.value = "New Selection";
-			            elem.style.backgroundColor ="#66ffc2";
+			            elem.style.backgroundColor ="lightgrey";
 			             
 					}
 					else{
@@ -1107,7 +1140,7 @@ return s})
 								return "black";
 							}	
 							else{
-								return "red";
+								return "black";
 							}
 						})
 						.style("opacity", function(d){
@@ -1176,7 +1209,7 @@ return s})
 								return 0;
 						})
 						.style("stroke-width", 5)
-						.style("stroke", "green")
+						.style("stroke", "black")
 						.style("opacity", function(d){
 							var selcls = self.cls1+self.cls2;
 							var show = (selcls === "RE" || selcls === "ER");
@@ -1242,7 +1275,7 @@ return s})
 								return 0;
 						})
 						.style("stroke-width", 5)
-						.style("stroke", "blue")
+						.style("stroke", "black")
 						.style("opacity", function(d){
 							var selcls = self.cls1+self.cls2;
 							var show = (selcls === "EF" || selcls === "FE");
