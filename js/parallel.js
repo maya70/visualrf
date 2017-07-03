@@ -17,8 +17,8 @@
 								"blue",
 								"orange",
 								"#80cdc1"];
-				console.log(self.mins);
-				console.log(self.maxs);
+				//console.log(self.mins);
+				//console.log(self.maxs);
 				d3.select("#clean-butt").on("click", function(){
 					self.keep();
 				});
@@ -111,7 +111,7 @@
 			},
 			keep: function(){
 				var self = this;
-				console.log("Clean button pressed");
+				//console.log("Clean button pressed");
 				self.data = self.selected;
 				self.setMinMax();
 				self.destroy();
@@ -129,6 +129,7 @@
 			revert: function(){
 				var self = this;
 				self.data = self.permanentData; 
+				self.rf.revertToOriginal(); 
 				self.setMinMax();
 				self.destroy();
 			    self.drawAxes();	
@@ -321,7 +322,7 @@
 					      .append("rect")
 					      	.attr("x", function(d){ return this.parentNode.getBBox().x - 5;})
 					      	.attr("y", function(d, i){ 
-					      		console.log(this.parentNode);
+					      		//console.log(this.parentNode);
 					      		return i%2 === 0 ? this.parentNode.getBBox().y - 5: this.parentNode.getBBox().y - 5;})
 					      	.attr("width", function(d){ return this.parentNode.getBBox().width + 10;})
 					      	.attr("height", function(d) {return 20;})

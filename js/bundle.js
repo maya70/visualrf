@@ -276,6 +276,13 @@ return s})
 				setExported: function(data){
 					var self = this;
 					self.exportedData = data; 
+					console.log(self.exportedData);
+				},
+				revertToOriginal: function(){
+					var self = this;
+					var undef;
+					self.exportedData = undef;
+
 				},
 				callRF: function(div){
 					var self = this;
@@ -319,23 +326,33 @@ return s})
 
 							 //d3.json("./data/");
 
-							if(self.exportedData)
-							 	data = self.exportedData; 
 							    
 						    for(var i = 0; i < data.length; i++)
 						    {
 						    	var d = {};
 					    	    d[response] = parseInt(data[i][response]);
+					    	    d['sampleID'] = i;
 							   for(var key in data[i]) {
 		    						if(key !== response)
 			    						d[key] = data[i][key];
 		    					}
 							    training.push(d);
 						    }
-						    var trainSet = shuffle(training);
-						    test = trainSet.slice(0, trainSet.length/2);
-						    trainSet = trainSet.slice(trainSet.length/2, trainSet.length);
+						    self.pdata = training; 
 
+						    if(self.exportedData){
+						    	var tempset = [];
+						    	for(var j = 0; j < self.exportedData.length; j++){
+						    		var id = parseInt(self.exportedData[j]['sampleID']);
+						    		tempset.push(training[id]);
+						    	}
+						    	training = tempset; 
+						    }
+						    console.log(training);
+						    var trainSet = shuffle(training);
+						    //test = trainSet.slice(0, trainSet.length/2);
+						    test = trainSet;
+						    trainSet = trainSet.slice(trainSet.length/2, trainSet.length);
 						    console.log(test);
 						    
 						    // store class info
@@ -375,9 +392,9 @@ return s})
 							  	  var temp = {};
 								  for(var f =0; f < features.length; f++){
 								  	temp[features[f]] = training[i][features[f]];
-								  	temp['outcome'] = y_values[i];
-								  	temp['sampleID'] = i+1;  // sample IDs start at 1 to leave zero for class prototypes
 								  }
+								  temp['outcome'] = y_values[i];
+								  temp['sampleID'] = training[i]['sampleID'];  // sample IDs start at 1 to leave zero for class prototypes
 								  group.data.push(temp);
 								}
 							  var samples = [];
@@ -2792,7 +2809,7 @@ DecisionTreeClassifier.prototype = {
       var major_label = utils.GetDominate(_.pluck(data, y));
       return utils.C45(data, features, y, major_label, this.num_tries);
     },
-    predict: function(sample, sampleID) {
+    predict: function(sample, id) {
         var root = this.model;
 
         if (typeof root === 'undefined') {
@@ -2802,7 +2819,7 @@ DecisionTreeClassifier.prototype = {
         while (root.type !== "result") {
             var attr = root.name;
             if(!root.samples) root.samples = [];
-            root.samples.push(sampleID);
+            root.samples.push(sample['sampleID']);
             if (root.type === 'feature_real') {
                 var sample_value = parseFloat(sample[attr]);
                 if (sample_value <= root.cut){
@@ -2821,7 +2838,7 @@ DecisionTreeClassifier.prototype = {
         if(root.type === "result" )
         {
         	if(!root.samples) root.samples = [];
-        	root.samples.push(sampleID);
+        	root.samples.push(sample['sampleID']);
         }
 
         return root.val;
