@@ -202,7 +202,7 @@ return s})
 						        .attr("x", 50)
 						        .attr("y", 30 )
 						        .style("text-anchor", "middle")
-						        .text("1 - False Negative Rate");
+						        .text("False Postitive Rate");
 
 						    svg.append("g")
 						        .attr("class", "y axis")

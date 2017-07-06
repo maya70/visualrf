@@ -18,7 +18,7 @@
 				var data = config.data;
 				self.dispatch = d3.dispatch("filterlines");
 				self.geneRelations = {};
-				self.colorBrewer = ["#a6cee3","#1f78b4","#b2df8a","#33a02c","#fb9a99","#e31a1c","#fdbf6f","#ff7f00","#cab2d6","#6a3d9a","#ffff99","#b15928",
+				self.colorBrewer = ["#a6cee3","#1f78b4","#b2df8a","#33a02c","#fb9a99","#fdbf6f","#ff7f00","#cab2d6","#6a3d9a","#ffff99","#b15928",
 									"#8dd3c7","#ffffb3","#bebada","#fb8072","#80b1d3","#fdb462","#b3de69","#fccde5","#d9d9d9","#bc80bd","#ccebc5","#ffed6f",
 									"#e41a1c","#377eb8","#4daf4a","#984ea3","#ff7f00","#ffff33","#a65628","#f781bf","#999999",
 									"#1b9e77","#d95f02","#7570b3","#e7298a","#66a61e","#e6ab02","#a6761d","#666666"
@@ -121,7 +121,8 @@
 							.attr("x2", function(d){
 								//var fpr = d.fp / (d.fp + d.tn);
 								//return fpr * w ;
-								return centerx;
+								var tpr = d.tp / (d.tp + d.fn);
+								return centerx * tpr;
 							})
 							.attr("y2", function(d){
 								//var tpr = d.tp / (d.tp + d.fn);

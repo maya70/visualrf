@@ -160,7 +160,8 @@
 							            		}
 							            		else
 							            			str = "leaf"; 
-							            		return "<strong> Feature: </strong> <br/>" +str;})	
+
+							            		return "<strong> Feature: </strong> " +str+ "<br/> <strong>Cutoff: </strong>"+d.cut;})	
 								                .style("left", (d3.event.pageX) -50 + "px")		
 								                .style("top", (d3.event.pageY + 28) + "px");	
 										})

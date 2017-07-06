@@ -10,9 +10,10 @@ div.container{
         grid-template-columns: 30% 20% 30% 20%;
         grid-template-rows: fit-content(40%);
         grid-template-areas: "thumbnails thumbnails thumbnails thumbnails"
-                              "controls controls controls legend"
+                              "controls pathway tree legend"
                               "sidebar pathway tree legend"
-                              "sidebar  para  para panel";
+                              "sidebar para  para panel";
+                              
         grid-gap:10px;
         background-color: #fff;
         color: "black";
@@ -38,7 +39,7 @@ div.left-controls {
     padding-left: 10px;
     margin-top: 0px;
     display: grid;
-    grid-template-columns: 5% 10% 5% 10% 10%;
+    grid-template-columns: 15% 25% 15% 25% 10%;
     grid-gap: 5px;
 }
 .required-entry {
@@ -101,6 +102,7 @@ div.legend{
   margin: 0;
   padding: 1em;
   overflow: scroll;
+  max-height: 350px;
 }
 #control-panel{
   grid-area: panel;
@@ -161,10 +163,14 @@ div.rec-controls{
 }
 #para{
   grid-area: para;
-  position: relative;
-  min-height: 200px;
-  max-height: 200px;
+  min-height: 300px;
+  max-height: 300px;
  overflow: scroll;
+ position: relative;
+ margin-top: 0px;
+ padding-top: 0px;
+ float: top;
+
 }
 
 header, footer {
@@ -271,7 +277,7 @@ div.tooltip2 {
     position: absolute;     
     text-align: center;     
     width: 160px;          
-    height: 28px;         
+    height: 45px;         
     padding: 2px;       
     font: 12px sans-serif;    
     background: white; 
