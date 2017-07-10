@@ -769,7 +769,7 @@ return s})
 					}
 
 				},
-				
+				/*
 				findParent: function(i, root, gene1, gene2){
  							var self=this;
  							if(root.name === gene1){
@@ -782,7 +782,27 @@ return s})
 	 							for(var child=0; child< root.children.length; child++){
  									if(root.children.length>0) self.findParent(i, root.children[child], gene1, gene2);
  								}
+ 					},*/
+
+ 				findParent: function(i, root, parent, current, ancestry){
+ 							var self=this;
+ 							var pfname = self.getFeatureFullName(root);
+ 							var lineage = ''+ ancestry[0];
+ 							for(var a = 1; a < ancestry.length; a++){
+ 								lineage += '|' + ancestry[a]; 
+ 							}
+ 							if(root.name === parent && pfname === lineage){
+ 								if(root.children.indexOf(current)>=0) // gene already exists as a child
+ 									return;
+ 								root.children.push({id: i, name: current, children:[], parent: root});
+ 								return;
+ 							}
+ 							else 
+	 							for(var child=0; child< root.children.length; child++){
+ 									if(root.children.length>0) self.findParent(i, root.children[child], parent, current, ancestry);
+ 								}
  					},
+ 				
  						
 				buildHierarchy: function(){
 					var self=this;
@@ -797,7 +817,8 @@ return s})
 					for(var i=0; i < self.data.length; i++){
 						var genes = self.data[i].name.split("|");
 						var g = genes.length - 1;
-						var pnode = self.findParent(i, tree[0], genes[g-1], genes[g]);
+						//var pnode = self.findParent(i, tree[0], genes[g-1], genes[g]);
+						var pnode = self.findParent(i, tree[0], genes[g-1], genes[g], genes.slice(0,g));
 						//if(pnode) pnode.children.push({id: i, name: genes[g], children:[] });
 					}
 					console.log(tree[0]);
