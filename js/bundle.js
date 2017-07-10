@@ -2881,7 +2881,43 @@ Array.prototype.AllValuesSame = function(){
     return true;
 }
 
-var Gain = function(data, feature, y, num_tries){
+var Gain = function(data, feature, y, numBins){
+	var attribute_values = _.pluck(data, feature),
+        entropy = Entropy(_.pluck(data, y)),
+        size = data.length,
+        feature_type = GetType(data[0][feature]);
+        
+    if (feature_type == "float" || feature_type == "int"){
+    	var min = _.min(attribute_values);
+        var max = _.max(attribute_values);
+    	var step = (max - min)/numBins;
+    	var entropies = [];
+    	for(var b = 0; b < numBins; b++){
+    		var cutf = min + b * step;
+    		_gain = entropy - ConditionalEntropy(data, feature, y, cutf);
+    		entropies.push({
+                    feature: feature,
+                    gain: _gain,
+                    cut: cutf
+                });
+    	}
+    	return _.max(entropies, function(e){return e.gain});
+    }
+    else{
+    	var entropies = attribute_values.map(function(n){
+            var subset = data.filter(function(x){return x[feature] === n});
+            return ((subset.length/size) * Entropy(_.pluck(subset, y)));
+        });
+        var total_entropies =  entropies.reduce(function(a, b){ return a+b; }, 0);
+        return {
+            feature: feature,
+            gain: entropy - total_entropies,
+            cut: 0
+        };
+    }  
+};
+
+/*var Gain = function(data, feature, y, num_tries){
     var attribute_values = _.pluck(data, feature),
         entropy = Entropy(_.pluck(data, y)),
         size = data.length,
@@ -2927,8 +2963,8 @@ var Gain = function(data, feature, y, num_tries){
             cut: 0
         };
     }
-};
-
+};*/
+/*
 var MaxGain = function(data, features, y, num_tries){
   var gains = [];
   for (var i=0; i < features.length; i++) {
@@ -2942,7 +2978,26 @@ var MaxGain = function(data, features, y, num_tries){
       return e.gain;
     });
   }
+};*/
+
+var MaxGain = function(data, features, y, num_tries){
+  var gains = [];
+  //for (var i=0; i < features.length; i++) {
+  	
+  for(var i=0; i < num_tries; i++){
+  	var id = parseInt(RandomFloat(0,features.length));
+  	gains.push(Gain(data, features[id], y, 10));
+  }
+
+  if (_.pluck(gains, 'gain').AllValuesSame){
+    return gains[RandomInt(0, gains.length)];
+  } else {
+    return _.max(gains,function(e){
+      return e.gain;
+    });
+  }
 };
+
 
 var GetDominate = function(vals){
     return  _.sortBy(vals, function(a){
