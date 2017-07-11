@@ -2892,16 +2892,19 @@ var Gain = function(data, feature, y, numBins){
         var max = _.max(attribute_values);
     	var step = (max - min)/numBins;
     	var entropies = [];
-    	for(var b = 0; b < numBins; b++){
-    		var cutf = min + b * step;
+    	var sub_entropies = [];
+    	var q = math.quantileSeq(attribute_values, [1/4, 1/2, 3/4]);
+    	
+    	for(var b = 0; b < q.length; b++){
+    		var cutf = q[b];
     		_gain = entropy - ConditionalEntropy(data, feature, y, cutf);
-    		entropies.push({
+    		sub_entropies.push({
                     feature: feature,
                     gain: _gain,
                     cut: cutf
                 });
     	}
-    	return _.max(entropies, function(e){return e.gain});
+    	return _.max(sub_entropies, function(e){return e.gain});
     }
     else{
     	var entropies = attribute_values.map(function(n){
