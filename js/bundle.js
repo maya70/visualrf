@@ -33,6 +33,7 @@ return s})
 				self.selectionON = false;
 				self.but_div = d3.select(".pathway");
 				self.modelROC = [];
+				self.c1 = self.c2 = 'R';
 				self.but_div.append("button")
 				                    .attr("class", "accordion")
 				                    .attr("id", "btn")
@@ -63,6 +64,7 @@ return s})
 				var cl1 = document.getElementById("cls-select-1");
 
 				cl1.addEventListener("change", function(){
+					self.c1 = this.value;
 					if(self.svg){ 
 						self.svg.selectAll("*").remove();
 						//self.svg.remove();
@@ -78,6 +80,7 @@ return s})
 				});
 				var cl2 = document.getElementById("cls-select-2");
 				cl2.addEventListener("change", function(){
+					self.c2 = this.value;
 					if(self.svg){ 
 						self.svg.selectAll("*").remove();
 						//self.svg.remove();
@@ -361,6 +364,7 @@ return s})
 								    return self.indexOf(value) === index;
 								}
 							var uniqueClasses = y_values.filter(onlyUnique);
+							uniqueClasses = uniqueClasses.sort(function(a,b){ return a - b;});
 							var cl1count =0, cl2count = 0;
 							for(var i=0; i < y_values.length; i++){
 								if(y_values[i] === uniqueClasses[0]) cl1count++;
@@ -370,12 +374,20 @@ return s})
 							self.classes[uniqueClasses[0]] = cl1count;
 							self.classes[uniqueClasses[1]] = cl2count;
 						   
+						   console.log(uniqueClasses);
+						   self.classColors = {};
+						   if((self.c1 === 'R' && self.c2 === 'E') || (self.c1 === 'R' && self.c2 === 'F') || (self.c1 === 'E' && self.c2 === 'F') ){
+						   	self.classColors[uniqueClasses[0]] = 'blue';
+						   	self.classColors[uniqueClasses[1]] = 'red';
+						   }
+						   else{
+						   	self.classColors[uniqueClasses[1]] = 'blue';
+						   	self.classColors[uniqueClasses[0]] = 'red';
+						   }
+
 							rf.fit(trainSet, features, "country", function(err, trees){
-							  //console.log(JSON.stringify(trees, null, 4));
-							 
+							  //console.log(JSON.stringify(trees, null, 4));							 
 							  var pred = rf.predict(test, trees, "country");
-
-
 							  console.log(pred);
 							  
 							  //console.log(trees);
@@ -405,6 +417,7 @@ return s})
 							  group.trees = self.d3ifyModel(trees, samples);
 							  //console.log(group.data);
 							  group.roc = self.ROCcurve(pred, test, group.classes, response);
+							  group.classColors = self.classColors; 
 							  
 							  self.groups.push(group);
 							  //self.groupCount++;
@@ -482,17 +495,38 @@ return s})
 					var predicted, actual;
 					var classes = Object.keys(classes);
 					var tp = 0, fp = 0, tn = 0, fn = 0;
+					function findKey(obj, v){
+						for(var k in obj ){
+							if(obj[k] === v)
+								return k;
+						}
+						return null; 
+					}
+
+					var positive, negative; 
+					positive = findKey(self.classColors, 'red');
+					negative = findKey(self.classColors, 'blue');
+
+					//console.log("NEW RUN, Postitive = "+ positive);
+					//console.log("Negative = " + negative);
+					//console.log(self.classes);
+					//console.log(self.classColors);
+
+
 
 					for(var d = 0; d < pred.length; d++ ){
-						predicted = (pred[d] > t)? classes[1] : classes[0];
+						if( positive > negative)
+							predicted = (pred[d] > t)? positive : negative;
+						else
+							predicted = (pred[d] < t)? positive : negative;
 						actual = test[d][response]+"";
-						if(predicted === classes[1] && actual === classes[1]) // true positive
+						if(predicted === positive && actual === positive) // true positive
 							tp++;
-						else if(predicted === classes[1] && actual === classes[0]) // false positive
+						else if(predicted === positive && actual === negative) // false positive
 							fp++;
-						else if(predicted === classes[0] && actual === classes[0]) // true negative
+						else if(predicted === negative && actual === negative) // true negative
 							tn++;
-						else if(predicted === classes[0] && actual === classes[1]) // false negative
+						else if(predicted === negative && actual === positive) // false negative
 							fn++;
 					}
 					rates.tpr = tp / (tp+fn);
@@ -634,14 +668,29 @@ return s})
 			        var pop1 = self.cutoff.tp + self.cutoff.fn; 
 			        var pop2 = self.cutoff.fp + self.cutoff.tn ;
 			       // var data = [pop1, pop2];
-			        var classes = Object.keys(self.classes);
-			        var data = [{ class: classes[0], population: pop1},
-			        			{ class: classes[1], population: pop2}];
+			       // var classes = Object.keys(self.classes);
+			       function findKey(obj, v){
+						for(var k in obj ){
+							if(obj[k] === v)
+								return k;
+						}
+						return null; 
+					}
+
+					var positive, negative; 
+					positive = findKey(self.classColors, 'red');
+					negative = findKey(self.classColors, 'blue');
+					var pstart, pend; 
+
+			       var classes = self.uniqueClasses; 
+			        var data = [{ class: positive, population: pop1},
+			        			{ class: negative, population: pop2}];
 
 			        var population = self.cutoff.tp + self.cutoff.fn + self.cutoff.fp + self.cutoff.tn ;
 			        
 	        var pie = d3.layout.pie()
-	            .value(function(d){ return d.population; });
+	            .value(function(d){ return d.population; })
+	            .sort(null);
 	        var arc = d3.svg.arc()
 	                    .innerRadius(0)
 	                    .outerRadius(height/3);
@@ -654,32 +703,44 @@ return s})
 	        arcs.append("path")
 	            .attr("d", arc) // here the arc function works on every record d of data 
 	            .attr("fill", function(d){
-	             return color(parseInt(d.data.class)); })
+	             //return color(parseInt(d.data.class)); })
+	               if(d.data.class === positive){
+	               	pstart = d.startAngle;
+	               	pend = d.endAngle; 
+	               }
+	               return self.classColors[d.data.class]; })
 	            .style("opacity", 0.7);
 
+	            console.log(self.cutoff);
 
 	            var fpDeg = (self.cutoff.fp / population) * 360;
 	            var tpDeg = (self.cutoff.tp / population) * 360;
+	            var fnDeg = (self.cutoff.fn / population) * 360; 
+	            var tnDeg = (self.cutoff.tn / population) * 360; 
 	            
-	            var neg = ((self.cutoff.tn + self.cutoff.fn)/ population) * 360;
-
+	            //var neg = ((self.cutoff.tn + self.cutoff.fp)/ population) * 360;
+	            
 	            var newarc1 = d3.svg.arc()
 	                            .innerRadius(10)
 	                            .outerRadius(20)
-	                            .startAngle(fpDeg * (Math.PI/180)) //convert from degs to radians
-	                            .endAngle(-tpDeg* Math.PI/180); //just radians
-
+	                            .startAngle(-fpDeg * (Math.PI/180)) //convert from degs to radians
+	                            .endAngle(tpDeg* Math.PI/180); //just radians
+	                            
+	                            
 	           var overlay1 = group.append("path")
 	                            .attr("d", newarc1)
 	                            .style("fill", "white")
 	                            .style("stroke-width",5)
-	                            .style("stroke", "maroon");
+	                            .style("stroke", function(d){
+	                            	return "maroon";
+	                            });
 
 	            var newarc2 = d3.svg.arc()
 	                            .innerRadius(10)
 	                            .outerRadius(20)
-	                            .startAngle(fpDeg * (Math.PI/180)) //convert from degs to radians
-	                            .endAngle((fpDeg+neg)* Math.PI/180); //just radians
+	                            .startAngle(tpDeg* Math.PI/180) //convert from degs to radians
+	                            .endAngle((tpDeg+tnDeg+fnDeg)* Math.PI/180); //just radians
+	                           
 
 	           var overlay2 = group.append("path")
 	                            .attr("d", newarc2)
@@ -687,7 +748,7 @@ return s})
 	                            .style("stroke-width",5)
 	                            .style("stroke", "darkblue");
 
-
+				
 				self.drawGroupROC(svg,width, height, fgroup);
 
 				},
@@ -821,7 +882,7 @@ return s})
 						var pnode = self.findParent(i, tree[0], genes[g-1], genes[g], genes.slice(0,g));
 						//if(pnode) pnode.children.push({id: i, name: genes[g], children:[] });
 					}
-					console.log(tree[0]);
+					//console.log(tree[0]);
 					self.root = tree[0];
 					self.width = width;
 					self.height = height;
@@ -940,7 +1001,7 @@ return s})
 							d3.selectAll('g.selected').classed("selected", false);
 						}
 						var p = d3.mouse( this);
-						console.log(p);
+						//console.log(p);
 						/*self.svg.append("rect")
 							.attr({
 								rx : 6,
@@ -976,7 +1037,7 @@ return s})
 						//console.log(s.empty());
 						if(!s.empty()){
 							var p=d3.mouse(this);
-							console.log(p[0],p[1]);
+							//console.log(p[0],p[1]);
 							/*var	d={
 									x: parseInt(s.attr("x"), 10),
 									y: parseInt(s.attr("y"), 10),
@@ -2727,6 +2788,8 @@ RandomForestClassifier.prototype = {
 			    return self.indexOf(value) === index;
 			}
 		var uniqueClasses = y_values.filter(onlyUnique);
+		uniqueClasses = uniqueClasses.sort(function(a,b){ return a - b;});
+		self.uniqueClasses = uniqueClasses; 
 		var Cl1 = uniqueClasses[0], 
 			Cl2 = uniqueClasses[1];
 
@@ -3024,7 +3087,7 @@ var ConditionalEntropy = function(_s, feature, y, cut){
     var s_1 = _s.filter(function(x){return x[feature] <= cut}),
         s_2 = _s.filter(function(x){return x[feature] > cut}),
         size = _s.length;
-    return s_1.length/size*Entropy(_.pluck(s_1, y)) + s_2.length/size*Entropy(_.pluck(s_1, y));
+    return s_1.length/size*Entropy(_.pluck(s_1, y)) + s_2.length/size*Entropy(_.pluck(s_2, y));
 };
 
 var Log2 = function(n){

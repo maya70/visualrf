@@ -11,6 +11,7 @@
 				self.maxs = config.maxs; 
 				self.selected = self.data; 
 				self.rf = config.rf; 
+				self.classColors = config.classColors; 
 				//self.colors = config.colors;
 				self.classes = config.classes; 
 				self.colors = ["red",
@@ -553,7 +554,8 @@
 				  // render polylines i to i+render_speed 
 					function render_range(selection, i, max, opacity) {
 					  selection.slice(i,max).forEach(function(d) {
-					    var col = colorMap[d.outcome];
+					    //var col = colorMap[d.outcome];
+					    var col = self.classColors[d.outcome];
 					     //(d['outcome'] === self.classes[0])? color2(d.Therapy,opacity) : color(d.Therapy,opacity);
 					    path(d, foreground,col);
 					  });

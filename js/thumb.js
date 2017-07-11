@@ -15,6 +15,7 @@
 				self.classes = config.classes;
 				self.pdata = config.pdata; 
 				self.rfengine = config.rfengine; 
+				self.classColors = config.classColors; 
 				var data = config.data;
 				self.dispatch = d3.dispatch("filterlines");
 				self.geneRelations = {};
@@ -43,7 +44,7 @@
 	           });
 	           if(!self.dataView)
 				self.dataView = new $P.ParallelView({'data':data, 'mins': mins, 'maxs': maxs, 'dispatch': self.dispatch,
-													 'colors': self.colorMap, 'classes': self.classes, 'pdata': self.pdata, 'rf': self.rfengine});
+													 'colors': self.colorMap, 'classColors': self.classColors, 'classes': self.classes, 'pdata': self.pdata, 'rf': self.rfengine});
 			   self.drawIcicles(50,50);
 				
 			},
@@ -137,7 +138,7 @@
 								var xfpr = fpr * w; 
 								var tpr = d.tp / (d.tp + d.fn);
 							    var ytpr = tpr * h;
-							    console.log(Math.atan(ytpr/xfpr)*180/Math.PI);
+							    //console.log(Math.atan(ytpr/xfpr)*180/Math.PI);
 							    var angle = (fpr === 0)? -90 : -Math.atan(ytpr/xfpr)*180/Math.PI; 
 							      	
 								return "translate("+ centerx + "," + 0 + ")"
@@ -454,7 +455,7 @@
 						});
 						if(!self.dataView)
 							self.dataView = new $P.ParallelView({'data':treeData, 'mins': mins, 'maxs': maxs, 'dispatch': self.dispatch,
-																 'colors': self.colorMap, 'classes': self.classes, 'pdata': self.pdata, 'rf': self.rfengine});
+																 'colors': self.colorMap, 'classColors': self.classColors, 'classes': self.classes, 'pdata': self.pdata, 'rf': self.rfengine});
 					}, {
 						type: 'GET',
 						data: {id: pID}
