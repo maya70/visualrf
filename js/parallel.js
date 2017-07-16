@@ -229,8 +229,7 @@
 				 	ccount++; 
 				 }
 				
-				  // Add a group element for each dimension.
-				  
+				  // Add a group element for each dimension.				  
 				  //console.log(self.svg.selectAll(".dimension"));
 				  var g = self.svg.selectAll(".dimension")
 				      .data(dimensions)
@@ -410,7 +409,7 @@
 					  ctx.lineWidth = proto? 14: 1.7;
 					  
 					  ctx.beginPath();
-					  var x0 = xscale(0)-3,
+					  var x0 = xscale(0),
 					      y0 = yscale[dimensions[0]](d[dimensions[0]]);   // left edge
 					  ctx.moveTo(x0,y0);
 					  dimensions.map(function(p,i) {
