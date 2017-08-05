@@ -32,6 +32,12 @@
 				d3.select("#revert-butt").on("click", function(){
 					self.revert(); 
 				});
+				d3.select("#save-butt").on("click", function(){
+					self.save();
+				});
+				d3.select("#meta-butt").on("click", function(){
+					self.meta();
+				});
 				self.dispatch = config.dispatch; 
 				self.filtered = false; 
 
@@ -139,17 +145,63 @@
 				var self = this;
 				self.rf.setExported(self.data);
 			},
+			save: function(filename){
+				 var self = this;
+				 var data = self.rf.getExported();
+				 if(!data) {
+				        console.error('Console.save: No data');
+				        alert("Please export data first!");
+				        return;
+				    }
+
+				    if(!filename) filename = 'samples.json';
+
+				    if(typeof data === "object"){
+				        data = JSON.stringify(data, undefined, 4);
+				    }
+
+				    var blob = new Blob([data], {type: 'text/json'}),
+				        e    = document.createEvent('MouseEvents'),
+				        a    = document.createElement('a');
+
+				    a.download = filename;
+				    a.href = window.URL.createObjectURL(blob);
+				    a.dataset.downloadurl =  ['text/json', a.download, a.href].join(':');
+				    e.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+				    a.dispatchEvent(e);
+			},
+			meta: function(){
+				// get the file name for the metadata
+				var self = this;
+				var filename = self.rf.metaData();
+				d3.json(filename, function(data){
+					self.metadata = data;
+					self.metadata_selection = [];
+					// select only the records that correspond to the exported data 
+					var exp = self.rf.getExported();
+					if(!exp){
+						alert("Please export data first!");
+				        return;
+					}
+					
+					for(var i = 0; i < exp.length; i++){
+						self.metadata_selection.push(data[parseInt(exp[i]['sampleID'])]);
+					}
+					console.log(self.metadata_selection);
+				});
+
+			},
 			drawAxes: function(filtered){
 				var self = this;
 				var data = self.data;
 				var numFeatures = Object.keys(data[0]).length;
-				var width = (numFeatures <=10)? 600 : numFeatures*80;
-				var margin = {top: 30, right: 40, bottom: 10, left: 40};				 
+				var width = (numFeatures <=10)? 660 : numFeatures*80+60;
+				//var margin = {top: 30, right: 40, bottom: 10, left: 140};				 
 				var height = 200;
 				var xscale = d3.scale.ordinal().rangePoints([0, width], 1),
 				    yscale = {},
 				    dragging = {};
-				var m = [60, 0, 10, 0],
+				var m = [60, 60, 10, 0],
 				 	w = width - m[1] - m[3],
     			 	h = height - m[0] - m[2],
 					line = d3.svg.line(),
@@ -168,22 +220,22 @@
 					.style("height", (h + m[0] + m[2]) + "px");
 
 				d3.selectAll("#background")
-				    .attr("width", w)
+				    .attr("width", w+ m[1] + m[3]+ 100)
 				    .attr("height", h)
 				    .style("padding", m.join("px ") + "px");
 
 				d3.selectAll("#foreground")
-				    .attr("width", w)
+				    .attr("width", w+ m[1] + m[3]+ 100)
 				    .attr("height", h)
 				    .style("padding", m.join("px ") + "px");
 
 				d3.selectAll("#highlight")
-				    .attr("width", w)
+				    .attr("width", w+ m[1] + m[3]+ 100)
 				    .attr("height", h)
 				    .style("padding", m.join("px ") + "px");
 
 				d3.selectAll("#svg1")
-				    .attr("width", w)
+				    .attr("width", w+ m[1] + m[3]+ 100)
 				    .attr("height", h);
 
 
@@ -205,12 +257,12 @@
 				background.lineWidth = 1.7;
 
 				self.svg = d3.select("#svg1").append("svg")
-				    .attr("width", w + m[1] + m[3])
+				    .attr("width", w + m[1] + m[3]+ 1000)
 				    .attr("height", h + m[0] + m[2])
 				    .attr("x", 0)
 				    .attr("y", 0)
 				  .append("g")
-				    .attr("transform", "translate(" + m[3] + "," + m[0] + ")");
+				    .attr("transform", "translate(" + m[1] + "," + m[0] + ")");
 
 				// Extract the list of dimensions and create a scale for each.
 					var dims = Object.keys(data[0]);
@@ -413,7 +465,7 @@
 					      y0 = yscale[dimensions[0]](d[dimensions[0]]);   // left edge
 					  ctx.moveTo(x0,y0);
 					  dimensions.map(function(p,i) {
-					    var x = xscale(p),
+					    var x = xscale(p) + (i===0? 50: 60),
 					        y = yscale[p](d[p]);
 					    var cp1x = x - 0.88*(x-x0);
 					    var cp1y = y0;

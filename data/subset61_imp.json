@@ -1,0 +1,732 @@
+[
+ {
+ "name": [ "country" ],
+"MDA": [ 0.094524 ],
+"MDG": [ 4.5181 ] 
+},
+{
+ "name": [ "sampleID" ],
+"MDA": [ 0.08715 ],
+"MDG": [ 4.6543 ] 
+},
+{
+ "name": [ "k__Archaea|p__Euryarchaeota|c__Methanobacteria|o__Methanobacteriales|f__Methanobacteriaceae|g__Methanobrevibacter" ],
+"MDA": [      0 ],
+"MDG": [      0 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Actinomycetales|f__Actinomycetaceae|g__Actinomyces" ],
+"MDA": [ 0.0010537 ],
+"MDG": [ 0.37832 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Actinomycetales|f__Actinomycetaceae|g__Parascardovia" ],
+"MDA": [ 0.00016504 ],
+"MDG": [ 0.13496 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Actinomycetales|f__Actinomycetaceae|g__" ],
+"MDA": [ -6.4909e-05 ],
+"MDG": [ 0.019497 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Actinomycetales|f__Corynebacteriaceae|g__Corynebacterium" ],
+"MDA": [ 2.3373e-05 ],
+"MDG": [ 0.055432 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Actinomycetales|f__Micrococcaceae|g__Rothia" ],
+"MDA": [ 3.738e-06 ],
+"MDG": [ 0.11934 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Bifidobacteriales|f__Bifidobacteriaceae|g__Bifidobacterium" ],
+"MDA": [ 0.0099341 ],
+"MDG": [ 1.2039 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Bifidobacteriales|f__|g__" ],
+"MDA": [ 0.00071483 ],
+"MDG": [ 0.23798 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Bacteroidetes|c__Bacteroidia|o__Bacteroidales|f__Bacteroidaceae|g__Bacteroides" ],
+"MDA": [ 0.002325 ],
+"MDG": [ 0.45732 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Bacteroidetes|c__Bacteroidia|o__Bacteroidales|f__Bacteroidaceae|g__" ],
+"MDA": [ 0.00156 ],
+"MDG": [ 0.30526 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Bacteroidetes|c__Bacteroidia|o__Bacteroidales|f__Porphyromonadaceae|g__Dysgonomonas" ],
+"MDA": [ -1.6952e-06 ],
+"MDG": [ 0.0053581 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Bacteroidetes|c__Bacteroidia|o__Bacteroidales|f__Porphyromonadaceae|g__Parabacteroides" ],
+"MDA": [ -9.8587e-05 ],
+"MDG": [ 0.089042 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Bacteroidetes|c__Bacteroidia|o__Bacteroidales|f__Porphyromonadaceae|g__Porphyromonas" ],
+"MDA": [ -8.9588e-05 ],
+"MDG": [ 0.02736 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Bacteroidetes|c__Bacteroidia|o__Bacteroidales|f__Prevotellaceae|g__Prevotella" ],
+"MDA": [ 7.0167e-05 ],
+"MDG": [ 0.098408 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Bacteroidetes|c__Bacteroidia|o__Bacteroidales|f__Rikenellaceae|g__" ],
+"MDA": [ -7.7231e-05 ],
+"MDG": [ 0.15717 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Bacteroidetes|c__Bacteroidia|o__Bacteroidales|f__S24-7|g__" ],
+"MDA": [ -1.2143e-05 ],
+"MDG": [ 0.018225 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Bacteroidetes|c__Bacteroidia|o__Bacteroidales|f__[Barnesiellaceae]|g__" ],
+"MDA": [ 2.4585e-05 ],
+"MDG": [ 0.084278 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Bacteroidetes|c__Bacteroidia|o__Bacteroidales|f__[Odoribacteraceae]|g__Butyricimonas" ],
+"MDA": [      0 ],
+"MDG": [ 0.018059 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Bacteroidetes|c__Bacteroidia|o__Bacteroidales|f__[Odoribacteraceae]|g__Odoribacter" ],
+"MDA": [ -5.1654e-05 ],
+"MDG": [ 0.051756 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Bacteroidetes|c__Bacteroidia|o__Bacteroidales|f__[Paraprevotellaceae]|g__Paraprevotella" ],
+"MDA": [ -4.1744e-05 ],
+"MDG": [ 0.020665 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Bacteroidetes|c__Bacteroidia|o__Bacteroidales|f__[Paraprevotellaceae]|g__[Prevotella]" ],
+"MDA": [ 2.9147e-05 ],
+"MDG": [ 0.031425 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Bacteroidetes|c__Flavobacteriia|o__Flavobacteriales|f__Flavobacteriaceae|g__" ],
+"MDA": [ 0.00077539 ],
+"MDG": [ 0.14024 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Cyanobacteria|c__4C0d-2|o__YS2|f__|g__" ],
+"MDA": [ 2.8371e-06 ],
+"MDG": [ 0.021265 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Cyanobacteria|c__Chloroplast|o__Streptophyta|f__|g__" ],
+"MDA": [ -5.6565e-05 ],
+"MDG": [ 0.075811 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Bacilli|o__Bacillales|f__Planococcaceae|g__Solibacillus" ],
+"MDA": [ 0.00042629 ],
+"MDG": [ 0.17252 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Bacilli|o__Bacillales|f__Staphylococcaceae|g__Staphylococcus" ],
+"MDA": [ 1.4321e-05 ],
+"MDG": [ 0.10911 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Bacilli|o__Bacillales|f__Staphylococcaceae|g__" ],
+"MDA": [ -4.3325e-05 ],
+"MDG": [ 0.06355 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Bacilli|o__Gemellales|f__Gemellaceae|g__" ],
+"MDA": [ -0.00018017 ],
+"MDG": [ 0.14534 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__Aerococcaceae|g__Abiotrophia" ],
+"MDA": [      0 ],
+"MDG": [      0 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__Carnobacteriaceae|g__Granulicatella" ],
+"MDA": [ 0.0016321 ],
+"MDG": [ 0.35456 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__Enterococcaceae|g__Enterococcus" ],
+"MDA": [ 0.002466 ],
+"MDG": [ 0.42768 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__Enterococcaceae|g__" ],
+"MDA": [ 0.0012003 ],
+"MDG": [ 0.28455 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__Lactobacillaceae|g__Lactobacillus" ],
+"MDA": [ 0.0027891 ],
+"MDG": [ 0.44508 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__Lactobacillaceae|g__Pediococcus" ],
+"MDA": [ 2.9276e-05 ],
+"MDG": [ 0.048121 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__Lactobacillaceae|g__" ],
+"MDA": [ 7.7629e-05 ],
+"MDG": [ 0.098494 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__Leuconostocaceae|g__Leuconostoc" ],
+"MDA": [ -7.208e-05 ],
+"MDG": [ 0.018963 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__Streptococcaceae|g__Lactococcus" ],
+"MDA": [ 0.0039451 ],
+"MDG": [ 0.52469 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__Streptococcaceae|g__Streptococcus" ],
+"MDA": [ 0.0003296 ],
+"MDG": [ 0.24318 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__Streptococcaceae|g__" ],
+"MDA": [ 0.00053635 ],
+"MDG": [ 0.18664 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__|g__" ],
+"MDA": [ 0.0020104 ],
+"MDG": [ 0.33212 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Bacilli|o__Turicibacterales|f__Turicibacteraceae|g__Turicibacter" ],
+"MDA": [ 0.00052084 ],
+"MDG": [ 0.13561 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Bacilli|o__|f__|g__" ],
+"MDA": [ 0.0011847 ],
+"MDG": [ 0.2628 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__Catabacteriaceae|g__" ],
+"MDA": [ 8.6633e-05 ],
+"MDG": [ 0.061638 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__Christensenellaceae|g__" ],
+"MDA": [      0 ],
+"MDG": [ 0.018552 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__Clostridiaceae|g__Anaerococcus" ],
+"MDA": [ 6.8037e-05 ],
+"MDG": [ 0.038196 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__Clostridiaceae|g__Clostridium" ],
+"MDA": [ 0.0020539 ],
+"MDG": [ 0.53292 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__Clostridiaceae|g__Mogibacterium" ],
+"MDA": [ -0.00012266 ],
+"MDG": [ 0.027672 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__Clostridiaceae|g__Peptoniphilus" ],
+"MDA": [ -0.00010817 ],
+"MDG": [ 0.036135 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__Clostridiaceae|g__Sarcina" ],
+"MDA": [ 7.5556e-06 ],
+"MDG": [ 0.072361 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__Clostridiaceae|g__" ],
+"MDA": [ 5.5749e-05 ],
+"MDG": [ 0.21965 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__Eubacteriaceae|g__Anaerofustis" ],
+"MDA": [      0 ],
+"MDG": [      0 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__Eubacteriaceae|g__Eubacterium" ],
+"MDA": [ 6.2378e-07 ],
+"MDG": [ 0.0075096 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__Lachnospiraceae|g__Anaerostipes" ],
+"MDA": [ -3.1224e-05 ],
+"MDG": [ 0.032668 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__Lachnospiraceae|g__Blautia" ],
+"MDA": [ -0.00014577 ],
+"MDG": [  0.217 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__Lachnospiraceae|g__Coprococcus" ],
+"MDA": [ 0.00020554 ],
+"MDG": [ 0.18275 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__Lachnospiraceae|g__Dorea" ],
+"MDA": [ -6.2889e-06 ],
+"MDG": [ 0.084525 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__Lachnospiraceae|g__Lachnobacterium" ],
+"MDA": [ 1.0435e-05 ],
+"MDG": [ 0.04565 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__Lachnospiraceae|g__Lachnospira" ],
+"MDA": [ 0.00045628 ],
+"MDG": [ 0.12663 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__Lachnospiraceae|g__Roseburia" ],
+"MDA": [ 2.9853e-05 ],
+"MDG": [ 0.14217 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__Lachnospiraceae|g__[Ruminococcus]" ],
+"MDA": [ 0.00094724 ],
+"MDG": [ 0.37096 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__Lachnospiraceae|g__" ],
+"MDA": [ 0.00037872 ],
+"MDG": [ 0.33258 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__Peptococcaceae|g__Peptococcus" ],
+"MDA": [      0 ],
+"MDG": [ 0.00067683 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__Peptococcaceae|g__rc4-4" ],
+"MDA": [      0 ],
+"MDG": [      0 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__Peptococcaceae|g__" ],
+"MDA": [      0 ],
+"MDG": [      0 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__Peptostreptococcaceae|g__" ],
+"MDA": [ -0.00016298 ],
+"MDG": [ 0.19446 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__Ruminococcaceae|g__Anaerotruncus" ],
+"MDA": [ -2.8336e-05 ],
+"MDG": [ 0.030199 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__Ruminococcaceae|g__Faecalibacterium" ],
+"MDA": [ -2.8903e-05 ],
+"MDG": [ 0.16292 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__Ruminococcaceae|g__Oscillospira" ],
+"MDA": [ 0.0012844 ],
+"MDG": [ 0.37802 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__Ruminococcaceae|g__Ruminococcus" ],
+"MDA": [ 0.00037577 ],
+"MDG": [ 0.2073 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__Ruminococcaceae|g__" ],
+"MDA": [ 2.6653e-05 ],
+"MDG": [ 0.18354 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__Veillonellaceae|g__Acidaminococcus" ],
+"MDA": [      0 ],
+"MDG": [      0 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__Veillonellaceae|g__Dialister" ],
+"MDA": [      0 ],
+"MDG": [ 0.0077819 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__Veillonellaceae|g__Megamonas" ],
+"MDA": [      0 ],
+"MDG": [ 0.0021497 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__Veillonellaceae|g__Megasphaera" ],
+"MDA": [ -0.00021539 ],
+"MDG": [ 0.096372 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__Veillonellaceae|g__Mitsuokella" ],
+"MDA": [ -1.8058e-05 ],
+"MDG": [ 0.0040404 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__Veillonellaceae|g__Negativicoccus" ],
+"MDA": [ -1.5598e-05 ],
+"MDG": [ 0.0081137 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__Veillonellaceae|g__Phascolarctobacterium" ],
+"MDA": [ -8.8489e-06 ],
+"MDG": [ 0.002636 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__Veillonellaceae|g__Selenomonas" ],
+"MDA": [      0 ],
+"MDG": [ 0.0031651 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__Veillonellaceae|g__Veillonella" ],
+"MDA": [ 0.0098429 ],
+"MDG": [ 1.1017 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__Veillonellaceae|g__" ],
+"MDA": [ -0.00014508 ],
+"MDG": [ 0.13575 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__|g__" ],
+"MDA": [ 0.00051405 ],
+"MDG": [ 0.28355 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Clostridia|o__Coriobacteriales|f__Coriobacteriaceae|g__Adlercreutzia" ],
+"MDA": [ -7.2988e-06 ],
+"MDG": [ 0.0156 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Clostridia|o__Coriobacteriales|f__Coriobacteriaceae|g__Atopobium" ],
+"MDA": [ 0.00041659 ],
+"MDG": [ 0.15384 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Clostridia|o__Coriobacteriales|f__Coriobacteriaceae|g__Collinsella" ],
+"MDA": [ 0.0021121 ],
+"MDG": [ 0.45771 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Clostridia|o__Coriobacteriales|f__Coriobacteriaceae|g__Eggerthella" ],
+"MDA": [ 0.0048459 ],
+"MDG": [ 0.62392 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Clostridia|o__Coriobacteriales|f__Coriobacteriaceae|g__Slackia" ],
+"MDA": [ -5.8661e-06 ],
+"MDG": [ 0.0047903 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Clostridia|o__Coriobacteriales|f__Coriobacteriaceae|g__" ],
+"MDA": [ -4.4105e-05 ],
+"MDG": [ 0.096333 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Clostridia|o__Coriobacteriales|f__|g__" ],
+"MDA": [ 0.00088979 ],
+"MDG": [ 0.20095 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Clostridia|o__SHA-98|f__|g__" ],
+"MDA": [      0 ],
+"MDG": [ 0.0014408 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Clostridia|o__|f__|g__" ],
+"MDA": [ 0.00012692 ],
+"MDG": [ 0.19119 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Erysipelotrichi|o__Erysipelotrichales|f__Erysipelotrichaceae|g__Bulleidia" ],
+"MDA": [ -2.2016e-05 ],
+"MDG": [ 0.038906 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Erysipelotrichi|o__Erysipelotrichales|f__Erysipelotrichaceae|g__Holdemania" ],
+"MDA": [      0 ],
+"MDG": [      0 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Erysipelotrichi|o__Erysipelotrichales|f__Erysipelotrichaceae|g__[Eubacterium]" ],
+"MDA": [ -6.6802e-05 ],
+"MDG": [ 0.12939 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Erysipelotrichi|o__Erysipelotrichales|f__Erysipelotrichaceae|g__cc_115" ],
+"MDA": [      0 ],
+"MDG": [      0 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Erysipelotrichi|o__Erysipelotrichales|f__Erysipelotrichaceae|g__" ],
+"MDA": [      0 ],
+"MDG": [      0 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Erysipelotrichi|o__Erysipelotrichales|f__[Coprobacillaceae]|g__Catenibacterium" ],
+"MDA": [ 6.6873e-05 ],
+"MDG": [ 0.050596 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Erysipelotrichi|o__Erysipelotrichales|f__[Coprobacillaceae]|g__Coprobacillus" ],
+"MDA": [ -5.0204e-05 ],
+"MDG": [ 0.036433 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__Erysipelotrichi|o__Erysipelotrichales|f__[Coprobacillaceae]|g__" ],
+"MDA": [ 7.5126e-05 ],
+"MDG": [ 0.17662 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Firmicutes|c__RF3|o__ML615J-28|f__|g__" ],
+"MDA": [      0 ],
+"MDG": [ 0.001864 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Fusobacteria|c__Fusobacteria|o__Fusobacteriales|f__Fusobacteriaceae|g__Fusobacterium" ],
+"MDA": [ 5.3422e-05 ],
+"MDG": [ 0.089247 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Fusobacteria|c__Fusobacteria|o__Fusobacteriales|f__Fusobacteriaceae|g__J2-29" ],
+"MDA": [      0 ],
+"MDG": [ 0.022359 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Fusobacteria|c__Fusobacteria|o__Fusobacteriales|f__Fusobacteriaceae|g__" ],
+"MDA": [      0 ],
+"MDG": [      0 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Lentisphaerae|c__[Lentisphaeria]|o__Victivallales|f__Victivallaceae|g__" ],
+"MDA": [      0 ],
+"MDG": [      0 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Lentisphaerae|c__[Lentisphaeria]|o__|f__|g__" ],
+"MDA": [      0 ],
+"MDG": [      0 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Proteobacteria|c__Alphaproteobacteria|o__RF32|f__|g__" ],
+"MDA": [ -4.1451e-05 ],
+"MDG": [ 0.054213 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Proteobacteria|c__Alphaproteobacteria|o__Rickettsiales|f__mitochondria|g__" ],
+"MDA": [ 3.7456e-05 ],
+"MDG": [ 0.092851 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Proteobacteria|c__Betaproteobacteria|o__Burkholderiales|f__Alcaligenaceae|g__Sutterella" ],
+"MDA": [ 7.306e-05 ],
+"MDG": [ 0.14293 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Proteobacteria|c__Betaproteobacteria|o__Burkholderiales|f__Comamonadaceae|g__Curvibacter" ],
+"MDA": [      0 ],
+"MDG": [ 0.0016647 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Proteobacteria|c__Betaproteobacteria|o__Burkholderiales|f__Oxalobacteraceae|g__Oxalobacter" ],
+"MDA": [      0 ],
+"MDG": [      0 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Proteobacteria|c__Betaproteobacteria|o__Burkholderiales|f__Oxalobacteraceae|g__Ralstonia" ],
+"MDA": [ -0.00015795 ],
+"MDG": [ 0.061999 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Proteobacteria|c__Betaproteobacteria|o__Neisseriales|f__Neisseriaceae|g__Eikenella" ],
+"MDA": [      0 ],
+"MDG": [      0 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Proteobacteria|c__Betaproteobacteria|o__Neisseriales|f__Neisseriaceae|g__" ],
+"MDA": [ -7.5363e-05 ],
+"MDG": [ 0.037188 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Proteobacteria|c__Betaproteobacteria|o__|f__|g__" ],
+"MDA": [ -6.6131e-05 ],
+"MDG": [ 0.028191 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Proteobacteria|c__Deltaproteobacteria|o__Desulfovibrionales|f__Desulfovibrionaceae|g__Bilophila" ],
+"MDA": [ 0.00018547 ],
+"MDG": [ 0.054716 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Proteobacteria|c__Deltaproteobacteria|o__Desulfovibrionales|f__Desulfovibrionaceae|g__Desulfovibrio" ],
+"MDA": [ -2.5277e-05 ],
+"MDG": [ 0.007233 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Proteobacteria|c__Epsilonproteobacteria|o__Campylobacterales|f__Campylobacteraceae|g__Campylobacter" ],
+"MDA": [ 0.00079068 ],
+"MDG": [ 0.16146 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Proteobacteria|c__Gammaproteobacteria|o__Aeromonadales|f__Aeromonadaceae|g__" ],
+"MDA": [      0 ],
+"MDG": [      0 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Proteobacteria|c__Gammaproteobacteria|o__Aeromonadales|f__Succinivibrionaceae|g__Succinivibrio" ],
+"MDA": [      0 ],
+"MDG": [      0 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Proteobacteria|c__Gammaproteobacteria|o__Aeromonadales|f__|g__" ],
+"MDA": [ 4.4585e-05 ],
+"MDG": [ 0.15052 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Proteobacteria|c__Gammaproteobacteria|o__Enterobacteriales|f__Enterobacteriaceae|g__Citrobacter" ],
+"MDA": [ -0.00014007 ],
+"MDG": [ 0.13524 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Proteobacteria|c__Gammaproteobacteria|o__Enterobacteriales|f__Enterobacteriaceae|g__Enterobacter" ],
+"MDA": [ -0.00022585 ],
+"MDG": [ 0.15254 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Proteobacteria|c__Gammaproteobacteria|o__Enterobacteriales|f__Enterobacteriaceae|g__Erwinia" ],
+"MDA": [ 9.0314e-05 ],
+"MDG": [ 0.17567 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Proteobacteria|c__Gammaproteobacteria|o__Enterobacteriales|f__Enterobacteriaceae|g__Escherichia" ],
+"MDA": [ -0.00040669 ],
+"MDG": [ 0.18534 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Proteobacteria|c__Gammaproteobacteria|o__Enterobacteriales|f__Enterobacteriaceae|g__Klebsiella" ],
+"MDA": [ -8.9162e-05 ],
+"MDG": [ 0.11996 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Proteobacteria|c__Gammaproteobacteria|o__Enterobacteriales|f__Enterobacteriaceae|g__Morganella" ],
+"MDA": [ 1.245e-05 ],
+"MDG": [ 0.013938 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Proteobacteria|c__Gammaproteobacteria|o__Enterobacteriales|f__Enterobacteriaceae|g__Plesiomonas" ],
+"MDA": [ 0.0017314 ],
+"MDG": [ 0.35068 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Proteobacteria|c__Gammaproteobacteria|o__Enterobacteriales|f__Enterobacteriaceae|g__Proteus" ],
+"MDA": [ 3.8444e-06 ],
+"MDG": [ 0.0067561 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Proteobacteria|c__Gammaproteobacteria|o__Enterobacteriales|f__Enterobacteriaceae|g__Salmonella" ],
+"MDA": [ 3.2421e-05 ],
+"MDG": [ 0.19886 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Proteobacteria|c__Gammaproteobacteria|o__Enterobacteriales|f__Enterobacteriaceae|g__Serratia" ],
+"MDA": [ 6.3411e-05 ],
+"MDG": [ 0.13806 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Proteobacteria|c__Gammaproteobacteria|o__Enterobacteriales|f__Enterobacteriaceae|g__Trabulsiella" ],
+"MDA": [ -0.00031111 ],
+"MDG": [ 0.097224 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Proteobacteria|c__Gammaproteobacteria|o__Enterobacteriales|f__Enterobacteriaceae|g__Yersinia" ],
+"MDA": [      0 ],
+"MDG": [      0 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Proteobacteria|c__Gammaproteobacteria|o__Enterobacteriales|f__Enterobacteriaceae|g__" ],
+"MDA": [ -0.00014508 ],
+"MDG": [ 0.1697 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Proteobacteria|c__Gammaproteobacteria|o__Legionellales|f__Coxiellaceae|g__" ],
+"MDA": [ 0.00083585 ],
+"MDG": [ 0.28282 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Proteobacteria|c__Gammaproteobacteria|o__Pasteurellales|f__Pasteurellaceae|g__Actinobacillus" ],
+"MDA": [ 5.3444e-05 ],
+"MDG": [ 0.069082 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Proteobacteria|c__Gammaproteobacteria|o__Pasteurellales|f__Pasteurellaceae|g__Aggregatibacter" ],
+"MDA": [ 1.0067e-05 ],
+"MDG": [ 0.028744 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Proteobacteria|c__Gammaproteobacteria|o__Pasteurellales|f__Pasteurellaceae|g__Haemophilus" ],
+"MDA": [ 0.0009061 ],
+"MDG": [ 0.30912 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Proteobacteria|c__Gammaproteobacteria|o__Pasteurellales|f__Pasteurellaceae|g__" ],
+"MDA": [ 0.00045817 ],
+"MDG": [ 0.16304 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Proteobacteria|c__Gammaproteobacteria|o__Pseudomonadales|f__Moraxellaceae|g__Acinetobacter" ],
+"MDA": [ -0.00016319 ],
+"MDG": [ 0.034873 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Proteobacteria|c__Gammaproteobacteria|o__Pseudomonadales|f__Moraxellaceae|g__" ],
+"MDA": [      0 ],
+"MDG": [ 0.0081698 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Proteobacteria|c__Gammaproteobacteria|o__Pseudomonadales|f__Pseudomonadaceae|g__Pseudomonas" ],
+"MDA": [ 0.00045227 ],
+"MDG": [ 0.13561 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Synergistetes|c__Synergistia|o__Synergistales|f__Dethiosulfovibrionaceae|g__Pyramidobacter" ],
+"MDA": [      0 ],
+"MDG": [ 0.00099719 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Tenericutes|c__Mollicutes|o__Anaeroplasmatales|f__Anaeroplasmataceae|g__" ],
+"MDA": [      0 ],
+"MDG": [      0 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Tenericutes|c__Mollicutes|o__RF39|f__|g__" ],
+"MDA": [      0 ],
+"MDG": [      0 ] 
+},
+{
+ "name": [ "k__Bacteria|p__Verrucomicrobia|c__Verrucomicrobiae|o__Verrucomicrobiales|f__Verrucomicrobiaceae|g__Akkermansia" ],
+"MDA": [ 0.00034905 ],
+"MDG": [ 0.20817 ] 
+} 
+]

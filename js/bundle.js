@@ -233,6 +233,16 @@ return s})
 				},
 				readImportance: function(){
 					var self=this;
+					self.subset_importance = true;
+					if(self.subset_importance){
+						d3.json('./data/subset61_imp.json', function(imp){
+							self.subimp = imp;
+							for(var i=0; i < self.subimp.length; i++){
+								var temp = self.subimp[i]['name'].split('|');
+								self.subimp[i]['name'] = temp[temp.length -1];
+							}
+						});
+					}
 					d3.json('./data/vatanen_imp.json', function(imp){
 						self.importance = imp;
 						for(var i=0; i< self.importance.length; i++){
@@ -281,11 +291,27 @@ return s})
 					self.exportedData = data; 
 					console.log(self.exportedData);
 				},
+				getExported: function(){
+					var self = this;
+					return self.exportedData;
+				},
 				revertToOriginal: function(){
 					var self = this;
 					var undef;
 					self.exportedData = undef;
 
+				},
+				metaData: function(){
+					var self = this;
+					var dataFile = '';
+					if((self.cls1 === "R" && self.cls2 === "F")||(self.cls1==="F"&&self.cls2==="R"))
+						dataFile = "./data/vatanen_dfrf_meta.json";
+					else if((self.cls1 === "R" && self.cls2 === "E")||(self.cls1==="E"&&self.cls2==="R"))
+						dataFile = "./data/vatanen_dfre_meta.json";
+					else if((self.cls1 === "F" && self.cls2 === "E")||(self.cls1==="E"&&self.cls2==="F"))
+						dataFile = "./data/vatanen_dfef_meta.json";
+
+					return dataFile;
 				},
 				callRF: function(div){
 					var self = this;
@@ -612,6 +638,7 @@ return s})
 				                    .style("background-color", "#eee")
 				                    .style("color", "#444")
 				                    .on("mouseover", function(d){
+				                    	/*
 				                        document.getElementById("btn").classList.toggle("active");
 				                        var pan = this.nextElementSibling;
 				                        console.log(this.value);
@@ -620,10 +647,21 @@ return s})
         				                            pan.style.display = "block";
         				                        }
         				                        else
-        				                            pan.style.display = "none";}
+        				                            pan.style.display = "none";}*/
 				                    	})
 				                    .on("mouseout", function(d){
-				                        document.getElementById("btn").classList.toggle("active");
+				                       // document.getElementById("btn").classList.toggle("active");
+				                       /* var pan = this.nextElementSibling;
+				                        if(pan) 
+				                        	{
+				                        		if(pan.style.display === "none"){
+				                            	pan.style.display = "block";
+				                        		}
+				                       		 else
+				                            	pan.style.display = "none"; 
+				                            }*/
+				                    	})
+				                    .on("click", function(o){	
 				                        var pan = this.nextElementSibling;
 				                        if(pan) 
 				                        	{
@@ -633,8 +671,7 @@ return s})
 				                       		 else
 				                            	pan.style.display = "none"; 
 				                            }
-				                    	})
-				                    .on("click", function(o){				                    	
+			                    	
 				                        var b = parseInt(this.value);
 				                        self.thumbnails.destroy(); 
 				                        var group;
@@ -3185,7 +3222,17 @@ var C45 = function(data, features, y, major_label, num_tries){
     var feature_remains = _.without(features, best_feature);
     var best_feature_type = GetType(data[0][best_feature]);
     // Get counts for number of records from each class in the current node
-    
+    if(best_feature_data.gain === 0){
+    	 return {
+            type:"result",
+            val: y_values[0],
+            name: y_values[0],
+            numRecs: numRecs,
+            cl1: numCl1,
+            cl2: numCl2,
+            alias: y_values[0] + RID()
+        };
+    }
     // check if its an int/float
     if (best_feature_type == "float" || best_feature_type == "int"){
         tree = {

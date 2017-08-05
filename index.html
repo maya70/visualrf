@@ -63,7 +63,8 @@ div.left-controls {
 div.attrhierarchy {
   grid-area: sidebar;
   float: left;
-  max-width: 500px;
+  max-width: 600px;
+  width: 400px;
   max-height: 550px;
   background: lightgrey; /* For browsers that do not support gradients */
   background: -webkit-linear-gradient(white, lightgrey); /* For Safari 5.1 to 6.0 */
@@ -82,6 +83,7 @@ div.pathway {
   height: 300px;
   background-color: lightgrey;
   margin: 0;
+  margin-left: 40px;
   padding: 1em;
   overflow: scroll;
 }
@@ -98,19 +100,25 @@ article {
 div.legend{
   grid-area: legend;
   float: right;
+  margin-right: 40px;
   background: lightgrey; /* For browsers that do not support gradients */
   margin: 0;
   padding: 1em;
   overflow: scroll;
-  max-height: 350px;
+  max-height: 300px;
+}
+#field-panel{
+  
 }
 #control-panel{
-  grid-area: panel;
+ grid-area: panel;
   display: grid;
-  max-height: 150px;
+  max-height: 160px;
+  margin-right:40px;
   grid-template-areas: " count progress progress"
-                        " clean rerun ticks "
-                        " export revert ticks ";
+                        " clean  export ticks "
+                        " remove  revert ticks "
+                        " save meta ticks";
   grid-gap: 5px;
   background: lightgrey; /* For browsers that do not support gradients */
 }
@@ -125,10 +133,15 @@ div.legend{
 #ticks-butt {
   grid-area: ticks;
 }
-#clean-butt, #remove-butt, 
-#ticks-butt, #export-butt, #revert-butt{
+#export-butt, #clean-butt, #save-butt{
   height: 25px;
+  width: 60px;
   margin-left: 10px;
+}
+#remove-butt, #revert-butt, #meta-butt{
+ height: 25px;
+  width: 110px;
+  margin-left: 10px; 
 }
 #selected-count{
   grid-area: count;
@@ -137,10 +150,16 @@ div.legend{
   grid-area: clean;
 }
 #remove-butt{
-  grid-area: rerun;
+  grid-area: remove;
 }
 #export-butt{
   grid-area: export;
+}
+#save-butt{
+  grid-area: save;
+}
+#meta-butt{
+  grid-area: meta;
 }
 #revert-butt{
   grid-area: revert;
@@ -210,6 +229,9 @@ svg {
   fill: none;
   stroke: steelblue;
 }
+#selection-butt{
+  margin-left: 50%;
+}
 
 #background {
   position: absolute;
@@ -233,6 +255,15 @@ svg {
   width: 0;
 }
 #svg1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 600px;
+  min-height: 200px;
+  overflow: scroll;
+}
+
+#svg2 {
   position: absolute;
   top: 0;
   left: 0;
@@ -355,17 +386,28 @@ g.node.selected{
 
     
     <div id= "control-panel">
+    <fieldset id="field-panel">
+       <legend style="color:black;font-weight:bold;">Data Tools</legend>
        <div class="rec-controls">
-      <strong id="selected-count"></strong>/<strong id="data-count"></strong>
-      <div class="fillbar"><div id="selected-bar"><div id="rendered-bar">&nbsp;</div></div></div>
-      Records <!--strong id="opacity"></strong-->
-     
-    </div>
-       <input onClick="" type="button" id="clean-butt" value="Keep" style="background-color: lightgrey" > </input>
-       <input onClick="" type="button" id="remove-butt" value="Remove" style="background-color: lightgrey" > </input>
-       <input onclick="" type="button" id="export-butt" value="Export" style="background-color: lightgrey"> </input>
-       <input onclick="" type="button" id="revert-butt" value="Revert" style="background-color: lightgrey"> </input>
-       
+          <strong id="selected-count"></strong>/<strong id="data-count"></strong>
+          <div class="fillbar"><div id="selected-bar"><div id="rendered-bar">&nbsp;</div></div></div>
+          Records <!--strong id="opacity"></strong-->     
+       </div>
+       <table>
+       <tr>
+          <td>  <input onClick="" type="button" id="clean-butt" value="Keep" style="background-color: lightgrey" > </input> </td>
+          <td>  <input onClick="" type="button" id="remove-butt" value="Remove" style="background-color: lightgrey" > </input> </td>
+        </tr>
+        <tr>
+          <td> <input onclick="" type="button" id="export-butt" value="Export" style="background-color: lightgrey"> </input> </td>
+          <td> <input onclick="" type="button" id="revert-butt" value="Revert" style="background-color: lightgrey"> </input> </td>
+       </tr>
+       <tr>
+          <td> <input onclick="" type="button" id="save-butt" value="Save" style="background-color: lightgrey"> </input> </td>
+          <td> <input onclick="" type="button" id="meta-butt" value="Show Metadata" style="background-color: lightgrey"> </input> </td>
+       </tr>
+       </table>
+    </fieldset>
        <!--input onClick="changeTick()" type="button" id="ticks-butt" value="Hide Ticks" style="background-color: lightgrey"></input-->
     </div>
       
@@ -384,6 +426,7 @@ g.node.selected{
         <canvas id="foreground"></canvas>
         <canvas id="highlight"></canvas>
         <svg id="svg1"></svg>
+        <svg id="svg2"></svg>
     </div>
         
 <!--footer>
