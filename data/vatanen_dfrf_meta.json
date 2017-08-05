@@ -58,7 +58,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [  69820 ],
 "sequencing_PDO_16S": [ "PDO-3149" ],
-"gid_16s": [ "G66088" ] 
+"gid_16s": [ "G66088" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P000648" ],
@@ -119,7 +120,8 @@
 "mgx_reads_filtered": [ 42.977 ],
 "read_count_16S": [  92839 ],
 "sequencing_PDO_16S": [ "PDO-3149" ],
-"gid_16s": [ "G66089" ] 
+"gid_16s": [ "G66089" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P000675" ],
@@ -180,7 +182,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [  33384 ],
 "sequencing_PDO_16S": [ "PDO-3146" ],
-"gid_16s": [ "G65811" ] 
+"gid_16s": [ "G65811" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P000756" ],
@@ -241,7 +244,8 @@
 "mgx_reads_filtered": [  12.99 ],
 "read_count_16S": [ 1.7683e+05 ],
 "sequencing_PDO_16S": [ "PDO-3149" ],
-"gid_16s": [ "G65973" ] 
+"gid_16s": [ "G65973" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P000756" ],
@@ -302,7 +306,8 @@
 "mgx_reads_filtered": [ 58.021 ],
 "read_count_16S": [  23399 ],
 "sequencing_PDO_16S": [ "PDO-3109" ],
-"gid_16s": [ "G64997" ] 
+"gid_16s": [ "G64997" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P001363" ],
@@ -363,7 +368,8 @@
 "mgx_reads_filtered": [ 16.254 ],
 "read_count_16S": [  15810 ],
 "sequencing_PDO_16S": [ "PDO-4098" ],
-"gid_16s": [ "G72841" ] 
+"gid_16s": [ "G72841" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P001363" ],
@@ -424,7 +430,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [  38111 ],
 "sequencing_PDO_16S": [ "PDO-3149" ],
-"gid_16s": [ "G66025" ] 
+"gid_16s": [ "G66025" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P001363" ],
@@ -485,7 +492,8 @@
 "mgx_reads_filtered": [  34.52 ],
 "read_count_16S": [  34428 ],
 "sequencing_PDO_16S": [ "PDO-3149" ],
-"gid_16s": [ "G66086" ] 
+"gid_16s": [ "G66086" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P003191" ],
@@ -546,7 +554,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [  19491 ],
 "sequencing_PDO_16S": [ "PDO-3149" ],
-"gid_16s": [ "G66035" ] 
+"gid_16s": [ "G66035" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P003435" ],
@@ -607,7 +616,8 @@
 "mgx_reads_filtered": [ 15.412 ],
 "read_count_16S": [ 1.09e+05 ],
 "sequencing_PDO_16S": [ "PDO-3149" ],
-"gid_16s": [ "G66083" ] 
+"gid_16s": [ "G66083" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P003435" ],
@@ -668,7 +678,8 @@
 "mgx_reads_filtered": [ 29.954 ],
 "read_count_16S": [  12834 ],
 "sequencing_PDO_16S": [ "PDO-4098" ],
-"gid_16s": [ "G72846" ] 
+"gid_16s": [ "G72846" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P003558" ],
@@ -729,7 +740,8 @@
 "mgx_reads_filtered": [ 44.401 ],
 "read_count_16S": [  43789 ],
 "sequencing_PDO_16S": [ "PDO-4098" ],
-"gid_16s": [ "G72804" ] 
+"gid_16s": [ "G72804" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P004230" ],
@@ -790,7 +802,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [  28289 ],
 "sequencing_PDO_16S": [ "PDO-3107" ],
-"gid_16s": [ "G64721" ] 
+"gid_16s": [ "G64721" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P004230" ],
@@ -851,7 +864,8 @@
 "mgx_reads_filtered": [ 22.341 ],
 "read_count_16S": [  21613 ],
 "sequencing_PDO_16S": [ "PDO-4098" ],
-"gid_16s": [ "G72823" ] 
+"gid_16s": [ "G72823" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P004847" ],
@@ -912,7 +926,8 @@
 "mgx_reads_filtered": [ 1.9593 ],
 "read_count_16S": [  29424 ],
 "sequencing_PDO_16S": [ "PDO-3191" ],
-"gid_16s": [ "G66816" ] 
+"gid_16s": [ "G66816" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P004847" ],
@@ -973,7 +988,8 @@
 "mgx_reads_filtered": [ 1.2231 ],
 "read_count_16S": [  21654 ],
 "sequencing_PDO_16S": [ "PDO-4098" ],
-"gid_16s": [ "G72875" ] 
+"gid_16s": [ "G72875" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P004847" ],
@@ -1034,7 +1050,8 @@
 "mgx_reads_filtered": [ 8.0087 ],
 "read_count_16S": [  22691 ],
 "sequencing_PDO_16S": [ "PDO-4098" ],
-"gid_16s": [ "G72880" ] 
+"gid_16s": [ "G72880" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P005135" ],
@@ -1095,7 +1112,8 @@
 "mgx_reads_filtered": [ 11.703 ],
 "read_count_16S": [  54722 ],
 "sequencing_PDO_16S": [ "PDO-3149" ],
-"gid_16s": [ "G66075" ] 
+"gid_16s": [ "G66075" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P005342" ],
@@ -1156,7 +1174,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [  36403 ],
 "sequencing_PDO_16S": [ "PDO-3109" ],
-"gid_16s": [ "G65000" ] 
+"gid_16s": [ "G65000" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P005342" ],
@@ -1217,7 +1236,8 @@
 "mgx_reads_filtered": [ 27.701 ],
 "read_count_16S": [  18107 ],
 "sequencing_PDO_16S": [ "PDO-3109" ],
-"gid_16s": [ "G64999" ] 
+"gid_16s": [ "G64999" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P005342" ],
@@ -1278,7 +1298,8 @@
 "mgx_reads_filtered": [ 0.90835 ],
 "read_count_16S": [  33626 ],
 "sequencing_PDO_16S": [ "PDO-3109" ],
-"gid_16s": [ "G64998" ] 
+"gid_16s": [ "G64998" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P005558" ],
@@ -1339,7 +1360,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [  65985 ],
 "sequencing_PDO_16S": [ "PDO-3166" ],
-"gid_16s": [ "G66228" ] 
+"gid_16s": [ "G66228" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P005558" ],
@@ -1400,7 +1422,8 @@
 "mgx_reads_filtered": [ 9.7784 ],
 "read_count_16S": [  64556 ],
 "sequencing_PDO_16S": [ "PDO-3166" ],
-"gid_16s": [ "G66227" ] 
+"gid_16s": [ "G66227" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P005558" ],
@@ -1461,7 +1484,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [  61498 ],
 "sequencing_PDO_16S": [ "PDO-3149" ],
-"gid_16s": [ "G66081" ] 
+"gid_16s": [ "G66081" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P006035" ],
@@ -1522,7 +1546,8 @@
 "mgx_reads_filtered": [ 1.8709 ],
 "read_count_16S": [ 1.6307e+05 ],
 "sequencing_PDO_16S": [ "PDO-3127" ],
-"gid_16s": [ "G65361" ] 
+"gid_16s": [ "G65361" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P006035" ],
@@ -1583,7 +1608,8 @@
 "mgx_reads_filtered": [ 20.878 ],
 "read_count_16S": [ 1.6356e+05 ],
 "sequencing_PDO_16S": [ "PDO-3127" ],
-"gid_16s": [ "G65360" ] 
+"gid_16s": [ "G65360" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P006862" ],
@@ -1644,7 +1670,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [  45406 ],
 "sequencing_PDO_16S": [ "PDO-3149" ],
-"gid_16s": [ "G66027" ] 
+"gid_16s": [ "G66027" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P007649" ],
@@ -1705,7 +1732,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [  42839 ],
 "sequencing_PDO_16S": [ "PDO-3149" ],
-"gid_16s": [ "G66034" ] 
+"gid_16s": [ "G66034" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P007649" ],
@@ -1766,7 +1794,8 @@
 "mgx_reads_filtered": [ 2.3463 ],
 "read_count_16S": [  34386 ],
 "sequencing_PDO_16S": [ "PDO-3149" ],
-"gid_16s": [ "G66033" ] 
+"gid_16s": [ "G66033" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P007857" ],
@@ -1827,7 +1856,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [  20972 ],
 "sequencing_PDO_16S": [ "PDO-3149" ],
-"gid_16s": [ "G66092" ] 
+"gid_16s": [ "G66092" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P007857" ],
@@ -1888,7 +1918,8 @@
 "mgx_reads_filtered": [ 12.039 ],
 "read_count_16S": [  77861 ],
 "sequencing_PDO_16S": [ "PDO-3149" ],
-"gid_16s": [ "G66032" ] 
+"gid_16s": [ "G66032" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P007857" ],
@@ -1949,7 +1980,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [ 1.6555e+05 ],
 "sequencing_PDO_16S": [ "PDO-3127" ],
-"gid_16s": [ "G65370" ] 
+"gid_16s": [ "G65370" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P008119" ],
@@ -2010,7 +2042,8 @@
 "mgx_reads_filtered": [ 12.783 ],
 "read_count_16S": [  17789 ],
 "sequencing_PDO_16S": [ "PDO-4156" ],
-"gid_16s": [ "G73790" ] 
+"gid_16s": [ "G73790" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P008579" ],
@@ -2071,7 +2104,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [  10902 ],
 "sequencing_PDO_16S": [ "PDO-4098" ],
-"gid_16s": [ "G72854" ] 
+"gid_16s": [ "G72854" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P008633" ],
@@ -2132,7 +2166,8 @@
 "mgx_reads_filtered": [  9.146 ],
 "read_count_16S": [  26210 ],
 "sequencing_PDO_16S": [ "PDO-4098" ],
-"gid_16s": [ "G72884" ] 
+"gid_16s": [ "G72884" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P008633" ],
@@ -2193,7 +2228,8 @@
 "mgx_reads_filtered": [ 18.569 ],
 "read_count_16S": [  62157 ],
 "sequencing_PDO_16S": [ "PDO-3239" ],
-"gid_16s": [ "G67124" ] 
+"gid_16s": [ "G67124" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P008633" ],
@@ -2254,7 +2290,8 @@
 "mgx_reads_filtered": [ 19.693 ],
 "read_count_16S": [  89869 ],
 "sequencing_PDO_16S": [ "PDO-3239" ],
-"gid_16s": [ "G67132" ] 
+"gid_16s": [ "G67132" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P008723" ],
@@ -2315,7 +2352,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [  16912 ],
 "sequencing_PDO_16S": [ "PDO-4098" ],
-"gid_16s": [ "G72837" ] 
+"gid_16s": [ "G72837" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P008723" ],
@@ -2376,7 +2414,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [  25626 ],
 "sequencing_PDO_16S": [ "PDO-4156" ],
-"gid_16s": [ "G73787" ] 
+"gid_16s": [ "G73787" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P008939" ],
@@ -2437,7 +2476,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [ 1.182e+05 ],
 "sequencing_PDO_16S": [ "PDO-3166" ],
-"gid_16s": [ "G66181" ] 
+"gid_16s": [ "G66181" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P009219" ],
@@ -2498,7 +2538,8 @@
 "mgx_reads_filtered": [ 12.855 ],
 "read_count_16S": [  21899 ],
 "sequencing_PDO_16S": [ "PDO-3108" ],
-"gid_16s": [ "G64567" ] 
+"gid_16s": [ "G64567" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P009219" ],
@@ -2559,7 +2600,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [  26033 ],
 "sequencing_PDO_16S": [ "PDO-3108" ],
-"gid_16s": [ "G64566" ] 
+"gid_16s": [ "G64566" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P009291" ],
@@ -2620,7 +2662,8 @@
 "mgx_reads_filtered": [ 2.0922 ],
 "read_count_16S": [  36113 ],
 "sequencing_PDO_16S": [ "PDO-3166" ],
-"gid_16s": [ "G66221" ] 
+"gid_16s": [ "G66221" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P009291" ],
@@ -2681,7 +2724,8 @@
 "mgx_reads_filtered": [ 9.2369 ],
 "read_count_16S": [  26619 ],
 "sequencing_PDO_16S": [ "PDO-3107" ],
-"gid_16s": [ "G64720" ] 
+"gid_16s": [ "G64720" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P009746" ],
@@ -2742,7 +2786,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [  77347 ],
 "sequencing_PDO_16S": [ "PDO-3178" ],
-"gid_16s": [ "G66392" ] 
+"gid_16s": [ "G66392" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P010096" ],
@@ -2803,7 +2848,8 @@
 "mgx_reads_filtered": [ 0.1997 ],
 "read_count_16S": [   7073 ],
 "sequencing_PDO_16S": [ "PDO-4098" ],
-"gid_16s": [ "G72851" ] 
+"gid_16s": [ "G72851" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P010096" ],
@@ -2864,7 +2910,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [  69829 ],
 "sequencing_PDO_16S": [ "PDO-3166" ],
-"gid_16s": [ "G66225" ] 
+"gid_16s": [ "G66225" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P010096" ],
@@ -2925,7 +2972,8 @@
 "mgx_reads_filtered": [  1.193 ],
 "read_count_16S": [ 2.0235e+05 ],
 "sequencing_PDO_16S": [ "PDO-3166" ],
-"gid_16s": [ "G66224" ] 
+"gid_16s": [ "G66224" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P010313" ],
@@ -2986,7 +3034,8 @@
 "mgx_reads_filtered": [ 13.123 ],
 "read_count_16S": [  17753 ],
 "sequencing_PDO_16S": [ "PDO-3109" ],
-"gid_16s": [ "G64948" ] 
+"gid_16s": [ "G64948" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P010936" ],
@@ -3047,7 +3096,8 @@
 "mgx_reads_filtered": [ 3.8608 ],
 "read_count_16S": [  54724 ],
 "sequencing_PDO_16S": [ "PDO-3127" ],
-"gid_16s": [ "G65363" ] 
+"gid_16s": [ "G65363" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P011108" ],
@@ -3108,7 +3158,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [  40026 ],
 "sequencing_PDO_16S": [ "PDO-3146" ],
-"gid_16s": [ "G65953" ] 
+"gid_16s": [ "G65953" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P011108" ],
@@ -3169,7 +3220,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [  37772 ],
 "sequencing_PDO_16S": [ "PDO-3146" ],
-"gid_16s": [ "G65954" ] 
+"gid_16s": [ "G65954" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P013454" ],
@@ -3230,7 +3282,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [  22178 ],
 "sequencing_PDO_16S": [ "PDO-3149" ],
-"gid_16s": [ "G66100" ] 
+"gid_16s": [ "G66100" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P013701" ],
@@ -3291,7 +3344,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [  11045 ],
 "sequencing_PDO_16S": [ "PDO-3108" ],
-"gid_16s": [ "G64569" ] 
+"gid_16s": [ "G64569" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P013701" ],
@@ -3352,7 +3406,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [  24907 ],
 "sequencing_PDO_16S": [ "PDO-4098" ],
-"gid_16s": [ "G72802" ] 
+"gid_16s": [ "G72802" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P013701" ],
@@ -3413,7 +3468,8 @@
 "mgx_reads_filtered": [ 14.042 ],
 "read_count_16S": [  11234 ],
 "sequencing_PDO_16S": [ "PDO-3108" ],
-"gid_16s": [ "G64570" ] 
+"gid_16s": [ "G64570" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P013701" ],
@@ -3474,7 +3530,8 @@
 "mgx_reads_filtered": [ 24.458 ],
 "read_count_16S": [  39432 ],
 "sequencing_PDO_16S": [ "PDO-4098" ],
-"gid_16s": [ "G72866" ] 
+"gid_16s": [ "G72866" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P013823" ],
@@ -3535,7 +3592,8 @@
 "mgx_reads_filtered": [ 6.3208 ],
 "read_count_16S": [ 1.037e+05 ],
 "sequencing_PDO_16S": [ "PDO-3178" ],
-"gid_16s": [ "G66467" ] 
+"gid_16s": [ "G66467" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P013823" ],
@@ -3596,7 +3654,8 @@
 "mgx_reads_filtered": [  17.66 ],
 "read_count_16S": [ 3.2779e+05 ],
 "sequencing_PDO_16S": [ "PDO-3178" ],
-"gid_16s": [ "G66468" ] 
+"gid_16s": [ "G66468" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P013823" ],
@@ -3657,7 +3716,8 @@
 "mgx_reads_filtered": [ 21.393 ],
 "read_count_16S": [  92344 ],
 "sequencing_PDO_16S": [ "PDO-3178" ],
-"gid_16s": [ "G66466" ] 
+"gid_16s": [ "G66466" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P013960" ],
@@ -3718,7 +3778,8 @@
 "mgx_reads_filtered": [ 0.19913 ],
 "read_count_16S": [  44860 ],
 "sequencing_PDO_16S": [ "PDO-3166" ],
-"gid_16s": [ "G66220" ] 
+"gid_16s": [ "G66220" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P013960" ],
@@ -3779,7 +3840,8 @@
 "mgx_reads_filtered": [ 28.068 ],
 "read_count_16S": [  14542 ],
 "sequencing_PDO_16S": [ "PDO-4098" ],
-"gid_16s": [ "G72860" ] 
+"gid_16s": [ "G72860" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P013960" ],
@@ -3840,7 +3902,8 @@
 "mgx_reads_filtered": [ 1.8991 ],
 "read_count_16S": [  17024 ],
 "sequencing_PDO_16S": [ "PDO-4098" ],
-"gid_16s": [ "G72859" ] 
+"gid_16s": [ "G72859" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P014605" ],
@@ -3901,7 +3964,8 @@
 "mgx_reads_filtered": [ 18.841 ],
 "read_count_16S": [  64670 ],
 "sequencing_PDO_16S": [ "PDO-3149" ],
-"gid_16s": [ "G66130" ] 
+"gid_16s": [ "G66130" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P014605" ],
@@ -3962,7 +4026,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [  24660 ],
 "sequencing_PDO_16S": [ "PDO-3149" ],
-"gid_16s": [ "G66129" ] 
+"gid_16s": [ "G66129" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P014713" ],
@@ -4023,7 +4088,8 @@
 "mgx_reads_filtered": [ 11.407 ],
 "read_count_16S": [  22186 ],
 "sequencing_PDO_16S": [ "PDO-3108" ],
-"gid_16s": [ "G64565" ] 
+"gid_16s": [ "G64565" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P014713" ],
@@ -4084,7 +4150,8 @@
 "mgx_reads_filtered": [ 35.388 ],
 "read_count_16S": [  13509 ],
 "sequencing_PDO_16S": [ "PDO-3178" ],
-"gid_16s": [ "G66361" ] 
+"gid_16s": [ "G66361" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P014839" ],
@@ -4145,7 +4212,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [  43015 ],
 "sequencing_PDO_16S": [ "PDO-4158" ],
-"gid_16s": [ "G74099" ] 
+"gid_16s": [ "G74099" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P014839" ],
@@ -4206,7 +4274,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [ 1.9647e+05 ],
 "sequencing_PDO_16S": [ "PDO-3178" ],
-"gid_16s": [ "G66374" ] 
+"gid_16s": [ "G66374" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P014839" ],
@@ -4267,7 +4336,8 @@
 "mgx_reads_filtered": [ 30.024 ],
 "read_count_16S": [ 3.6249e+05 ],
 "sequencing_PDO_16S": [ "PDO-3178" ],
-"gid_16s": [ "G66373" ] 
+"gid_16s": [ "G66373" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P015091" ],
@@ -4328,7 +4398,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [  37073 ],
 "sequencing_PDO_16S": [ "PDO-4098" ],
-"gid_16s": [ "G72797" ] 
+"gid_16s": [ "G72797" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P015091" ],
@@ -4389,7 +4460,8 @@
 "mgx_reads_filtered": [  15.91 ],
 "read_count_16S": [  39702 ],
 "sequencing_PDO_16S": [ "PDO-3068" ],
-"gid_16s": [ "G63394" ] 
+"gid_16s": [ "G63394" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P015163" ],
@@ -4450,7 +4522,8 @@
 "mgx_reads_filtered": [ 32.599 ],
 "read_count_16S": [  34383 ],
 "sequencing_PDO_16S": [ "PDO-3109" ],
-"gid_16s": [ "G64950" ] 
+"gid_16s": [ "G64950" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P015163" ],
@@ -4511,7 +4584,8 @@
 "mgx_reads_filtered": [ 52.185 ],
 "read_count_16S": [  63793 ],
 "sequencing_PDO_16S": [ "PDO-4098" ],
-"gid_16s": [ "G72813" ] 
+"gid_16s": [ "G72813" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P015656" ],
@@ -4572,7 +4646,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [  24136 ],
 "sequencing_PDO_16S": [ "PDO-3107" ],
-"gid_16s": [ "G64714" ] 
+"gid_16s": [ "G64714" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P016803" ],
@@ -4633,7 +4708,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [ 1.2528e+05 ],
 "sequencing_PDO_16S": [ "PDO-3149" ],
-"gid_16s": [ "G65962" ] 
+"gid_16s": [ "G65962" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P016803" ],
@@ -4694,7 +4770,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [ 1.2216e+05 ],
 "sequencing_PDO_16S": [ "PDO-3149" ],
-"gid_16s": [ "G65963" ] 
+"gid_16s": [ "G65963" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P016803" ],
@@ -4755,7 +4832,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [  96962 ],
 "sequencing_PDO_16S": [ "PDO-3178" ],
-"gid_16s": [ "G66399" ] 
+"gid_16s": [ "G66399" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P017255" ],
@@ -4816,7 +4894,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [  47157 ],
 "sequencing_PDO_16S": [ "PDO-3109" ],
-"gid_16s": [ "G64943" ] 
+"gid_16s": [ "G64943" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P017255" ],
@@ -4877,7 +4956,8 @@
 "mgx_reads_filtered": [ 8.1719 ],
 "read_count_16S": [  53428 ],
 "sequencing_PDO_16S": [ "PDO-3109" ],
-"gid_16s": [ "G64942" ] 
+"gid_16s": [ "G64942" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P017671" ],
@@ -4938,7 +5018,8 @@
 "mgx_reads_filtered": [ 19.348 ],
 "read_count_16S": [  36640 ],
 "sequencing_PDO_16S": [ "PDO-3068" ],
-"gid_16s": [ "G63378" ] 
+"gid_16s": [ "G63378" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P017671" ],
@@ -4999,7 +5080,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [  39303 ],
 "sequencing_PDO_16S": [ "PDO-3068" ],
-"gid_16s": [ "G63377" ] 
+"gid_16s": [ "G63377" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P017671" ],
@@ -5060,7 +5142,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [  42063 ],
 "sequencing_PDO_16S": [ "PDO-3068" ],
-"gid_16s": [ "G63379" ] 
+"gid_16s": [ "G63379" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P017743" ],
@@ -5121,7 +5204,8 @@
 "mgx_reads_filtered": [ 13.076 ],
 "read_count_16S": [ 1.2067e+05 ],
 "sequencing_PDO_16S": [ "PDO-4156" ],
-"gid_16s": [ "G73574" ] 
+"gid_16s": [ "G73574" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P017743" ],
@@ -5182,7 +5266,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [  32981 ],
 "sequencing_PDO_16S": [ "PDO-3068" ],
-"gid_16s": [ "G63244" ] 
+"gid_16s": [ "G63244" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P017743" ],
@@ -5243,7 +5328,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [  43958 ],
 "sequencing_PDO_16S": [ "PDO-3068" ],
-"gid_16s": [ "G63253" ] 
+"gid_16s": [ "G63253" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P018832" ],
@@ -5304,7 +5390,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [  27396 ],
 "sequencing_PDO_16S": [ "PDO-3146" ],
-"gid_16s": [ "G65842" ] 
+"gid_16s": [ "G65842" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P018832" ],
@@ -5365,7 +5452,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [   9470 ],
 "sequencing_PDO_16S": [ "PDO-3239" ],
-"gid_16s": [ "G67111" ] 
+"gid_16s": [ "G67111" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P019222" ],
@@ -5426,7 +5514,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [  24319 ],
 "sequencing_PDO_16S": [ "PDO-3178" ],
-"gid_16s": [ "G66389" ] 
+"gid_16s": [ "G66389" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P019222" ],
@@ -5487,7 +5576,8 @@
 "mgx_reads_filtered": [ 26.149 ],
 "read_count_16S": [  20257 ],
 "sequencing_PDO_16S": [ "PDO-3178" ],
-"gid_16s": [ "G66390" ] 
+"gid_16s": [ "G66390" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P019222" ],
@@ -5548,7 +5638,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [  54060 ],
 "sequencing_PDO_16S": [ "PDO-3239" ],
-"gid_16s": [ "G67098" ] 
+"gid_16s": [ "G67098" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P019475" ],
@@ -5609,7 +5700,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [  84011 ],
 "sequencing_PDO_16S": [ "PDO-3149" ],
-"gid_16s": [ "G65970" ] 
+"gid_16s": [ "G65970" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P019475" ],
@@ -5670,7 +5762,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [  39876 ],
 "sequencing_PDO_16S": [ "PDO-3146" ],
-"gid_16s": [ "G65945" ] 
+"gid_16s": [ "G65945" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P019475" ],
@@ -5731,7 +5824,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [  45540 ],
 "sequencing_PDO_16S": [ "PDO-3146" ],
-"gid_16s": [ "G65944" ] 
+"gid_16s": [ "G65944" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P022130" ],
@@ -5792,7 +5886,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [ 1.2099e+05 ],
 "sequencing_PDO_16S": [ "PDO-3146" ],
-"gid_16s": [ "G65930" ] 
+"gid_16s": [ "G65930" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P022130" ],
@@ -5853,7 +5948,8 @@
 "mgx_reads_filtered": [ 15.177 ],
 "read_count_16S": [  37230 ],
 "sequencing_PDO_16S": [ "PDO-3146" ],
-"gid_16s": [ "G65931" ] 
+"gid_16s": [ "G65931" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P022222" ],
@@ -5914,7 +6010,8 @@
 "mgx_reads_filtered": [ 14.021 ],
 "read_count_16S": [  53899 ],
 "sequencing_PDO_16S": [ "PDO-3149" ],
-"gid_16s": [ "G66106" ] 
+"gid_16s": [ "G66106" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P022222" ],
@@ -5975,7 +6072,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [ 1.6517e+05 ],
 "sequencing_PDO_16S": [ "PDO-3149" ],
-"gid_16s": [ "G66107" ] 
+"gid_16s": [ "G66107" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P026562" ],
@@ -6036,7 +6134,8 @@
 "mgx_reads_filtered": [ 9.8796 ],
 "read_count_16S": [  26321 ],
 "sequencing_PDO_16S": [ "PDO-3191" ],
-"gid_16s": [ "G66868" ] 
+"gid_16s": [ "G66868" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "P026562" ],
@@ -6097,7 +6196,8 @@
 "mgx_reads_filtered": [ 8.2762 ],
 "read_count_16S": [  15644 ],
 "sequencing_PDO_16S": [ "PDO-3191" ],
-"gid_16s": [ "G66869" ] 
+"gid_16s": [ "G66869" ],
+"outcome": [ "1" ] 
 },
 {
  "subjectID": [ "E002338" ],
@@ -6158,7 +6258,8 @@
 "mgx_reads_filtered": [ 23.825 ],
 "read_count_16S": [  18931 ],
 "sequencing_PDO_16S": [ "PDO-4356" ],
-"gid_16s": [ "G75788" ] 
+"gid_16s": [ "G75788" ],
+"outcome": [ "2" ] 
 },
 {
  "subjectID": [ "E002473" ],
@@ -6219,7 +6320,8 @@
 "mgx_reads_filtered": [ 18.348 ],
 "read_count_16S": [   6344 ],
 "sequencing_PDO_16S": [ "PDO-4356" ],
-"gid_16s": [ "G75787" ] 
+"gid_16s": [ "G75787" ],
+"outcome": [ "2" ] 
 },
 {
  "subjectID": [ "E002681" ],
@@ -6280,7 +6382,8 @@
 "mgx_reads_filtered": [ 8.9759 ],
 "read_count_16S": [  30016 ],
 "sequencing_PDO_16S": [ "PDO-4398" ],
-"gid_16s": [ "G76434" ] 
+"gid_16s": [ "G76434" ],
+"outcome": [ "2" ] 
 },
 {
  "subjectID": [ "E003393" ],
@@ -6341,7 +6444,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [  15052 ],
 "sequencing_PDO_16S": [ "PDO-4356" ],
-"gid_16s": [ "G75709" ] 
+"gid_16s": [ "G75709" ],
+"outcome": [ "2" ] 
 },
 {
  "subjectID": [ "E003393" ],
@@ -6402,7 +6506,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [  18947 ],
 "sequencing_PDO_16S": [ "PDO-4398" ],
-"gid_16s": [ "G76441" ] 
+"gid_16s": [ "G76441" ],
+"outcome": [ "2" ] 
 },
 {
  "subjectID": [ "E004080" ],
@@ -6463,7 +6568,8 @@
 "mgx_reads_filtered": [ 9.3096 ],
 "read_count_16S": [  20339 ],
 "sequencing_PDO_16S": [ "PDO-4398" ],
-"gid_16s": [ "G76435" ] 
+"gid_16s": [ "G76435" ],
+"outcome": [ "2" ] 
 },
 {
  "subjectID": [ "E004781" ],
@@ -6524,7 +6630,8 @@
 "mgx_reads_filtered": [ 33.295 ],
 "read_count_16S": [   9161 ],
 "sequencing_PDO_16S": [ "PDO-4398" ],
-"gid_16s": [ "G76438" ] 
+"gid_16s": [ "G76438" ],
+"outcome": [ "2" ] 
 },
 {
  "subjectID": [ "E004934" ],
@@ -6585,7 +6692,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [  41910 ],
 "sequencing_PDO_16S": [ "PDO-4398" ],
-"gid_16s": [ "G76454" ] 
+"gid_16s": [ "G76454" ],
+"outcome": [ "2" ] 
 },
 {
  "subjectID": [ "E005804" ],
@@ -6646,7 +6754,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [  22084 ],
 "sequencing_PDO_16S": [ "PDO-4398" ],
-"gid_16s": [ "G76462" ] 
+"gid_16s": [ "G76462" ],
+"outcome": [ "2" ] 
 },
 {
  "subjectID": [ "E007303" ],
@@ -6707,7 +6816,8 @@
 "mgx_reads_filtered": [ 38.075 ],
 "read_count_16S": [   5680 ],
 "sequencing_PDO_16S": [ "PDO-4356" ],
-"gid_16s": [ "G75820" ] 
+"gid_16s": [ "G75820" ],
+"outcome": [ "2" ] 
 },
 {
  "subjectID": [ "E007980" ],
@@ -6768,7 +6878,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [  34110 ],
 "sequencing_PDO_16S": [ "PDO-4398" ],
-"gid_16s": [ "G76390" ] 
+"gid_16s": [ "G76390" ],
+"outcome": [ "2" ] 
 },
 {
  "subjectID": [ "E008241" ],
@@ -6829,7 +6940,8 @@
 "mgx_reads_filtered": [ 12.335 ],
 "read_count_16S": [  12753 ],
 "sequencing_PDO_16S": [ "PDO-4398" ],
-"gid_16s": [ "G76400" ] 
+"gid_16s": [ "G76400" ],
+"outcome": [ "2" ] 
 },
 {
  "subjectID": [ "E008357" ],
@@ -6890,7 +7002,8 @@
 "mgx_reads_filtered": [ 17.116 ],
 "read_count_16S": [   3532 ],
 "sequencing_PDO_16S": [ "PDO-4356" ],
-"gid_16s": [ "G75838" ] 
+"gid_16s": [ "G75838" ],
+"outcome": [ "2" ] 
 },
 {
  "subjectID": [ "E008437" ],
@@ -6951,7 +7064,8 @@
 "mgx_reads_filtered": [  28.45 ],
 "read_count_16S": [  20256 ],
 "sequencing_PDO_16S": [ "PDO-4398" ],
-"gid_16s": [ "G76389" ] 
+"gid_16s": [ "G76389" ],
+"outcome": [ "2" ] 
 },
 {
  "subjectID": [ "E008643" ],
@@ -7012,7 +7126,8 @@
 "mgx_reads_filtered": [ 69.069 ],
 "read_count_16S": [  26311 ],
 "sequencing_PDO_16S": [ "PDO-4398" ],
-"gid_16s": [ "G76402" ] 
+"gid_16s": [ "G76402" ],
+"outcome": [ "2" ] 
 },
 {
  "subjectID": [ "E009020" ],
@@ -7073,7 +7188,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [ 2.0286e+05 ],
 "sequencing_PDO_16S": [ "PDO-4398" ],
-"gid_16s": [ "G76396" ] 
+"gid_16s": [ "G76396" ],
+"outcome": [ "2" ] 
 },
 {
  "subjectID": [ "E009667" ],
@@ -7134,7 +7250,8 @@
 "mgx_reads_filtered": [ 16.105 ],
 "read_count_16S": [  18124 ],
 "sequencing_PDO_16S": [ "PDO-4398" ],
-"gid_16s": [ "G76411" ] 
+"gid_16s": [ "G76411" ],
+"outcome": [ "2" ] 
 },
 {
  "subjectID": [ "E009676" ],
@@ -7195,7 +7312,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [  17818 ],
 "sequencing_PDO_16S": [ "PDO-4356" ],
-"gid_16s": [ "G75862" ] 
+"gid_16s": [ "G75862" ],
+"outcome": [ "2" ] 
 },
 {
  "subjectID": [ "E011183" ],
@@ -7256,7 +7374,8 @@
 "mgx_reads_filtered": [ 11.249 ],
 "read_count_16S": [  26308 ],
 "sequencing_PDO_16S": [ "PDO-3107" ],
-"gid_16s": [ "G64643" ] 
+"gid_16s": [ "G64643" ],
+"outcome": [ "2" ] 
 },
 {
  "subjectID": [ "E012115" ],
@@ -7317,7 +7436,8 @@
 "mgx_reads_filtered": [ 14.809 ],
 "read_count_16S": [  28842 ],
 "sequencing_PDO_16S": [ "PDO-3191" ],
-"gid_16s": [ "G66733" ] 
+"gid_16s": [ "G66733" ],
+"outcome": [ "2" ] 
 },
 {
  "subjectID": [ "E012124" ],
@@ -7378,7 +7498,8 @@
 "mgx_reads_filtered": [ 19.283 ],
 "read_count_16S": [  29914 ],
 "sequencing_PDO_16S": [ "PDO-3166" ],
-"gid_16s": [ "G66244" ] 
+"gid_16s": [ "G66244" ],
+"outcome": [ "2" ] 
 },
 {
  "subjectID": [ "E012678" ],
@@ -7439,7 +7560,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [  77594 ],
 "sequencing_PDO_16S": [ "PDO-4156" ],
-"gid_16s": [ "G73707" ] 
+"gid_16s": [ "G73707" ],
+"outcome": [ "2" ] 
 },
 {
  "subjectID": [ "E015208" ],
@@ -7500,7 +7622,8 @@
 "mgx_reads_filtered": [ 31.493 ],
 "read_count_16S": [   5075 ],
 "sequencing_PDO_16S": [ "PDO-4356" ],
-"gid_16s": [ "G75777" ] 
+"gid_16s": [ "G75777" ],
+"outcome": [ "2" ] 
 },
 {
  "subjectID": [ "E015378" ],
@@ -7561,7 +7684,8 @@
 "mgx_reads_filtered": [ 29.594 ],
 "read_count_16S": [  22310 ],
 "sequencing_PDO_16S": [ "PDO-4356" ],
-"gid_16s": [ "G75734" ] 
+"gid_16s": [ "G75734" ],
+"outcome": [ "2" ] 
 },
 {
  "subjectID": [ "E016148" ],
@@ -7622,7 +7746,8 @@
 "mgx_reads_filtered": [ 36.873 ],
 "read_count_16S": [  69317 ],
 "sequencing_PDO_16S": [ "PDO-4356" ],
-"gid_16s": [ "G75715" ] 
+"gid_16s": [ "G75715" ],
+"outcome": [ "2" ] 
 },
 {
  "subjectID": [ "E016444" ],
@@ -7683,7 +7808,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [  25279 ],
 "sequencing_PDO_16S": [ "PDO-4356" ],
-"gid_16s": [ "G75735" ] 
+"gid_16s": [ "G75735" ],
+"outcome": [ "2" ] 
 },
 {
  "subjectID": [ "E016870" ],
@@ -7744,7 +7870,8 @@
 "mgx_reads_filtered": [  29.33 ],
 "read_count_16S": [   9805 ],
 "sequencing_PDO_16S": [ "PDO-4330" ],
-"gid_16s": [ "G75551" ] 
+"gid_16s": [ "G75551" ],
+"outcome": [ "2" ] 
 },
 {
  "subjectID": [ "E017049" ],
@@ -7805,7 +7932,8 @@
 "mgx_reads_filtered": [ 34.048 ],
 "read_count_16S": [ 1.027e+05 ],
 "sequencing_PDO_16S": [ "PDO-4356" ],
-"gid_16s": [ "G75731" ] 
+"gid_16s": [ "G75731" ],
+"outcome": [ "2" ] 
 },
 {
  "subjectID": [ "E017715" ],
@@ -7866,7 +7994,8 @@
 "mgx_reads_filtered": [ 30.105 ],
 "read_count_16S": [   3487 ],
 "sequencing_PDO_16S": [ "PDO-4330" ],
-"gid_16s": [ "G75546" ] 
+"gid_16s": [ "G75546" ],
+"outcome": [ "2" ] 
 },
 {
  "subjectID": [ "E019349" ],
@@ -7927,7 +8056,8 @@
 "mgx_reads_filtered": [ 32.679 ],
 "read_count_16S": [  58206 ],
 "sequencing_PDO_16S": [ "PDO-4398" ],
-"gid_16s": [ "G76414" ] 
+"gid_16s": [ "G76414" ],
+"outcome": [ "2" ] 
 },
 {
  "subjectID": [ "E020682" ],
@@ -7988,7 +8118,8 @@
 "mgx_reads_filtered": [ 7.4235 ],
 "read_count_16S": [  27084 ],
 "sequencing_PDO_16S": [ "PDO-3191" ],
-"gid_16s": [ "G66740" ] 
+"gid_16s": [ "G66740" ],
+"outcome": [ "2" ] 
 },
 {
  "subjectID": [ "E022083" ],
@@ -8049,7 +8180,8 @@
 "mgx_reads_filtered": [ 36.462 ],
 "read_count_16S": [   4926 ],
 "sequencing_PDO_16S": [ "PDO-4356" ],
-"gid_16s": [ "G75848" ] 
+"gid_16s": [ "G75848" ],
+"outcome": [ "2" ] 
 },
 {
  "subjectID": [ "E022960" ],
@@ -8110,7 +8242,8 @@
 "mgx_reads_filtered": [ 11.893 ],
 "read_count_16S": [  51827 ],
 "sequencing_PDO_16S": [ "PDO-3149" ],
-"gid_16s": [ "G66044" ] 
+"gid_16s": [ "G66044" ],
+"outcome": [ "2" ] 
 },
 {
  "subjectID": [ "E023705" ],
@@ -8171,7 +8304,8 @@
 "mgx_reads_filtered": [ 11.076 ],
 "read_count_16S": [ 1.479e+05 ],
 "sequencing_PDO_16S": [ "PDO-3149" ],
-"gid_16s": [ "G66046" ] 
+"gid_16s": [ "G66046" ],
+"outcome": [ "2" ] 
 },
 {
  "subjectID": [ "E030828" ],
@@ -8232,7 +8366,8 @@
 "mgx_reads_filtered": [ 11.957 ],
 "read_count_16S": [  47076 ],
 "sequencing_PDO_16S": [ "PDO-3068" ],
-"gid_16s": [ "G63328" ] 
+"gid_16s": [ "G63328" ],
+"outcome": [ "2" ] 
 },
 {
  "subjectID": [ "E031941" ],
@@ -8293,7 +8428,8 @@
 "mgx_reads_filtered": [ 23.536 ],
 "read_count_16S": [  58895 ],
 "sequencing_PDO_16S": [ "PDO-3108" ],
-"gid_16s": [ "G64801" ] 
+"gid_16s": [ "G64801" ],
+"outcome": [ "2" ] 
 },
 {
  "subjectID": [ "E032745" ],
@@ -8354,7 +8490,8 @@
 "mgx_reads_filtered": [ 19.151 ],
 "read_count_16S": [  60237 ],
 "sequencing_PDO_16S": [ "PDO-3108" ],
-"gid_16s": [ "G64794" ] 
+"gid_16s": [ "G64794" ],
+"outcome": [ "2" ] 
 },
 {
  "subjectID": [ "E033036" ],
@@ -8415,7 +8552,8 @@
 "mgx_reads_filtered": [ null ],
 "read_count_16S": [  34506 ],
 "sequencing_PDO_16S": [ "PDO-3109" ],
-"gid_16s": [ "G64897" ] 
+"gid_16s": [ "G64897" ],
+"outcome": [ "2" ] 
 },
 {
  "subjectID": [ "E033156" ],
@@ -8476,7 +8614,8 @@
 "mgx_reads_filtered": [ 11.519 ],
 "read_count_16S": [  52183 ],
 "sequencing_PDO_16S": [ "PDO-3166" ],
-"gid_16s": [ "G66306" ] 
+"gid_16s": [ "G66306" ],
+"outcome": [ "2" ] 
 },
 {
  "subjectID": [ "E034885" ],
@@ -8537,6 +8676,7 @@
 "mgx_reads_filtered": [ 12.718 ],
 "read_count_16S": [  13620 ],
 "sequencing_PDO_16S": [ "PDO-3149" ],
-"gid_16s": [ "G66064" ] 
+"gid_16s": [ "G66064" ],
+"outcome": [ "2" ] 
 } 
 ]

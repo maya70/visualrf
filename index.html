@@ -65,7 +65,7 @@ div.attrhierarchy {
   float: left;
   max-width: 600px;
   width: 400px;
-  max-height: 550px;
+  max-height: 500px;
   background: lightgrey; /* For browsers that do not support gradients */
   background: -webkit-linear-gradient(white, lightgrey); /* For Safari 5.1 to 6.0 */
   background: -o-linear-gradient(white, lightgrey); /* For Opera 11.1 to 12.0 */
@@ -182,11 +182,12 @@ div.rec-controls{
 }
 #para{
   grid-area: para;
-  min-height: 300px;
+  min-height: 250px;
   max-height: 300px;
  overflow: scroll;
  position: relative;
  margin-top: 0px;
+ margin-left: 30px;
  padding-top: 0px;
  float: top;
 
@@ -229,6 +230,17 @@ svg {
   fill: none;
   stroke: steelblue;
 }
+.background-meta path {
+  fill: none;
+  stroke: #ddd;
+  shape-rendering: crispEdges;
+}
+
+.foreground-meta path {
+  fill: none;
+  stroke: steelblue;
+}
+
 #selection-butt{
   margin-left: 50%;
 }
@@ -262,17 +274,33 @@ svg {
   min-height: 200px;
   overflow: scroll;
 }
-
-#svg2 {
+#background-meta {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 0;
+  width: 0;
+}
+#highlight-meta {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 0;
+  width: 0;
+}
+#svg-meta{
   position: absolute;
   top: 0;
   left: 0;
   min-width: 600px;
-  min-height: 200px;
+  min-height: 300px;
   overflow: scroll;
 }
-
-
+.metadata-container{
+  position: absolute;
+  top 1000;
+  left:0;
+}
 .brush .extent {
   fill-opacity: .3;
   stroke: #fff;
@@ -426,7 +454,7 @@ g.node.selected{
         <canvas id="foreground"></canvas>
         <canvas id="highlight"></canvas>
         <svg id="svg1"></svg>
-        <svg id="svg2"></svg>
+       
     </div>
         
 <!--footer>
@@ -434,6 +462,13 @@ Copyright &copy; Mai Elshehaly
 </footer-->
 
 </div>
+<div class= "metadata-container">
+   <canvas id="background-meta"></canvas>
+   <canvas id="foreground-meta"></canvas>
+   <canvas id="highlight-meta"></canvas>
+   <svg id="svg-meta"> </svg> 
+</div>
+
 <script>
    function change() {
     
