@@ -102,6 +102,9 @@
 			destroyMeta: function(){
 				var self = this;
 				d3.select("#metadata-container").selectAll("svg").selectAll("*").remove(); 
+				d3.selectAll(".axis-meta").remove();
+				d3.selectAll(".axis-label-meta").remove();
+				d3.selectAll(".rect-meta").remove();
 			},
 			setMinMax: function(){
 			   var self = this;
@@ -997,7 +1000,6 @@
 						  // Get lines within extents
 						  	var selected = self.metadata_selection;
 						  	
-
 						  	// Render selected lines
 							  paths(selected, foreground, brush_count, true);
 							}
@@ -1038,6 +1040,7 @@
 				  function animloop(){
 				    if (i >= n || count < brush_count) return true;
 				    var max = d3.min([i+render_speed, n]);
+
 				    render_range(shuffled_data, i, max, opacity);
 				    //render_stats(max,n,render_speed);
 				    i = max;
@@ -1045,8 +1048,7 @@
 				  };
 
 				  d3.timer(animloop);
-
-				  	
+	  	
 				}
 				self.foreground = foreground;
 				self.prototypes = prototype;
