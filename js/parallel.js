@@ -192,6 +192,22 @@
 					for(var i = 0; i < exp.length; i++){
 						self.metadata_selection.push(data[parseInt(exp[i]['sampleID'])]);
 					}
+
+					/*self.metadata_selection = [];
+					var exID = [];
+					d3.json('./data/subset61.json', function(subdata){
+						
+						for(var j = 0; j < subdata.length; j++)
+							{
+								exID.push(parseInt(subdata[j]['sampleID']));
+								//self.metadata_selection.push(data[parseInt(subdata[j]['sampleID'])]);
+							}
+						for(var k =0; k < data.length; k++){
+							if(exID.indexOf(k) < 0)
+								self.metadata_selection.push(data[k]);
+						}
+					
+					});*/
 					console.log(self.metadata_selection);
 					self.showMeta = true;
 					self.drawAxes2();
@@ -202,13 +218,13 @@
 				var self = this;
 				var data = self.data;
 				var numFeatures = Object.keys(data[0]).length;
-				var width = (numFeatures <=10)? 660 : numFeatures*80+60;
+				var width = (numFeatures <=10)? 660 : (numFeatures+1)*80+60;
 				//var margin = {top: 30, right: 40, bottom: 10, left: 140};				 
 				var height = 200;
 				var xscale = d3.scale.ordinal().rangePoints([0, width], 1),
 				    yscale = {},
 				    dragging = {};
-				var m = [60, 60, 10, 0],
+				var m = [60, 00, 10, 0],
 				 	w = width - m[1] - m[3],
     			 	h = height - m[0] - m[2],
 					line = d3.svg.line(),
@@ -393,31 +409,6 @@
 					      	.style("opacity", 0.7);
 					     
 					      
-					    
-					    /*gsvg.append("svg:rect")
-					    	.attr("x", 0)
-					    	.attr("y", function(d,i) { return i%2 == 0 ? -14 : -30 } )
-					    	.attr("class", "label-background")
-					    	.style("fill", "red");*/
-					     
-
-					  /*var b = d3.selectAll('.dimension')[0]
-					    		.forEach(function(element, i) {
-					    			 d3.select(element)
-								        .selectAll('.axis-label')
-								        .append("rect")
-								        .attr("x", 0)
-								        .attr("y", 0)
-								        .attr("width", 30)
-								        .attr("height", 30)
-								        .style('fill', function(d){
-								        	return self.fcolorMap[d];
-								        })
-								        .style("opacity", 0.4);
-								      
-					    		});*/
-					 
-
 					  // Add and store a brush for each axis.
 					  g.append("g")
 					      .attr("class", "brush")
@@ -472,7 +463,7 @@
 					      y0 = yscale[dimensions[0]](d[dimensions[0]]);   // left edge
 					  ctx.moveTo(x0,y0);
 					  dimensions.map(function(p,i) {
-					    var x = xscale(p) + (i===0? 50: 60),
+					    var x = xscale(p) - (i===0? 11: 0),
 					        y = yscale[p](d[p]);
 					    var cp1x = x - 0.88*(x-x0);
 					    var cp1y = y0;
@@ -668,7 +659,7 @@
 				var self = this;
 				var data = self.metadata;
 				var numFeatures = Object.keys(data[0]).length;
-				var width = (numFeatures <=10)? 660 : numFeatures*50+60;
+				var width = (numFeatures <=10)? 660 : numFeatures*80+60;
 				//var margin = {top: 30, right: 40, bottom: 10, left: 140};				 
 				var height = 300;
 				var xscale = d3.scale.ordinal().rangePoints([0, width], 1),
@@ -751,7 +742,7 @@
 								                        }))
 		                        				.range([h, 0]));
 		                }
-		                else if( typeof data[0][d][0] === "string"){
+		                else { //if( typeof data[0][d][0] === "string"){
 		                    console.log(data.map(function(s){ 
 		                            return s[d];}).sort());
 		                    return (yscale[d] = d3.scale.ordinal()

@@ -4,8 +4,6 @@
 <style>
 div.container{
         width: 100%;
-        border: 1px solid gray;
-
         display: grid;
         grid-template-columns: 30% 20% 30% 20%;
         grid-template-rows: fit-content(40%);
@@ -17,13 +15,27 @@ div.container{
         grid-gap:10px;
         background-color: #fff;
         color: "black";
-        height: 800px;
+        height: 700px;
       }
 div.thumbview {
     grid-area: thumbnails;
     float: left;
+    margin: 0;
+    margin-top: 10px;
+    background: lightgrey; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(white, lightgrey); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(white, lightgrey); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(white, lightgrey); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(white, lightgrey); /* Standard syntax */
+}
+#field-thumb{
+    grid-area: thumbnails;
+    float: left;
     overflow: scroll;
     margin: 0;
+    margin-top: -5px;
+    max-height: 100px;
+    width: 96%;
     background: lightgrey; /* For browsers that do not support gradients */
     background: -webkit-linear-gradient(white, lightgrey); /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(white, lightgrey); /* For Opera 11.1 to 12.0 */
@@ -35,36 +47,56 @@ div.left-controls {
     grid-area: controls;
     background-color: white;
     max-height: 30px;
-    padding-top: 5px;
-    padding-left: 10px;
+    
+   }
+#field-controls{
+  grid-area: controls;
+    background-color: white;
+    max-height: 30px;
+    padding-top: 0px;
+    padding-left: 0px;
     margin-top: 0px;
-    display: grid;
-    grid-template-columns: 15% 25% 15% 25% 10%;
-    grid-gap: 5px;
+    margin-left: 0px;
+    
 }
 .required-entry {
   margin-left: 0;
   max-height: 30px;
-  margin-top: 20px;
+  margin-top: 0px;
 }
 .required-entry-label-1 {
   padding-left: 10px;
-  max-width: 50px;
+  width: 15%;
   background-color:  rgba(0, 0, 255, .7);
   font-weight: bold;
+  margin-top: 14px;
+  min-width: 65px;
+}
+.cls-select-1{
+  width: 25%;
+  margin-top: -10px;
+  height: 35px;
+}
+.cls-select-2{
+  width: 25%;
+  margin-top: -10px;
+  height: 35px;
 }
 .required-entry-label-2 {
   padding-left: 10px;
-  max-width: 50px;
+  width: 15%;
   background-color:  rgba(255, 0, 0, .7);
   font-weight: bold;
+    margin-top: 14px;
+    margin-left: 10px;
+  min-width: 65px;
 }
 
 div.attrhierarchy {
   grid-area: sidebar;
   float: left;
   max-width: 600px;
-  width: 400px;
+  width: 420px;
   max-height: 500px;
   background: lightgrey; /* For browsers that do not support gradients */
   background: -webkit-linear-gradient(white, lightgrey); /* For Safari 5.1 to 6.0 */
@@ -72,12 +104,22 @@ div.attrhierarchy {
   background: -moz-linear-gradient(white, lightgrey); /* For Firefox 3.6 to 15 */
   background: linear-gradient(white, lightgrey); /* Standard syntax */
   margin: 0;
-  padding: 1em;
+  padding: 0.5em;
   overflow: scroll;
   margin-left: 10px;
+  position: relative;
+  margin-top: 20px;
 }
 div.pathway {
   grid-area: pathway;
+  float: left;
+  max-width: 200px;
+  height: 300px;
+  background-color: lightgrey;
+  margin: 0;
+}
+#field-pathway{
+   grid-area: pathway;
   float: left;
   max-width: 200px;
   height: 300px;
@@ -106,21 +148,34 @@ div.legend{
   padding: 1em;
   overflow: scroll;
   max-height: 300px;
+  max-width: 200px;
+}
+#field-legend{
+   grid-area: legend;
+  float: right;
+  margin-right: 40px;
+  background: lightgrey; /* For browsers that do not support gradients */
+  margin: 0;
+  padding: 1em;
+  overflow: scroll;
+  max-height: 300px;
+  max-width: 200px;
 }
 #field-panel{
-  
-}
+  background: lightgrey;
+ }
 #control-panel{
  grid-area: panel;
   display: grid;
   max-height: 160px;
   margin-right:40px;
+
   grid-template-areas: " count progress progress"
                         " clean  export ticks "
                         " remove  revert ticks "
                         " save meta ticks";
   grid-gap: 5px;
-  background: lightgrey; /* For browsers that do not support gradients */
+  
 }
 .fillbar {
   grid-area:progress;
@@ -182,15 +237,25 @@ div.rec-controls{
 }
 #para{
   grid-area: para;
-  min-height: 250px;
-  max-height: 300px;
- overflow: scroll;
+  max-height: 230px;
  position: relative;
  margin-top: 0px;
- margin-left: 30px;
+
  padding-top: 0px;
  float: top;
-
+ max-width: 595px;
+ overflow: scroll;
+ 
+}
+#field-para{
+grid-area: para;
+  min-height: 210px;
+  max-height: 230px;
+  max-width: 600px;
+ position: relative;
+ margin-top: 0px;
+ margin-left: 40px;
+ float: top;  
 }
 
 header, footer {
@@ -242,7 +307,7 @@ svg {
 }
 
 #selection-butt{
-  margin-left: 50%;
+  margin-left: 10px;
 }
 
 #background {
@@ -399,17 +464,54 @@ g.node.selected{
 
 <div class="container">
 
-    <div class="thumbview"> </div>
-    
-    <div class="legend"></div>
+    <fieldset id = field-thumb>
+    <legend style="color:black;font-weight:bold;">Tree Thumbnails</legend>
+     <table>
+      <tr> 
+      <td>
+        <div class="thumbview"> </div>
+      </td>
+      </tr>
+     </table>
+    </fieldset>
+
+     <fieldset id = field-legend>
+    <legend style="color:black;font-weight:bold; margin-top: -20px;">Global ROC Curve</legend>
+     <table>
+      <tr> 
+      <td>
+         <div class="legend"></div>
+       </td>
+       </tr>
+       </table>
+       </fieldset>
+
     
     <div class="left-controls">
+    <fieldset id="field-controls">
+    <table>
+      <tr>
+      <td>
        <p class="required-entry-label-1"> Class 1: </p>
+      <td>
+      <td>
        <select name="category" class="required-entry" id="cls-select-1">
         </select>  
+      </td>
+      <td>
         <p class="required-entry-label-2"> Class 2: </p>
+        </td>
+        <td>
         <select name="category" class="required-entry" id="cls-select-2">
         </select>
+        </td>
+      </td>
+      <td>
+       <input onClick="change()" type="button" id="selection-butt" value="Start" style="background-color: grey" disabled> </input>
+      </td>
+      </tr>
+      </table>
+      </fieldset>
     </div>
 
     
@@ -439,16 +541,32 @@ g.node.selected{
        <!--input onClick="changeTick()" type="button" id="ticks-butt" value="Hide Ticks" style="background-color: lightgrey"></input-->
     </div>
       
-       
+    
+
     <div class="attrhierarchy">
-      <input onClick="change()" type="button" id="selection-butt" value="Start" style="background-color: grey" disabled> </input>
+     
     </div>
  
 
-
-    <div class= "pathway" id="pdv"></div>
+ <fieldset id = field-pathway>
+    <legend style="color:black;font-weight:bold; margin-top: -20px;">Predictor Groups</legend>
+     <table>
+      <tr> 
+      <td>
+       <div class= "pathway" id="pdv"></div>
+      </td>
+      </tr>
+      </table>
+      </fieldset>
 
     <article></article>
+
+ <fieldset id = field-para>
+    <legend style="color:black;font-weight:bold; margin-top: -20px;">Data View</legend>
+     <table>
+      <tr> 
+      <td>
+
     <div id = "para">
         <canvas id="background"></canvas>
         <canvas id="foreground"></canvas>
@@ -456,6 +574,10 @@ g.node.selected{
         <svg id="svg1"></svg>
        
     </div>
+    </td>
+    </tr>
+    </table>
+    </fieldset>
         
 <!--footer>
 Copyright &copy; Mai Elshehaly
