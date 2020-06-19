@@ -2795,7 +2795,7 @@ var RandomForestClassifier = function(params) {
 
 var _parallel_build_tree = function(data, features, y) {
     return function (n, next) {
-        var CLF = new DecisionTreeClassifier({});
+        var CLF = new DecisionTreeClassifier({'num_tries': features.length});
         var tree = CLF.fit(data, features, y);
         CLF.model = tree;
         next(null, CLF);

@@ -34,7 +34,7 @@ div.thumbview {
     overflow: scroll;
     margin: 0;
     margin-top: -5px;
-    max-height: 100px;
+    max-height: 200px;
     width: 96%;
     background: lightgrey; /* For browsers that do not support gradients */
     background: -webkit-linear-gradient(white, lightgrey); /* For Safari 5.1 to 6.0 */
@@ -174,8 +174,16 @@ div.legend{
                         " clean  export ticks "
                         " remove  revert ticks "
                         " save meta ticks";
-  grid-gap: 5px;
-  
+  grid-gap: 5px;  
+}
+#logo{
+  grid-area: panel;
+  height: 70px;
+  width: 100%;
+  float: bottom;
+  position: relative;
+  top: 22%;
+  left: -20px;
 }
 .fillbar {
   grid-area:progress;
@@ -536,12 +544,13 @@ g.node.selected{
           <td> <input onclick="" type="button" id="save-butt" value="Save" style="background-color: lightgrey"> </input> </td>
           <td> <input onclick="" type="button" id="meta-butt" value="Show Metadata" style="background-color: lightgrey"> </input> </td>
        </tr>
+      
        </table>
     </fieldset>
        <!--input onClick="changeTick()" type="button" id="ticks-butt" value="Hide Ticks" style="background-color: lightgrey"></input-->
     </div>
       
-    
+            
 
     <div class="attrhierarchy">
      
@@ -582,7 +591,7 @@ g.node.selected{
 <!--footer>
 Copyright &copy; Mai Elshehaly
 </footer-->
-
+<img id="logo" src="./data/logo.png">
 </div>
 <div class= "metadata-container">
    <canvas id="background-meta"></canvas>
